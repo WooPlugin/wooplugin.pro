@@ -1,0 +1,57 @@
+---
+const steps = [
+  {
+    number: '1',
+    title: 'Install Plugin',
+    description: 'Install directly from WordPress plugins or upload the zip file.',
+  },
+  {
+    number: '2',
+    title: 'Add Product Fields',
+    description: 'Add GTIN, Brand, MPN to your products in the Inventory tab.',
+  },
+  {
+    number: '3',
+    title: 'Generate Feed',
+    description: 'One-click feed generation. Submit URL to Google Merchant Center.',
+  },
+];
+---
+
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
+        How It Works
+      </h2>
+      <p class="text-lg text-text-muted max-w-2xl mx-auto">
+        Get started in three simple steps
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {steps.map((step, index) => (
+        <div class="relative">
+          {/* Connector line */}
+          {index < steps.length - 1 && (
+            <div class="hidden md:block absolute top-8 left-[calc(50%+3rem)] w-[calc(100%-6rem)] h-0.5 bg-gradient-to-r from-primary to-secondary"></div>
+          )}
+
+          <div class="text-center">
+            {/* Step number */}
+            <div class="relative inline-flex items-center justify-center w-16 h-16 mb-6 bg-gradient-to-r from-primary to-secondary rounded-2xl text-white text-2xl font-bold">
+              {step.number}
+            </div>
+
+            <h3 class="text-xl font-semibold text-text mb-3">
+              {step.title}
+            </h3>
+            <p class="text-text-muted">
+              {step.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
