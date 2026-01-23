@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { submitLead } from '../lib/supabase';
 
 export default function ContactForm() {
   const [formState, setFormState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -15,20 +14,24 @@ export default function ContactForm() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    const data = {
-      email: formData.get('email') as string,
-      name: formData.get('name') as string,
-      message: formData.get('message') as string,
-    };
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
 
-    const result = await submitLead(data);
+      const result = await response.json();
 
-    if (result.error) {
+      if (result.success) {
+        setFormState('success');
+        form.reset();
+      } else {
+        setFormState('error');
+        setErrorMessage(result.message || 'Something went wrong');
+      }
+    } catch (error) {
       setFormState('error');
-      setErrorMessage(result.error);
-    } else {
-      setFormState('success');
-      form.reset();
+      setErrorMessage('Failed to send message. Please try again.');
     }
   }
 
@@ -38,7 +41,7 @@ export default function ContactForm() {
         <CheckCircle className="w-12 h-12 text-accent mx-auto mb-4" />
         <h3 className="text-xl font-semibold text-text mb-2">Message Sent!</h3>
         <p className="text-text-muted">
-          Thanks for reaching out. We'll get back to you soon.
+          Thanks for reaching out. I'll get back to you soon.
         </p>
         <button
           onClick={() => setFormState('idle')}
@@ -52,6 +55,15 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Web3Forms access key */}
+      <input type="hidden" name="access_key" value="e7052da4-e499-4021-b697-e57fa41083ab" />
+
+      {/* Optional: Customize email subject */}
+      <input type="hidden" name="subject" value="New contact from WooPlugin.pro" />
+
+      {/* Optional: Redirect after submit (we handle it in JS instead) */}
+      <input type="hidden" name="from_name" value="WooPlugin Contact Form" />
+
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-text mb-1">
           Name
@@ -88,7 +100,7 @@ export default function ContactForm() {
           name="message"
           rows={4}
           className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary resize-none"
-          placeholder="How can we help?"
+          placeholder="How can I help?"
         />
       </div>
 
@@ -98,6 +110,9 @@ export default function ContactForm() {
           <span>{errorMessage || 'Something went wrong. Please try again.'}</span>
         </div>
       )}
+
+      {/* Honeypot for spam protection */}
+      <input type="checkbox" name="botcheck" className="hidden" />
 
       <button
         type="submit"
