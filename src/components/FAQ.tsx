@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     question: 'What\'s the difference between free and pro?',
-    answer: 'The free version includes basic product fields (GTIN, Brand, MPN), Google Shopping feed for up to 100 products, and manual feed generation. Pro versions add unlimited products, all feed formats, auto-sync, and priority support.',
+    answer: 'The free version includes basic product fields (GTIN, Brand, MPN), Google Shopping feed for up to 50 products, and manual feed generation. Pro versions add unlimited products, all feed formats, auto-sync, and priority support.',
   },
 ];
 
