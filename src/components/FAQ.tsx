@@ -16,7 +16,7 @@ interface FAQProps {
 const defaultFaqs: FAQItem[] = [
   {
     question: 'What feeds are supported?',
-    answer: 'Currently, Google Shopping for WooCommerce supports Google Merchant Center XML feeds. Facebook and Instagram feed support is coming soon in the Pro version.',
+    answer: 'The free version supports Google Merchant Center feeds. Pro adds Facebook/Meta, Pinterest, TikTok, Bing, and Snapchat feeds.',
   },
   {
     question: 'Does it work with variable products?',
@@ -32,7 +32,7 @@ const defaultFaqs: FAQItem[] = [
   },
   {
     question: 'What\'s the difference between free and pro?',
-    answer: 'The free version includes GTIN, Brand, MPN fields for unlimited products and manual feed generation. Pro adds automatic scheduled updates, feed regeneration on product save, and priority support.',
+    answer: 'The free version includes GTIN, Brand, MPN fields for unlimited products and manual Google feed generation. Pro adds automatic scheduled updates, feed regeneration on product save, multi-channel feeds (Facebook, Pinterest, TikTok, Bing, Snapchat), and priority support.',
   },
 ];
 

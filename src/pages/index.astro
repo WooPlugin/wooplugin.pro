@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Pricing from '../components/Pricing.astro';
 import FAQ from '../components/FAQ';
 import ContactForm from '../components/ContactForm';
 import { Check, X } from 'lucide-react';
@@ -350,11 +349,62 @@ const homepageFaqs = [
       </div>
     </section>
 
-    <!-- Pricing Section -->
-    <Pricing
-      title="Simple Pricing"
-      subtitle="Start free. Upgrade when you need automation."
-    />
+    <!-- Free Section -->
+    <section id="pricing" class="py-20 px-4 sm:px-6 lg:px-8 bg-bg-alt">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
+            Free Forever
+          </h2>
+          <p class="text-lg text-text-muted">
+            No trials. No credit card. No limits.
+          </p>
+        </div>
+
+        <div class="max-w-md mx-auto bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <div class="text-center mb-8">
+            <div class="flex items-baseline justify-center gap-1 mb-2">
+              <span class="text-5xl font-bold text-text">$0</span>
+            </div>
+            <p class="text-text-muted">forever</p>
+          </div>
+
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start gap-3">
+              <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+              <span class="text-text-muted">Unlimited products</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+              <span class="text-text-muted">GTIN, Brand, MPN fields</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+              <span class="text-text-muted">Google Merchant Center feed</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+              <span class="text-text-muted">Variable product support</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+              <span class="text-text-muted">Category mapping</span>
+            </li>
+          </ul>
+
+          <a
+            href="https://github.com/aarsla/woo/releases/latest"
+            class="block w-full text-center px-6 py-3 rounded-lg font-medium bg-primary hover:bg-primary-dark text-white transition-colors"
+          >
+            Download Free
+          </a>
+        </div>
+
+        <p class="text-center text-sm text-text-muted mt-8">
+          Need automated feed updates? <a href="/google-shopping-pro" class="text-primary hover:underline">See Pro</a>
+        </p>
+      </div>
+    </section>
 
     <!-- FAQ Section -->
     <FAQ

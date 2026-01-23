@@ -130,8 +130,7 @@ The newest entrant focuses specifically on Google Shopping with a refreshingly s
 
 #### Cons
 - Newer plugin (less proven)
-- Fewer templates than competitors
-- Google-focused (Facebook coming soon)
+- Fewer templates than competitors (focused on major platforms)
 
 #### Pricing
 
@@ -236,7 +235,8 @@ Good alternative to CTX Feed with similar free features but simpler interface. W
 | Scheduled Updates | ✅ | ✅ | ❌ | ✅ | ❌ |
 | **Pro Features** |
 | Multi-language | ✅ | ✅ | Coming | ✅ | ✅ |
-| Facebook Feed | ✅ | ✅ | Coming | ✅ | ✅ |
+| Facebook Feed | ✅ | ✅ | ✅ (Pro) | ✅ | ✅ |
+| Pinterest/TikTok | ✅ | ✅ | ✅ (Pro) | ✅ | ✅ |
 | Advanced Filters | ✅ | ✅ | Coming | ✅ | ✅ |
 | **Pricing** |
 | Entry Pro | €99 | $119 | $79 | $79 | $89 |
@@ -307,7 +307,7 @@ Yes, but it requires re-entering product data. GTIN, Brand, and MPN fields are s
 
 **Q: Which is best for Facebook/Instagram?**
 
-Currently, AdTribes and CTX Feed have the best Facebook support. WooPlugin and others are adding this feature.
+AdTribes, CTX Feed, and WooPlugin Pro all offer Facebook/Meta catalog feeds. WooPlugin Pro also includes Pinterest, TikTok, Bing, and Snapchat feeds.
 
 ---
 

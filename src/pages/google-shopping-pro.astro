@@ -1,0 +1,407 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FAQ from '../components/FAQ';
+import { Check, X, Clock, RefreshCw, Mail, Zap } from 'lucide-react';
+
+const proFaqs = [
+  {
+    question: 'Do I need Pro?',
+    answer: 'If you update products frequently or have a large catalog, Pro saves you time with automatic feed updates. For smaller stores with occasional updates, the free version works great.',
+  },
+  {
+    question: 'What if I already have the free version?',
+    answer: 'Pro replaces Free completely. When you install Pro, it automatically migrates your settings from Free. Then simply deactivate the free version—Pro includes everything.',
+  },
+  {
+    question: 'How does licensing work?',
+    answer: 'Pro license is per-site for the single site plan ($79/year) or unlimited sites for the Agency plan ($299/year). License includes 1 year of updates and support.',
+  },
+  {
+    question: 'Can I upgrade later?',
+    answer: 'Yes. Start with Free, and when you need automation, upgrade to Pro. Your existing data and settings stay intact.',
+  },
+  {
+    question: 'What payment methods do you accept?',
+    answer: 'We accept all major credit cards. Payment is processed securely through our payment provider.',
+  },
+  {
+    question: 'Is there a refund policy?',
+    answer: 'Yes. If Pro doesn\'t work for your store, contact us within 14 days for a full refund. No questions asked.',
+  },
+];
+
+const comparisonFeatures = [
+  { feature: 'GTIN, Brand, MPN fields', free: true, pro: true },
+  { feature: 'Unlimited products', free: true, pro: true },
+  { feature: 'Google Merchant feed', free: true, pro: true },
+  { feature: 'Variable product support', free: true, pro: true },
+  { feature: 'Category mapping', free: true, pro: true },
+  { feature: 'HPOS compatible', free: true, pro: true },
+  { feature: 'Scheduled auto-updates', free: false, pro: true },
+  { feature: 'Update on product save', free: false, pro: true },
+  { feature: 'Facebook/Meta Catalog feed', free: false, pro: true },
+  { feature: 'Pinterest feed', free: false, pro: true },
+  { feature: 'TikTok Catalog feed', free: false, pro: true },
+  { feature: 'Bing Shopping feed', free: false, pro: true },
+  { feature: 'Snapchat Catalog feed', free: false, pro: true },
+  { feature: 'Priority email support', free: false, pro: true },
+];
+---
+
+<Layout
+  title="Google Shopping Pro - Automated Feed Updates for WooCommerce"
+  description="Automate your Google Shopping feed. Scheduled updates, auto-regenerate on product changes, priority support. $79/year."
+>
+  <Header />
+  <main>
+    <!-- Hero -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full">
+          <Zap className="w-4 h-4" />
+          Pro Add-on
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-text mb-6">
+          Automate Your
+          <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            {' '}Google Shopping Feed
+          </span>
+        </h1>
+
+        <p class="text-lg sm:text-xl text-text-muted mb-8 max-w-2xl mx-auto">
+          Set it once. Your feed updates automatically when products change.
+          No more manual regeneration.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <a href="#pricing" class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-primary rounded-lg hover:bg-primary/90 transition-colors">
+            Get Pro - $7/mo
+          </a>
+          <a href="#comparison" class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-text border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+            Compare Free vs Pro
+          </a>
+        </div>
+
+        <p class="text-sm text-text-muted">
+          14-day money-back guarantee. No questions asked.
+        </p>
+      </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-bg-alt">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
+            Manual Feed Updates Are Tedious
+          </h2>
+          <p class="text-lg text-text-muted">
+            Sound familiar?
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-xl p-6 border border-red-100">
+            <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+              <Clock className="w-6 h-6 text-red-500" />
+            </div>
+            <h3 class="font-semibold text-text mb-2">Stale Feed Data</h3>
+            <p class="text-text-muted text-sm">
+              You update prices and stock, but forget to regenerate the feed. Google shows outdated info.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 border border-red-100">
+            <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+              <RefreshCw className="w-6 h-6 text-red-500" />
+            </div>
+            <h3 class="font-semibold text-text mb-2">Manual Regeneration</h3>
+            <p class="text-text-muted text-sm">
+              Every product change means logging in, clicking regenerate, and waiting. Time you could spend elsewhere.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 border border-red-100">
+            <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+              <X className="w-6 h-6 text-red-500" />
+            </div>
+            <h3 class="font-semibold text-text mb-2">Missed Sales</h3>
+            <p class="text-text-muted text-sm">
+              Out-of-stock items still showing on Google. Price changes not reflected. Customers bounce.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
+            Pro Keeps Your Feed Fresh
+          </h2>
+          <p class="text-lg text-text-muted">
+            Automation that runs in the background
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-8">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <Clock className="w-6 h-6 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-2">Scheduled Updates</h3>
+              <p class="text-text-muted">
+                Set it to hourly, twice daily, or daily. Your feed regenerates automatically on schedule.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <RefreshCw className="w-6 h-6 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-2">Update on Save</h3>
+              <p class="text-text-muted">
+                Change a product? Feed regenerates automatically. No extra clicks needed.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <Mail className="w-6 h-6 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-2">Priority Support</h3>
+              <p class="text-text-muted">
+                Email support directly from the developer. Real answers, not ticket queues.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <Zap className="w-6 h-6 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-2">Multi-Channel Feeds</h3>
+              <p class="text-text-muted">
+                Facebook, Pinterest, TikTok, Bing, and Snapchat feeds included. One plugin, all major platforms.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section id="comparison" class="py-20 px-4 sm:px-6 lg:px-8 bg-bg-alt">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
+            Free vs Pro
+          </h2>
+          <p class="text-lg text-text-muted">
+            Everything in Free, plus automation
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <div class="grid grid-cols-3 bg-gray-50 border-b border-gray-200">
+            <div class="p-4 font-semibold text-text">Feature</div>
+            <div class="p-4 font-semibold text-text text-center">Free</div>
+            <div class="p-4 font-semibold text-primary text-center bg-primary/5">Pro</div>
+          </div>
+          {comparisonFeatures.map((item, i) => (
+            <div class={`grid grid-cols-3 ${i < comparisonFeatures.length - 1 ? 'border-b border-gray-100' : ''}`}>
+              <div class="p-4 text-text-muted">{item.feature}</div>
+              <div class="p-4 flex justify-center">
+                {item.free === true ? (
+                  <Check className="w-5 h-5 text-accent" />
+                ) : (
+                  <X className="w-5 h-5 text-gray-300" />
+                )}
+              </div>
+              <div class="p-4 flex justify-center bg-primary/5">
+                {item.pro === true ? (
+                  <Check className="w-5 h-5 text-accent" />
+                ) : typeof item.pro === 'string' ? (
+                  <span class="text-sm text-text-muted">{item.pro}</span>
+                ) : (
+                  <X className="w-5 h-5 text-gray-300" />
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-20 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
+            Simple Pricing
+          </h2>
+          <p class="text-lg text-text-muted">
+            Choose your plan. Cancel anytime.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          <!-- Pro Single Site -->
+          <div class="bg-white rounded-2xl p-8 shadow-sm border-2 border-primary relative">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+              <span class="inline-flex items-center px-3 py-1 text-xs font-semibold text-white bg-primary rounded-full">
+                Most Popular
+              </span>
+            </div>
+
+            <div class="text-center mb-8">
+              <h3 class="text-xl font-semibold text-text mb-2">Pro</h3>
+              <div class="flex items-baseline justify-center gap-1">
+                <span class="text-4xl font-bold text-text">$7</span>
+                <span class="text-text-muted">/month</span>
+              </div>
+              <p class="text-sm text-text-muted mt-1">Billed at $79/year</p>
+              <p class="text-sm text-text-muted">Single site license</p>
+            </div>
+
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">All Free features</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Scheduled auto-updates</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Update on product save</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Facebook, Pinterest, TikTok, Bing, Snapchat</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">1 year of updates & support</span>
+              </li>
+            </ul>
+
+            <a
+              href="#contact"
+              class="block w-full text-center px-6 py-3 rounded-lg font-medium bg-primary hover:bg-primary-dark text-white transition-colors"
+            >
+              Buy Pro
+            </a>
+          </div>
+
+          <!-- Agency -->
+          <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+            <div class="text-center mb-8">
+              <h3 class="text-xl font-semibold text-text mb-2">Agency</h3>
+              <div class="flex items-baseline justify-center gap-1">
+                <span class="text-4xl font-bold text-text">$25</span>
+                <span class="text-text-muted">/month</span>
+              </div>
+              <p class="text-sm text-text-muted mt-1">Billed at $299/year</p>
+              <p class="text-sm text-text-muted">Unlimited sites</p>
+            </div>
+
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Everything in Pro</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Unlimited site activations</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">White-label option</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Early access to features</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Priority support</span>
+              </li>
+            </ul>
+
+            <a
+              href="#contact"
+              class="block w-full text-center px-6 py-3 rounded-lg font-medium bg-gray-100 hover:bg-gray-200 text-text transition-colors"
+            >
+              Buy Agency
+            </a>
+          </div>
+        </div>
+
+        <p class="text-center text-sm text-text-muted mt-8">
+          14-day money-back guarantee. Prices exclude VAT where applicable.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <FAQ
+      client:visible
+      faqs={proFaqs}
+      title="Questions about Pro?"
+      subtitle="Common questions answered"
+    />
+
+    <!-- Final CTA -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary to-secondary">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+          Stop Manual Feed Updates
+        </h2>
+        <p class="text-lg text-white/80 mb-8">
+          Let Pro handle the automation while you focus on growing your store.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#pricing" class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-primary bg-white rounded-lg hover:bg-gray-100 transition-colors">
+            Get Pro - $7/mo
+          </a>
+          <a href="/" class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white border border-white/30 rounded-lg hover:bg-white/10 transition-colors">
+            Try Free First
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-2xl font-bold text-text mb-4">
+          Questions Before Buying?
+        </h2>
+        <p class="text-text-muted mb-8">
+          Email me directly. I respond personally to every message.
+        </p>
+        <a
+          href="mailto:support@wooplugin.pro"
+          class="inline-flex items-center gap-2 text-primary hover:underline"
+        >
+          <Mail className="w-5 h-5" />
+          support@wooplugin.pro
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
