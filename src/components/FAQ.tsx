@@ -2,10 +2,21 @@ import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '../lib/utils';
 
-const faqs = [
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface FAQProps {
+  faqs?: FAQItem[];
+  title?: string;
+  subtitle?: string;
+}
+
+const defaultFaqs: FAQItem[] = [
   {
     question: 'What feeds are supported?',
-    answer: 'Currently, WooPlugin Feed supports Google Merchant Center XML feeds. Facebook and Instagram feed support is coming soon in the Pro version.',
+    answer: 'Currently, Google Shopping for WooCommerce supports Google Merchant Center XML feeds. Facebook and Instagram feed support is coming soon in the Pro version.',
   },
   {
     question: 'Does it work with variable products?',
@@ -17,15 +28,19 @@ const faqs = [
   },
   {
     question: 'Is it HPOS compatible?',
-    answer: 'Yes, WooPlugin Feed is fully compatible with WooCommerce High-Performance Order Storage (HPOS). It\'s been tested with WooCommerce 8.0 and above.',
+    answer: 'Yes, Google Shopping for WooCommerce is fully compatible with WooCommerce High-Performance Order Storage (HPOS). It\'s been tested with WooCommerce 8.0 and above.',
   },
   {
     question: 'What\'s the difference between free and pro?',
-    answer: 'The free version includes basic product fields (GTIN, Brand, MPN), Google Shopping feed for up to 50 products, and manual feed generation. Pro versions add unlimited products, all feed formats, auto-sync, and priority support.',
+    answer: 'The free version includes GTIN, Brand, MPN fields for unlimited products and manual feed generation. Pro adds automatic scheduled updates, feed regeneration on product save, and priority support.',
   },
 ];
 
-export default function FAQ() {
+export default function FAQ({
+  faqs = defaultFaqs,
+  title = 'Frequently Asked Questions',
+  subtitle = 'Everything you need to know about Google Shopping for WooCommerce'
+}: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -33,10 +48,10 @@ export default function FAQ() {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-text mb-4">
-            Frequently Asked Questions
+            {title}
           </h2>
           <p className="text-lg text-text-muted">
-            Everything you need to know about WooPlugin Feed
+            {subtitle}
           </p>
         </div>
 

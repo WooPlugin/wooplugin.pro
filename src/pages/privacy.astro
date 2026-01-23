@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Privacy Policy"
+  description="Privacy policy for WooPlugin products and services."
+>
+  <Header />
+  <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-4xl font-bold text-text mb-8">Privacy Policy</h1>
+      <p class="text-text-muted mb-8">Last updated: January 2025</p>
+
+      <div class="prose prose-lg text-text-muted space-y-8">
+        <section>
+          <h2 class="text-2xl font-semibold text-text mb-4">Overview</h2>
+          <p>
+            WooPlugin ("we", "our", or "us") respects your privacy and is committed to protecting your personal data.
+            This privacy policy explains how we collect, use, and protect information when you use our website and plugins.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-text mb-4">Information We Collect</h2>
+
+          <h3 class="text-xl font-semibold text-text mb-2 mt-6">Website</h3>
+          <p>When you visit wooplugin.pro, we may collect:</p>
+          <ul class="list-disc list-inside space-y-2 mt-2">
+            <li>Contact form submissions (name, email, message)</li>
+            <li>Basic analytics data (page views, referrer, browser type)</li>
+          </ul>
+
+          <h3 class="text-xl font-semibold text-text mb-2 mt-6">Plugins</h3>
+          <p>Our WordPress plugins do not collect or transmit any personal data to our servers. All data stays on your WordPress installation.</p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-text mb-4">How We Use Information</h2>
+          <p>We use collected information to:</p>
+          <ul class="list-disc list-inside space-y-2 mt-2">
+            <li>Respond to your inquiries and support requests</li>
+            <li>Improve our website and plugins</li>
+            <li>Send important updates about our products (only if you opt in)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-text mb-4">Data Storage</h2>
+          <p>
+            Contact form submissions are stored securely. We do not sell or share your personal information with third parties,
+            except as required by law or to protect our rights.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-text mb-4">Third-Party Services</h2>
+          <p>Our plugins may interact with third-party services:</p>
+          <ul class="list-disc list-inside space-y-2 mt-2">
+            <li><strong>Google Shopping for WooCommerce:</strong> Generates XML feeds that you submit to Google Merchant Center. We do not transmit your product data.</li>
+            <li><strong>Tracking for UPS:</strong> Connects to UPS API to retrieve tracking information. Tracking numbers are sent directly to UPS, not through our servers.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-text mb-4">Your Rights</h2>
+          <p>You have the right to:</p>
+          <ul class="list-disc list-inside space-y-2 mt-2">
+            <li>Request access to your personal data</li>
+            <li>Request correction or deletion of your data</li>
+            <li>Opt out of marketing communications</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-text mb-4">Contact</h2>
+          <p>
+            For privacy-related questions, please contact us through the
+            <a href="/#contact" class="text-primary hover:text-primary-dark">contact form</a>
+            on our website.
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

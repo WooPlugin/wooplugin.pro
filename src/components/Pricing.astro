@@ -1,35 +1,53 @@
 ---
 import { Check } from 'lucide-react';
 
-const plans = [
+interface Plan {
+  name: string;
+  price: string;
+  priceMonthly?: string;
+  period: string;
+  description: string;
+  features: string[];
+  cta: string;
+  ctaHref: string;
+  highlighted: boolean;
+}
+
+interface Props {
+  plans?: Plan[];
+  title?: string;
+  subtitle?: string;
+}
+
+const defaultPlans: Plan[] = [
   {
     name: 'Free',
     price: '$0',
     period: 'forever',
-    description: 'Perfect for getting started',
+    description: 'Everything you need to get started',
     features: [
-      '50 products',
+      'Unlimited products',
       'Google Shopping feed',
       'GTIN, Brand, MPN fields',
+      'Variable product support',
       'Manual feed generation',
-      'Community support',
     ],
     cta: 'Download Free',
     ctaHref: '#download',
     highlighted: false,
   },
   {
-    name: 'Personal',
-    price: '$79',
-    period: '/year',
-    description: 'For growing stores',
+    name: 'Pro',
+    price: '$6.58',
+    priceMonthly: '/month',
+    period: 'Billed at $79/year',
+    description: 'Automation for busy stores',
     features: [
-      'Unlimited products',
-      'All feed formats',
-      'Auto-sync on product change',
-      'Scheduled updates',
-      '1 site license',
-      'Email support',
+      'Everything in Free',
+      'Automatic scheduled updates',
+      'Update feed on product save',
+      'Priority email support',
+      'Coming: Facebook, Pinterest feeds',
     ],
     cta: 'Coming Soon',
     ctaHref: '#contact',
@@ -37,33 +55,38 @@ const plans = [
   },
   {
     name: 'Agency',
-    price: '$299',
-    period: '/year',
+    price: '$24.92',
+    priceMonthly: '/month',
+    period: 'Billed at $299/year',
     description: 'For agencies & developers',
     features: [
-      'Unlimited products',
-      'All feed formats',
-      'Auto-sync on product change',
-      'Scheduled updates',
+      'Everything in Pro',
       'Unlimited sites',
       'Priority support',
       'White-label option',
+      'Early access to features',
     ],
     cta: 'Coming Soon',
     ctaHref: '#contact',
     highlighted: false,
   },
 ];
+
+const {
+  plans = defaultPlans,
+  title = 'Simple, Transparent Pricing',
+  subtitle = 'Start free, upgrade when you need more'
+} = Astro.props;
 ---
 
 <section id="pricing" class="py-20 px-4 sm:px-6 lg:px-8 bg-bg-alt">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-16">
       <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
-        Simple, Transparent Pricing
+        {title}
       </h2>
       <p class="text-lg text-text-muted max-w-2xl mx-auto">
-        Start free, upgrade when you need more
+        {subtitle}
       </p>
     </div>
 
@@ -82,8 +105,11 @@ const plans = [
             <h3 class="text-xl font-semibold text-text mb-2">{plan.name}</h3>
             <div class="flex items-baseline justify-center gap-1">
               <span class="text-4xl font-bold text-text">{plan.price}</span>
-              <span class="text-text-muted">{plan.period}</span>
+              {plan.priceMonthly && (
+                <span class="text-text-muted">{plan.priceMonthly}</span>
+              )}
             </div>
+            <p class="text-sm text-text-muted mt-1">{plan.period}</p>
             <p class="text-sm text-text-muted mt-2">{plan.description}</p>
           </div>
 

@@ -1,45 +1,76 @@
 ---
 const currentYear = new Date().getFullYear();
 
-const links = [
+const mainLinks = [
+  { href: '/google-shopping', label: 'Google Shopping Plugin' },
+  { href: '/guides', label: 'Guides' },
+  { href: '/#pricing', label: 'Pricing' },
+  { href: '/#contact', label: 'Contact' },
+];
+
+const legalLinks = [
   { href: '/privacy', label: 'Privacy' },
   { href: '/terms', label: 'Terms' },
-  { href: '#contact', label: 'Contact' },
 ];
 ---
 
 <footer class="py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-100">
   <div class="max-w-6xl mx-auto">
-    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-      <!-- Logo & Copyright -->
-      <div class="flex items-center gap-4">
-        <span class="text-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-          WooPlugin
-        </span>
-        <span class="text-sm text-text-muted">
-          &copy; {currentYear} WooPlugin. All rights reserved.
-        </span>
+    <div class="grid md:grid-cols-4 gap-8 mb-8">
+      <!-- Brand -->
+      <div class="md:col-span-2">
+        <a href="/" class="inline-flex items-baseline mb-4">
+          <span class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            WooPlugin
+          </span>
+          <span class="text-sm font-medium text-text-muted">.pro</span>
+        </a>
+        <p class="text-sm text-text-muted max-w-xs">
+          Google Shopping for WooCommerce. Add GTIN, Brand, MPN fields and generate Merchant Center feeds.
+        </p>
       </div>
 
-      <!-- Links -->
-      <nav class="flex items-center gap-6">
-        {links.map(link => (
-          <a
-            href={link.href}
-            class="text-sm text-text-muted hover:text-primary transition-colors"
-          >
-            {link.label}
-          </a>
-        ))}
-      </nav>
+      <!-- Main Links -->
+      <div>
+        <h4 class="font-semibold text-text mb-4">Links</h4>
+        <nav class="flex flex-col gap-2">
+          {mainLinks.map(link => (
+            <a
+              href={link.href}
+              class="text-sm text-text-muted hover:text-primary transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <h4 class="font-semibold text-text mb-4">Legal</h4>
+        <nav class="flex flex-col gap-2">
+          {legalLinks.map(link => (
+            <a
+              href={link.href}
+              class="text-sm text-text-muted hover:text-primary transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
     </div>
 
-    <!-- Attribution -->
-    <div class="mt-8 pt-8 border-t border-gray-100 text-center">
-      <p class="text-xs text-text-muted">
-        WooCommerce is a registered trademark of Automattic Inc.
-        This plugin is not affiliated with or endorsed by Automattic.
-      </p>
+    <div class="pt-8 border-t border-gray-100">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <span class="text-sm text-text-muted">
+          &copy; {currentYear} WooPlugin.pro. All rights reserved.
+        </span>
+        <p class="text-xs text-text-muted text-center md:text-right">
+          WooCommerce is a registered trademark of Automattic Inc.
+          This plugin is not affiliated with or endorsed by Automattic.
+        </p>
+      </div>
     </div>
   </div>
 </footer>

@@ -1,8 +1,9 @@
 ---
 const navLinks = [
-  { href: '#features', label: 'Features' },
-  { href: '#pricing', label: 'Pricing' },
-  { href: '#faq', label: 'FAQ' },
+  { href: '/google-shopping', label: 'Plugin' },
+  { href: '/guides', label: 'Guides' },
+  { href: '/#pricing', label: 'Pricing' },
+  { href: '/#contact', label: 'Contact' },
 ];
 ---
 
@@ -10,10 +11,11 @@ const navLinks = [
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-2">
+      <a href="/" class="flex items-baseline">
         <span class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
           WooPlugin
         </span>
+        <span class="text-sm font-medium text-text-muted">.pro</span>
       </a>
 
       <!-- Desktop Navigation -->
@@ -30,10 +32,10 @@ const navLinks = [
 
       <!-- CTA Button -->
       <a
-        href="#download"
+        href="/google-shopping"
         class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary-dark rounded-lg transition-colors"
       >
-        Download Free
+        Get Started
       </a>
     </div>
   </div>

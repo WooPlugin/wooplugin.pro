@@ -1,0 +1,336 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Check } from 'lucide-react';
+import { getCollection } from 'astro:content';
+
+// Get related guides
+const allGuides = await getCollection('guides');
+const relatedGuides = allGuides
+  .filter(guide => guide.data.category === 'google-shopping')
+  .slice(0, 3);
+
+const features = [
+  'GTIN, Brand, MPN fields for all products',
+  'Support for variable products and variations',
+  'Google Merchant Center XML feed generation',
+  'Unlimited products (no artificial limits)',
+  'Category mapping to Google taxonomy',
+  'HPOS compatible (WooCommerce 8.x+)',
+  'Clean, lightweight code',
+  'No external dependencies',
+];
+
+const requirements = [
+  { label: 'WordPress', value: '6.0 or higher' },
+  { label: 'WooCommerce', value: '8.0 or higher' },
+  { label: 'PHP', value: '8.0 or higher' },
+];
+
+const changelog = [
+  { version: '1.0.0', date: 'January 2026', changes: 'Initial release with GTIN, Brand, MPN fields and Google Merchant Center feed generation.' },
+];
+---
+
+<Layout
+  title="Google Shopping for WooCommerce - Download Free Plugin"
+  description="Download Google Shopping for WooCommerce. Add GTIN, Brand, MPN fields and generate Google Merchant Center feeds. Free, no limits."
+>
+  <Header />
+  <main>
+    <!-- Hero -->
+    <section class="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-8">
+          <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-text mb-4">
+            Google Shopping for WooCommerce
+          </h1>
+          <p class="text-xl text-text-muted mb-8">
+            Add product identifiers and generate Google Merchant Center feeds.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#download"
+              class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-primary rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              Download Free
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+            </a>
+            <a
+              href="#screenshots"
+              class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-text border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              View Screenshots
+            </a>
+          </div>
+        </div>
+
+        <!-- Version badge -->
+        <div class="flex justify-center">
+          <div class="inline-flex items-center gap-4 px-4 py-2 bg-bg-alt rounded-full text-sm text-text-muted">
+            <span>Version 1.0.0</span>
+            <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+            <span>Free & Open Source</span>
+            <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+            <span>GPL Licensed</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section id="screenshots" class="py-16 px-4 sm:px-6 lg:px-8 bg-bg-alt">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold text-text mb-8 text-center">Screenshots</h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Screenshot 1 -->
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+            <div class="aspect-video bg-gray-100 flex items-center justify-center">
+              <div class="text-center text-text-muted">
+                <svg class="w-12 h-12 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <p class="text-sm">Product Editor Fields</p>
+              </div>
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-text-muted">GTIN, Brand, and MPN fields in the WooCommerce product Inventory tab.</p>
+            </div>
+          </div>
+
+          <!-- Screenshot 2 -->
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+            <div class="aspect-video bg-gray-100 flex items-center justify-center">
+              <div class="text-center text-text-muted">
+                <svg class="w-12 h-12 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <p class="text-sm">Settings Page</p>
+              </div>
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-text-muted">Plugin settings in WooCommerce > Settings > Google Shopping tab.</p>
+            </div>
+          </div>
+
+          <!-- Screenshot 3 -->
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+            <div class="aspect-video bg-gray-100 flex items-center justify-center">
+              <div class="text-center text-text-muted">
+                <svg class="w-12 h-12 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <p class="text-sm">Feed Dashboard</p>
+              </div>
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-text-muted">Dashboard showing feed URL, product count, and generation status.</p>
+            </div>
+          </div>
+
+          <!-- Screenshot 4 -->
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+            <div class="aspect-video bg-gray-100 flex items-center justify-center">
+              <div class="text-center text-text-muted">
+                <svg class="w-12 h-12 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <p class="text-sm">Variation Fields</p>
+              </div>
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-text-muted">Individual GTIN fields for each product variation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold text-text mb-8 text-center">Features</h2>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          {features.map(feature => (
+            <div class="flex items-start gap-3">
+              <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+              <span class="text-text-muted">{feature}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Download & Requirements -->
+    <section id="download" class="py-16 px-4 sm:px-6 lg:px-8 bg-bg-alt">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- Download -->
+          <div>
+            <h2 class="text-2xl font-bold text-text mb-6">Download</h2>
+            <div class="bg-white rounded-xl border border-gray-200 p-6">
+              <p class="text-text-muted mb-6">
+                Install directly from WordPress or download the plugin file.
+              </p>
+
+              <div class="space-y-4">
+                <a
+                  href="https://wordpress.org/plugins/google-shopping-for-woocommerce/"
+                  target="_blank"
+                  rel="noopener"
+                  class="flex items-center justify-between w-full px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                >
+                  <span class="font-medium">WordPress.org</span>
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+
+                <p class="text-sm text-text-muted text-center">
+                  Or search "Google Shopping for WooCommerce" in your WordPress dashboard.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Requirements -->
+          <div>
+            <h2 class="text-2xl font-bold text-text mb-6">Requirements</h2>
+            <div class="bg-white rounded-xl border border-gray-200 p-6">
+              <div class="space-y-4">
+                {requirements.map(req => (
+                  <div class="flex items-center justify-between py-2 border-b border-gray-100 last:border-0">
+                    <span class="text-text-muted">{req.label}</span>
+                    <span class="font-medium text-text">{req.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Installation -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold text-text mb-8 text-center">Installation</h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-semibold text-text mb-4">From WordPress Dashboard</h3>
+            <ol class="space-y-3 text-text-muted">
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-medium">1</span>
+                <span>Go to Plugins > Add New</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-medium">2</span>
+                <span>Search "Google Shopping for WooCommerce"</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-medium">3</span>
+                <span>Click Install Now, then Activate</span>
+              </li>
+            </ol>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-text mb-4">Manual Installation</h3>
+            <ol class="space-y-3 text-text-muted">
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-medium">1</span>
+                <span>Download the plugin zip file</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-medium">2</span>
+                <span>Go to Plugins > Add New > Upload Plugin</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-medium">3</span>
+                <span>Upload the zip and click Install Now</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Changelog -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-bg-alt">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold text-text mb-8 text-center">Changelog</h2>
+
+        <div class="space-y-6">
+          {changelog.map(release => (
+            <div class="bg-white rounded-xl border border-gray-200 p-6">
+              <div class="flex items-center gap-4 mb-3">
+                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                  v{release.version}
+                </span>
+                <span class="text-sm text-text-muted">{release.date}</span>
+              </div>
+              <p class="text-text-muted">{release.changes}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    {relatedGuides.length > 0 && (
+      <section class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-text mb-8 text-center">Related Guides</h2>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            {relatedGuides.map(guide => (
+              <a
+                href={`/guides/${guide.slug}`}
+                class="block p-6 bg-bg-alt rounded-xl hover:bg-gray-100 transition-colors"
+              >
+                <h3 class="font-semibold text-text mb-2 line-clamp-2">{guide.data.title}</h3>
+                <p class="text-sm text-text-muted line-clamp-2">{guide.data.description}</p>
+              </a>
+            ))}
+          </div>
+
+          <div class="text-center mt-8">
+            <a href="/guides" class="text-primary hover:underline">
+              View all guides →
+            </a>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- CTA -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary to-secondary">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">
+          Ready to get started?
+        </h2>
+        <p class="text-white/80 mb-8">
+          Free forever. No credit card required.
+        </p>
+        <a
+          href="https://wordpress.org/plugins/google-shopping-for-woocommerce/"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-primary bg-white rounded-lg hover:bg-gray-100 transition-colors"
+        >
+          Download from WordPress.org
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,185 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map((guide) => ({
+    params: { slug: guide.slug },
+    props: { guide },
+  }));
+}
+
+const { guide } = Astro.props;
+const { Content } = await guide.render();
+
+const publishedDate = guide.data.publishedAt.toLocaleDateString('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+});
+
+const updatedDate = guide.data.updatedAt?.toLocaleDateString('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+});
+---
+
+<Layout
+  title={guide.data.title}
+  description={guide.data.description}
+>
+  <Header />
+  <main>
+    <!-- Article Header -->
+    <article class="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="mb-8">
+          <ol class="flex items-center gap-2 text-sm text-text-muted">
+            <li><a href="/" class="hover:text-primary">Home</a></li>
+            <li>/</li>
+            <li><a href="/guides" class="hover:text-primary">Guides</a></li>
+            <li>/</li>
+            <li class="text-text truncate">{guide.data.title}</li>
+          </ol>
+        </nav>
+
+        <!-- Header -->
+        <header class="mb-12">
+          <span class="inline-block px-3 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full mb-4">
+            {guide.data.category.replace('-', ' ').toUpperCase()}
+          </span>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-text mb-6">
+            {guide.data.title}
+          </h1>
+          <p class="text-xl text-text-muted mb-6">
+            {guide.data.description}
+          </p>
+          <div class="flex flex-wrap items-center gap-4 text-sm text-text-muted border-t border-gray-100 pt-6">
+            <span>By {guide.data.author}</span>
+            <span>|</span>
+            <span>Published {publishedDate}</span>
+            {updatedDate && updatedDate !== publishedDate && (
+              <>
+                <span>|</span>
+                <span>Updated {updatedDate}</span>
+              </>
+            )}
+            {guide.data.readingTime && (
+              <>
+                <span>|</span>
+                <span>{guide.data.readingTime}</span>
+              </>
+            )}
+          </div>
+        </header>
+
+        <!-- Content -->
+        <div class="prose prose-lg prose-gray max-w-none
+          prose-headings:font-bold prose-headings:text-text
+          prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
+          prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+          prose-p:text-text-muted prose-p:leading-relaxed
+          prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+          prose-strong:text-text prose-strong:font-semibold
+          prose-code:text-primary prose-code:bg-primary/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+          prose-pre:bg-gray-900 prose-pre:text-gray-100
+          prose-ul:text-text-muted prose-ol:text-text-muted
+          prose-li:marker:text-primary
+          prose-table:text-sm
+          prose-th:bg-gray-50 prose-th:px-4 prose-th:py-2
+          prose-td:px-4 prose-td:py-2 prose-td:border-t
+        ">
+          <Content />
+        </div>
+
+        <!-- CTA Box -->
+        <div class="mt-16 p-8 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl border border-primary/10">
+          <h2 class="text-2xl font-bold text-text mb-4">
+            Ready to sell on Google Shopping?
+          </h2>
+          <p class="text-text-muted mb-6">
+            Get our free plugin with GTIN, Brand, and MPN fields. No product limits, no paywalls for essential features.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="/google-shopping"
+              class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              Get Started Free
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+            <a
+              href="/guides"
+              class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-text border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              More Guides
+            </a>
+          </div>
+        </div>
+
+        <!-- Keywords (for SEO, hidden) -->
+        {guide.data.keywords && (
+          <meta name="keywords" content={guide.data.keywords.join(', ')} />
+        )}
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>
+
+<style is:global>
+  /* Prose table styling for markdown content */
+  .prose table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.875rem;
+  }
+
+  .prose thead {
+    background-color: #f9fafb;
+  }
+
+  .prose th,
+  .prose td {
+    border: 1px solid #e5e7eb;
+    padding: 0.75rem 1rem;
+    text-align: left;
+  }
+
+  .prose th {
+    font-weight: 600;
+    color: #1e1e1e;
+  }
+
+  .prose td {
+    color: #6b7280;
+  }
+
+  .prose tbody tr:hover {
+    background-color: #f9fafb;
+  }
+
+  /* Blockquote styling */
+  .prose blockquote {
+    border-left: 4px solid #7f54b3;
+    padding-left: 1rem;
+    font-style: italic;
+    color: #6b7280;
+    margin: 1.5rem 0;
+  }
+
+  /* Horizontal rule */
+  .prose hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 2rem 0;
+  }
+</style>
