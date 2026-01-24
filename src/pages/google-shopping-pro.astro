@@ -34,6 +34,10 @@ const proFaqs = [
     answer: 'Yes. Start with Free, and when you need automation, upgrade to Pro. Your existing data and settings stay intact.',
   },
   {
+    question: 'How easy are Category Mapping and Auto-fill?',
+    answer: 'Both are hassle-free. Category Mapping: go to Settings → Category Mapping, type your category name, and get instant suggestions from 5,500+ Google categories. Map once—all products in that category automatically use the correct GPC. Auto-fill: when editing any product, click "Suggest" and the plugin detects color, size, material, brand, age group, and gender from your product data. Accept suggestions with one click. No manual research needed.',
+  },
+  {
     question: 'What payment methods do you accept?',
     answer: 'We accept all major credit cards. Payment is processed securely through our payment provider.',
   },
@@ -55,6 +59,7 @@ const comparisonFeatures = [
   { feature: 'Pinterest, TikTok, Bing, Snapchat feeds', free: false, pro: true, description: 'Reach more customers with feeds formatted for each platform\'s specific requirements.' },
   { feature: 'Advanced fields (color, size, age, gender)', free: false, pro: true, description: 'Add detailed product attributes that help shoppers filter and find exactly what they\'re looking for.' },
   { feature: 'Google Product Category (5,500+ categories)', free: false, pro: true, description: 'Access the complete Google taxonomy with searchable dropdown. Proper categorization improves ad relevance and performance.' },
+  { feature: 'Auto Category Mapping', free: false, pro: true, description: 'Map your WooCommerce categories to Google Product Categories once. All products in that category automatically use the correct GPC—no per-product setup needed.' },
   { feature: 'Smart Auto-fill from product data', free: false, pro: true, description: 'Automatically detects color, size, material, and brand from your product titles and attributes. Suggests matching categories.' },
   { feature: 'Custom Labels for campaigns', free: false, pro: true, description: 'Tag products with custom labels (0-4) for campaign segmentation—group by margin, season, bestseller status, etc.' },
   { feature: 'Advanced product filters', free: false, pro: true, description: 'Include or exclude products by category, tag, stock status, price range, or custom rules.' },
@@ -343,6 +348,10 @@ const comparisonFeatures = [
               </li>
               <li class="flex items-start gap-3">
                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Auto Category Mapping</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                 <span class="text-text-muted">1 year of updates & support</span>
               </li>
             </ul>
@@ -422,7 +431,7 @@ const comparisonFeatures = [
 
     <!-- FAQ -->
     <FAQ
-      client:visible
+      client:load
       faqs={proFaqs}
       title="Questions about Pro?"
       subtitle="Common questions answered"
