@@ -7,14 +7,14 @@ description: How to upgrade from the free plugin to Pro without losing your sett
 
 The Pro version is a complete replacement for the free plugin, not an add-on. When you install Pro, it automatically migrates all your settings and data from the free version.
 
+**New to the plugin?** If you haven't used the free version, just install Pro directly—no migration needed.
+
 ## What Gets Migrated
 
 Everything transfers automatically:
 
-- **All feed configurations** (URLs, settings, filters)
-- **Product fields** (GTIN, Brand, MPN values)
-- **Category mappings** (Google Product Categories)
-- **Plugin settings** (all options and preferences)
+- **Feed settings** (store name, default brand, condition, etc.)
+- **Product fields** (GTIN, Brand, MPN values stored in products)
 - **Feed URLs stay the same** (no need to update Merchant Center)
 
 ## Migration Steps
@@ -27,33 +27,29 @@ Follow the [installation guide](/docs/getting-started/installation) to upload an
 
 When you activate Pro, it will:
 
-1. Detect the free version is installed
-2. Display a migration prompt
-3. Copy all settings from Free to Pro
-4. Offer to deactivate the free version
+1. Check for existing Free plugin data
+2. Automatically copy settings to Pro
+3. Show a notice to deactivate the free version
 
-### Step 3: Verify Migration
+### Step 3: Deactivate Free
 
-After migration:
+Pro will display a notice with a button to deactivate the free version. Click it, or manually:
 
-1. Go to **WooCommerce → Product Feed**
-2. Check that all your feeds appear
-3. Verify feed URLs are correct
-4. Test that feeds still work in Merchant Center
+1. Go to **Plugins**
+2. Find "Product Feed for WooCommerce" (the free version)
+3. Click **Deactivate**
+
+You can delete the free plugin after deactivating—Pro has all the functionality.
 
 ### Step 4: Activate Your License
 
 Don't forget to [activate your license](/docs/getting-started/license-activation) to enable updates and support.
 
-### Step 5: Remove Free Version (Optional)
+### Step 5: Verify
 
-Once you've verified everything works:
-
-1. Go to **Plugins**
-2. Find "Product Feed for WooCommerce" (the free version)
-3. Click **Deactivate**, then **Delete**
-
-Keeping the free version installed won't cause problems, but it's cleaner to remove it.
+1. Go to **WooCommerce → Product Feed**
+2. Verify your feeds appear and URLs are correct
+3. Check that feeds still work in Merchant Center
 
 ## Feed URLs
 
@@ -63,43 +59,28 @@ Your feed URLs remain the same after migration. Both plugins use identical URL s
 
 ### Settings didn't migrate
 
-If settings weren't automatically migrated:
+Settings migrate automatically when Pro activates for the first time. If something is missing:
 
-1. Ensure both plugins are installed
-2. Deactivate and reactivate Pro
-3. The migration prompt should appear
-
-If it still doesn't work, you can manually export settings:
-
-1. In the free plugin, go to **Settings → Export**
-2. Download the settings file
-3. In Pro, go to **Settings → Import**
-4. Upload the file
-
-### Feed shows errors after migration
-
-Regenerate your feed:
-
-1. Go to **WooCommerce → Product Feed**
-2. Find your feed and click **Regenerate**
-3. Wait for generation to complete
+1. Deactivate and reactivate Pro
+2. Check if the setting exists in Pro's settings page
+3. Manually configure any missing settings
 
 ### Product data missing
 
-Product fields (GTIN, Brand, MPN) are stored in product meta and should persist automatically. If data appears missing:
+Product fields (GTIN, Brand, MPN) are stored in product meta and persist automatically. If data appears missing:
 
 1. Edit a product
 2. Check the **Product Feed** tab
 3. Verify fields have values
 
-If fields are empty, the data may not have been saved in the expected format. [Contact support](/#contact) for help with data recovery.
+The same meta keys are used by both Free and Pro, so data should be available.
 
 ## Reverting to Free
 
 If you need to go back to the free version:
 
-1. Deactivate Pro
+1. Deactivate Pro (this automatically clears Pro's scheduled tasks)
 2. Reactivate the free version
-3. Your feeds and settings will still work
+3. Your basic settings and product data will still work
 
-Note: Pro-only features (like additional feed formats or advanced filters) won't be available in the free version.
+Note: Pro-only features (additional feed channels, smart auto-fill, advanced filters) won't be available in the free version.
