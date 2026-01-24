@@ -1,49 +1,30 @@
 import type { APIRoute } from 'astro';
+import { Ratelimit } from '@upstash/ratelimit';
+import { Redis } from '@upstash/redis';
 
 export const prerender = false;
 
 // Rate limiting configuration
-const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
 const RATE_LIMIT_MAX_REQUESTS = 5; // 5 attempts per minute per IP
 
-// In-memory rate limit store (per serverless instance)
-// For production, use Upstash Redis or Vercel KV for distributed rate limiting
-const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
+// Initialize Upstash Redis rate limiter
+const redis = new Redis({
+  url: import.meta.env.UPSTASH_REDIS_REST_URL,
+  token: import.meta.env.UPSTASH_REDIS_REST_TOKEN,
+});
 
-function getRateLimitKey(request: Request): string {
-  // Get client IP from various headers
+const ratelimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(RATE_LIMIT_MAX_REQUESTS, '60 s'),
+  analytics: true,
+  prefix: 'license-validate',
+});
+
+function getClientIp(request: Request): string {
   const forwarded = request.headers.get('x-forwarded-for');
   const realIp = request.headers.get('x-real-ip');
   const cfIp = request.headers.get('cf-connecting-ip');
-
   return cfIp || realIp || forwarded?.split(',')[0]?.trim() || 'unknown';
-}
-
-function checkRateLimit(ip: string): { allowed: boolean; remaining: number; resetIn: number } {
-  const now = Date.now();
-  const record = rateLimitStore.get(ip);
-
-  // Clean up expired entries periodically
-  if (rateLimitStore.size > 10000) {
-    for (const [key, value] of rateLimitStore) {
-      if (now > value.resetTime) {
-        rateLimitStore.delete(key);
-      }
-    }
-  }
-
-  if (!record || now > record.resetTime) {
-    // New window
-    rateLimitStore.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
-    return { allowed: true, remaining: RATE_LIMIT_MAX_REQUESTS - 1, resetIn: RATE_LIMIT_WINDOW_MS };
-  }
-
-  if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
-    return { allowed: false, remaining: 0, resetIn: record.resetTime - now };
-  }
-
-  record.count++;
-  return { allowed: true, remaining: RATE_LIMIT_MAX_REQUESTS - record.count, resetIn: record.resetTime - now };
 }
 
 interface LemonSqueezyResponse {
@@ -88,11 +69,11 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response(null, { status: 204, headers: corsHeaders });
   }
 
-  // Rate limiting
-  const clientIp = getRateLimitKey(request);
-  const rateLimit = checkRateLimit(clientIp);
+  // Rate limiting with Upstash
+  const clientIp = getClientIp(request);
+  const { success, limit, remaining, reset } = await ratelimit.limit(clientIp);
 
-  if (!rateLimit.allowed) {
+  if (!success) {
     return new Response(JSON.stringify({
       success: false,
       error: 'Too many requests. Please try again later.',
@@ -100,10 +81,10 @@ export const POST: APIRoute = async ({ request }) => {
       status: 429,
       headers: {
         'Content-Type': 'application/json',
-        'Retry-After': String(Math.ceil(rateLimit.resetIn / 1000)),
-        'X-RateLimit-Limit': String(RATE_LIMIT_MAX_REQUESTS),
-        'X-RateLimit-Remaining': '0',
-        'X-RateLimit-Reset': String(Math.ceil(Date.now() / 1000 + rateLimit.resetIn / 1000)),
+        'Retry-After': String(Math.ceil((reset - Date.now()) / 1000)),
+        'X-RateLimit-Limit': String(limit),
+        'X-RateLimit-Remaining': String(remaining),
+        'X-RateLimit-Reset': String(Math.ceil(reset / 1000)),
         ...corsHeaders,
       },
     });
