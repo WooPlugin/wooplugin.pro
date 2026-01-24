@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FAQ from '../components/FAQ';
+import CompactContactForm from '../components/CompactContactForm';
 import { Check, X, Clock, RefreshCw, Mail, Zap } from 'lucide-react';
 
 // Active promotion (sync with /api/pricing.json)
@@ -450,21 +451,15 @@ const comparisonFeatures = [
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto text-center">
-        <h2 class="text-2xl font-bold text-text mb-4">
-          Questions Before Buying?
+    <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-xl mx-auto">
+        <h2 class="text-xl font-bold text-text mb-2 text-center">
+          Questions?
         </h2>
-        <p class="text-text-muted mb-8">
-          Email me directly. I respond personally to every message.
+        <p class="text-text-muted mb-6 text-center text-sm">
+          I respond personally to every message.
         </p>
-        <a
-          href="mailto:support@wooplugin.pro"
-          class="inline-flex items-center gap-2 text-primary hover:underline"
-        >
-          <Mail className="w-5 h-5" />
-          support@wooplugin.pro
-        </a>
+        <CompactContactForm client:visible subject="Pro Question from WooPlugin.pro" />
       </div>
     </section>
   </main>
