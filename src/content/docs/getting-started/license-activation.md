@@ -59,11 +59,11 @@ Your Pro license is already active on another site. Deactivate it there first, o
 
 ### "Could not connect to license server"
 
-This usually means your server can't reach our API. Check that:
+This usually means your server can't make outbound HTTPS requests. Check that:
 
 - Your hosting allows outbound HTTPS connections
-- No firewall is blocking `api.wooplugin.pro`
-- Your SSL certificate is valid
+- No firewall is blocking external API calls
+- cURL is enabled on your server
 
 If issues persist, [contact support](/#contact) with your license key and we'll help resolve it.
 
