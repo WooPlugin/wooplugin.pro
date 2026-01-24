@@ -13,13 +13,11 @@ Your license key unlocks:
 
 ## Finding Your License Key
 
-Your license key was sent to your email after purchase. You can also find it in your [account dashboard](https://wooplugin.pro/account):
+Your license key was sent to your email after purchase. You can also find it in your customer portal:
 
-1. Log in at wooplugin.pro
-2. Go to **Licenses**
+1. Check your purchase confirmation email
+2. Or log in to your customer portal (link in email)
 3. Copy your license key
-
-License keys look like this: `WPRO-XXXX-XXXX-XXXX-XXXX`
 
 ## Activating Your License
 
@@ -39,34 +37,25 @@ You should see a green success message confirming activation.
 
 ## Managing Activations
 
-Each license can be activated on a limited number of sites. To move your license to a new site:
-
-1. Go to your [account dashboard](https://wooplugin.pro/account)
-2. Navigate to **Licenses**
-3. Click **Manage Sites** next to your license
-4. Deactivate the old site
-5. Activate on the new site
-
-You can also deactivate directly from the plugin:
+**Pro licenses** allow 1 site activation. To move your license to a different site:
 
 1. Go to **WooCommerce → Product Feed → Settings → License**
 2. Click **Deactivate License**
+3. Activate on your new site
 
-## Staging and Development Sites
-
-Staging and local development sites (containing "staging", "dev", "test", or "local" in the domain) do not count against your activation limit. They're automatically detected and marked as development sites.
+**Agency licenses** allow unlimited activations—use on as many sites as you need.
 
 ## Troubleshooting
 
 ### "Invalid license key"
 
 - Double-check for typos or extra spaces
-- Ensure you're using a Pro license key (starts with `WPRO-`)
+- Ensure you copied the complete key
 - Check that your license hasn't expired
 
-### "Activation limit reached"
+### "Activation limit reached" (Pro only)
 
-You've used all available activations. Deactivate an existing site first, or upgrade to a higher tier license.
+Your Pro license is already active on another site. Deactivate it there first, or upgrade to Agency for unlimited sites.
 
 ### "Could not connect to license server"
 
@@ -80,7 +69,7 @@ If issues persist, [contact support](/#contact) with your license key and we'll 
 
 ## Renewals
 
-Licenses are annual subscriptions. You'll receive a reminder email before expiration. Renewing ensures continued access to updates and support.
+Licenses are valid for 1 year. You'll receive a reminder email before expiration. Renewing ensures continued access to updates and support.
 
 If your license expires:
 
@@ -88,4 +77,4 @@ If your license expires:
 - You won't receive new updates
 - Priority support access ends
 
-Renew anytime from your [account dashboard](https://wooplugin.pro/account).
+Renew from the link in your expiration reminder email or contact support.
