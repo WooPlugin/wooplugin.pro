@@ -1,5 +1,6 @@
 ---
 interface Props {
+  variant?: 'default' | 'pro';
   promotion?: {
     title: string;
     message: string;
@@ -8,14 +9,27 @@ interface Props {
   };
 }
 
-const { promotion } = Astro.props;
+const { variant = 'default', promotion } = Astro.props;
 
-const navLinks = [
+const defaultLinks = [
   { href: '/google-shopping-pro', label: 'Pro' },
   { href: '/guides', label: 'Guides' },
   { href: '/#pricing', label: 'Pricing' },
   { href: '/#contact', label: 'Contact' },
 ];
+
+const proLinks = [
+  { href: '/', label: 'Free Plugin' },
+  { href: '/guides', label: 'Guides' },
+  { href: '#pricing', label: 'Pricing' },
+  { href: '#contact', label: 'Contact' },
+];
+
+const navLinks = variant === 'pro' ? proLinks : defaultLinks;
+
+const ctaLink = variant === 'pro'
+  ? { href: '#pricing', label: 'Buy Pro' }
+  : { href: 'https://github.com/aarsla/woo/releases/latest', label: 'Download' };
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
@@ -57,10 +71,10 @@ const navLinks = [
 
       <!-- CTA Button -->
       <a
-        href="https://github.com/aarsla/woo/releases/latest"
+        href={ctaLink.href}
         class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary-dark rounded-lg transition-colors"
       >
-        Download
+        {ctaLink.label}
       </a>
     </div>
   </div>
