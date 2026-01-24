@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import FAQ from '../components/FAQ';
 import CompactContactForm from '../components/CompactContactForm';
 import Tooltip from '../components/Tooltip';
-import { Check, X, Clock, RefreshCw, Mail, Zap } from 'lucide-preact';
+import { Check, X, Clock, RefreshCw, Mail, Zap, Layers } from 'lucide-preact';
 import { pricing, getDiscountedPrices } from '../config/pricing';
 
 // Get promotion and calculated prices from shared config
@@ -227,7 +227,19 @@ const comparisonFeatures = [
             <div>
               <h3 class="font-semibold text-text mb-2">Smart Auto-fill</h3>
               <p class="text-text-muted">
-                Automatically detects color, size, material, brand from your product data. Suggests Google Product Categories from 5,500+ options.
+                Detects color, size, material, brand from your product data. Saves hours of manual entry.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <Layers className="w-6 h-6 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-2">Category Mapping</h3>
+              <p class="text-text-muted">
+                Map once per category, done forever. Search 5,500+ Google categories with instant autocomplete.
               </p>
             </div>
           </div>
