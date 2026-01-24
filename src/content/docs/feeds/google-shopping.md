@@ -69,10 +69,9 @@ Pro includes [Smart Auto-Fill](/docs/features/smart-auto-fill) which can automat
 
 Map your WooCommerce categories to Google's taxonomy:
 
-1. Go to **Product Feed → Settings → Category Mapping**
-2. For each WooCommerce category, select the matching Google category
-3. Use the search to find categories quickly
-4. Save your mappings
+1. Go to **WooCommerce → Category Mapping**
+2. For each WooCommerce category, type to search for the matching Google category
+3. Mappings save automatically as you type
 
 See [Category Mapping](/docs/features/category-mapping) for detailed instructions.
 

@@ -48,38 +48,36 @@ The plugin includes the full, up-to-date taxonomy.
 
 ### Accessing Category Mapping
 
-1. Go to **WooCommerce → Product Feed → Settings**
-2. Click the **Category Mapping** tab
+Go to **WooCommerce → Category Mapping** in your WordPress admin.
 
-You'll see your WooCommerce categories listed with mapping options.
+You'll see all your WooCommerce categories listed in a table.
 
 ### Mapping a Category
 
 For each WooCommerce category:
 
-1. Click the category row
-2. Search for the appropriate Google category
-3. Type keywords to filter (e.g., "running shoes")
-4. Select the best match
-5. Save mappings
+1. Find the category in the list
+2. Type in the text field to search Google categories
+3. Enter the full category path (e.g., "Apparel & Accessories > Shoes > Athletic Shoes")
+4. Mappings save automatically as you type
 
 ### Hierarchical Mapping
 
-Parent mappings can apply to children:
+Parent mappings apply to child categories:
 
 - Map "Clothing" to a general apparel category
-- Child categories inherit unless specifically mapped
-- Override children with more specific mappings
+- Child categories without their own mapping inherit from the parent
+- Add specific mappings to children to override
 
 **Example**:
 - "Apparel" → Apparel & Accessories > Clothing
-- "T-Shirts" → Apparel & Accessories > Clothing > Shirts & Tops
+- "T-Shirts" → Apparel & Accessories > Clothing > Shirts & Tops (more specific)
 
 ## Finding the Right Category
 
 ### Search Tips
 
-Use specific keywords:
+Use specific keywords when searching:
 - Product type ("running shoes")
 - Material ("cotton dress")
 - Intended use ("gaming laptop")
@@ -100,57 +98,7 @@ If your products don't fit standard categories:
 
 1. Find the closest reasonable match
 2. Use the most specific applicable category
-3. Consider if products should be in different WooCommerce categories
-
-## Auto-Suggestion
-
-The plugin can suggest categories based on:
-
-- WooCommerce category names
-- Product titles in that category
-- Existing mappings for similar categories
-
-### Enabling Auto-Suggestion
-
-1. In Category Mapping, click **Auto-Suggest**
-2. Review suggestions for unmapped categories
-3. Accept, modify, or dismiss each suggestion
-4. Save your choices
-
-## Managing Mappings
-
-### Bulk Actions
-
-Map multiple categories quickly:
-
-1. Select categories (checkboxes)
-2. Click **Bulk Actions**
-3. Choose **Set Category**
-4. Select a Google category
-5. Apply to all selected
-
-### Export/Import Mappings
-
-Back up or transfer your mappings:
-
-**Export**:
-1. Click **Export Mappings**
-2. Download CSV file
-3. Contains category ID → Google category pairs
-
-**Import**:
-1. Prepare CSV with your mappings
-2. Click **Import Mappings**
-3. Upload the file
-4. Review and confirm
-
-### Clear Mappings
-
-Remove all mappings to start fresh:
-
-1. Click **Clear All Mappings**
-2. Confirm the action
-3. All mappings reset to "Not mapped"
+3. Consider reorganizing WooCommerce categories if needed
 
 ## How Mappings Apply
 
@@ -166,14 +114,14 @@ When generating feeds:
 
 If a product is in multiple WooCommerce categories:
 
-- The primary category's mapping is used
-- Or the most specific mapped category
+- The first mapped category found is used
+- Parent categories are checked if no direct mapping exists
 
 ### Unmapped Categories
 
 Products in unmapped categories:
 
-- May use parent category mapping
+- Use parent category mapping if available
 - Or have no category in the feed
 - Platforms may auto-categorize (less accurately)
 
@@ -189,57 +137,36 @@ Products in unmapped categories:
 
 ## Best Practices
 
-### Map All Active Categories
+### Map All Categories
 
-Ensure every category with products has a mapping:
-
-1. Go to Category Mapping
-2. Filter to show "Not Mapped"
-3. Map each category
+Ensure every category with products has a mapping. Categories without mappings will either inherit from parents or have no category data in feeds.
 
 ### Use Specific Categories
 
 - Avoid top-level general categories
 - Drill down to the most specific match
-- Update mappings as taxonomy evolves
+- More specific = better ad targeting
 
 ### Review Periodically
 
-- Google updates their taxonomy
-- New products may need new mappings
-- Check for "Not Mapped" products regularly
-
-### Test Your Mappings
-
-After mapping:
-
-1. Generate a feed
-2. Submit to Google Merchant Center
-3. Check Diagnostics for category issues
-4. Adjust mappings if needed
+- Google updates their taxonomy occasionally
+- New product categories may need mappings
+- Check feeds for category warnings
 
 ## Troubleshooting
-
-### "Category not found" Errors
-
-The taxonomy may have updated. Try:
-
-- Searching for the category again
-- Using alternative keywords
-- Selecting a parent category temporarily
 
 ### Products Missing Categories
 
 Check:
 
 - Product has a WooCommerce category assigned
-- That category is mapped
-- Feed includes category mapping
+- That category (or a parent) is mapped
+- Feed was regenerated after adding mappings
 
 ### Wrong Category Showing
 
 Verify:
 
 - Correct mapping for the product's category
-- No conflicting parent/child mappings
-- Feed was regenerated after mapping changes
+- Check if a parent category mapping is being inherited
+- Regenerate feed after making changes
