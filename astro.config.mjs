@@ -10,6 +10,9 @@ export default defineConfig({
   site: 'https://wooplugin.pro',
   output: 'static',
   adapter: vercel(),
+  build: {
+    inlineStylesheets: 'always'
+  },
 
   vite: {
     plugins: [tailwindcss()],
