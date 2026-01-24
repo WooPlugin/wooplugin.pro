@@ -12,14 +12,14 @@ const relatedGuides = allGuides
   .slice(0, 3);
 
 const features = [
-  'GTIN, Brand, MPN fields for all products',
+  'GTIN, Brand, MPN, Condition fields',
+  'Identifier Exists override',
+  'Dedicated Google Shopping tab in product editor',
   'Support for variable products and variations',
   'Google Merchant Center XML feed generation',
   'Unlimited products (no artificial limits)',
-  'Category mapping to Google taxonomy',
+  'WooCommerce GTIN field fallback (WC 9.2+)',
   'HPOS compatible (WooCommerce 8.x+)',
-  'Clean, lightweight code',
-  'No external dependencies',
 ];
 
 const requirements = [
@@ -34,8 +34,8 @@ const changelog = [
 ---
 
 <Layout
-  title="Google Shopping for WooCommerce - Download Free Plugin"
-  description="Download Google Shopping for WooCommerce. Add GTIN, Brand, MPN fields and generate Google Merchant Center feeds. Free, no limits."
+  title="Product Feed for WooCommerce – Google Shopping | Free Download"
+  description="Download Product Feed for WooCommerce. Add GTIN, Brand, MPN fields and generate Google Merchant Center feeds. Free, no limits."
 >
   <Header />
   <main>
@@ -44,7 +44,8 @@ const changelog = [
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-8">
           <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-text mb-4">
-            Google Shopping for WooCommerce
+            Product Feed for WooCommerce
+            <span class="block text-3xl sm:text-4xl mt-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Google Shopping</span>
           </h1>
           <p class="text-xl text-text-muted mb-8">
             Add product identifiers and generate Google Merchant Center feeds.
@@ -98,7 +99,7 @@ const changelog = [
               </div>
             </div>
             <div class="p-4">
-              <p class="text-sm text-text-muted">GTIN, Brand, and MPN fields in the WooCommerce product Inventory tab.</p>
+              <p class="text-sm text-text-muted">GTIN, Brand, MPN, and Condition fields in the Google Shopping tab.</p>
             </div>
           </div>
 
@@ -175,25 +176,31 @@ const changelog = [
             <h2 class="text-2xl font-bold text-text mb-6">Download</h2>
             <div class="bg-white rounded-xl border border-gray-200 p-6">
               <p class="text-text-muted mb-6">
-                Install directly from WordPress or download the plugin file.
+                Download the plugin ZIP and install via WordPress.
               </p>
 
               <div class="space-y-4">
                 <a
-                  href="https://wordpress.org/plugins/google-shopping-for-woocommerce/"
-                  target="_blank"
-                  rel="noopener"
+                  href="https://github.com/WooPlugin/product-feed-for-woocommerce/releases/latest/download/product-feed-for-woocommerce.zip"
                   class="flex items-center justify-between w-full px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
                 >
-                  <span class="font-medium">WordPress.org</span>
+                  <span class="font-medium">Download ZIP</span>
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                </a>
+
+                <a
+                  href="https://github.com/WooPlugin/product-feed-for-woocommerce/releases"
+                  target="_blank"
+                  rel="noopener"
+                  class="flex items-center justify-between w-full px-4 py-3 border border-gray-200 text-text rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  <span class="font-medium">View on GitHub</span>
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                 </a>
-
-                <p class="text-sm text-text-muted text-center">
-                  Or search "Google Shopping for WooCommerce" in your WordPress dashboard.
-                </p>
               </div>
             </div>
           </div>
@@ -221,42 +228,25 @@ const changelog = [
       <div class="max-w-4xl mx-auto">
         <h2 class="text-2xl font-bold text-text mb-8 text-center">Installation</h2>
 
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 class="font-semibold text-text mb-4">From WordPress Dashboard</h3>
-            <ol class="space-y-3 text-text-muted">
-              <li class="flex gap-3">
-                <span class="flex-shrink-0 w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-medium">1</span>
-                <span>Go to Plugins > Add New</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="flex-shrink-0 w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-medium">2</span>
-                <span>Search "Google Shopping for WooCommerce"</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="flex-shrink-0 w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-medium">3</span>
-                <span>Click Install Now, then Activate</span>
-              </li>
-            </ol>
-          </div>
-
-          <div>
-            <h3 class="font-semibold text-text mb-4">Manual Installation</h3>
-            <ol class="space-y-3 text-text-muted">
-              <li class="flex gap-3">
-                <span class="flex-shrink-0 w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-medium">1</span>
-                <span>Download the plugin zip file</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="flex-shrink-0 w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-medium">2</span>
-                <span>Go to Plugins > Add New > Upload Plugin</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="flex-shrink-0 w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-medium">3</span>
-                <span>Upload the zip and click Install Now</span>
-              </li>
-            </ol>
-          </div>
+        <div class="max-w-md mx-auto">
+          <ol class="space-y-3 text-text-muted">
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-medium">1</span>
+              <span>Download the plugin ZIP file above</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-medium">2</span>
+              <span>Go to Plugins → Add New → Upload Plugin</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-medium">3</span>
+              <span>Upload the ZIP and click Install Now</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-medium">4</span>
+              <span>Activate and go to WooCommerce → Settings → Google Shopping</span>
+            </li>
+          </ol>
         </div>
       </div>
     </section>
@@ -318,17 +308,23 @@ const changelog = [
         <p class="text-white/80 mb-8">
           Free forever. No credit card required.
         </p>
-        <a
-          href="https://wordpress.org/plugins/google-shopping-for-woocommerce/"
-          target="_blank"
-          rel="noopener"
-          class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-primary bg-white rounded-lg hover:bg-gray-100 transition-colors"
-        >
-          Download from WordPress.org
-          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
-        </a>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="https://github.com/WooPlugin/product-feed-for-woocommerce/releases/latest/download/product-feed-for-woocommerce.zip"
+            class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-primary bg-white rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            Download Free
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+          </a>
+          <a
+            href="/google-shopping-pro"
+            class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white border-2 border-white rounded-lg hover:bg-white/10 transition-colors"
+          >
+            View Pro Features
+          </a>
+        </div>
       </div>
     </section>
   </main>
