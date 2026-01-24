@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-preact';
 import { cn } from '../lib/utils';
 
 export interface FAQItem {

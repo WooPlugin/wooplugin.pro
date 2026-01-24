@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle } from 'lucide-preact';
 import { cn } from '../lib/utils';
 
 interface Props {

@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import react from '@astrojs/react';
+import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 
@@ -22,5 +22,5 @@ export default defineConfig({
     }
   },
 
-  integrations: [react(), sitemap()]
+  integrations: [preact({ compat: true }), sitemap()]
 });
