@@ -5,36 +5,11 @@ import Footer from '../components/Footer.astro';
 import FAQ from '../components/FAQ';
 import CompactContactForm from '../components/CompactContactForm';
 import { Check, X, Clock, RefreshCw, Mail, Zap } from 'lucide-react';
+import { pricing, getDiscountedPrices } from '../config/pricing';
 
-// Active promotion (sync with /api/pricing.json)
-// const promotion = {
-//   title: 'Launch Sale',
-//   message: 'Get 25% off Pro - limited time!',
-//   code: 'LAUNCH25',
-//   discount: 25,
-//   expires: '2026-02-28',
-//   style: 'urgent', // 'highlight' | 'subtle' | 'urgent'
-// };
-const promotion = null;
-
-// Pricing (with optional discount)
-const pricing = {
-  pro: {
-    price: 79,
-    monthly: 7,
-  },
-  agency: {
-    price: 299,
-    monthly: 25,
-  },
-};
-
-// Calculate discounted prices
-const discount = promotion?.discount || 0;
-const proPrice = Math.round(pricing.pro.price * (1 - discount / 100));
-const proMonthly = Math.round(proPrice / 12);
-const agencyPrice = Math.round(pricing.agency.price * (1 - discount / 100));
-const agencyMonthly = Math.round(agencyPrice / 12);
+// Get promotion and calculated prices from shared config
+const promotion = pricing.promotion;
+const { proPrice, proMonthly, agencyPrice, agencyMonthly } = getDiscountedPrices(pricing);
 
 const proFaqs = [
   {
