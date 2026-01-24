@@ -1,0 +1,110 @@
+---
+interface Screenshot {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
+interface Props {
+  screenshots: Screenshot[];
+}
+
+const { screenshots } = Astro.props;
+---
+
+<div class="grid md:grid-cols-2 gap-6">
+  {screenshots.map((screenshot, index) => (
+    <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+      <button
+        type="button"
+        class="w-full cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        data-lightbox-trigger
+        data-src={screenshot.src}
+        data-alt={screenshot.alt}
+      >
+        <img
+          src={screenshot.src}
+          alt={screenshot.alt}
+          class="w-full hover:opacity-90 transition-opacity"
+          loading="lazy"
+        />
+      </button>
+      <div class="p-4">
+        <p class="text-sm text-text-muted">{screenshot.caption}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+<!-- Lightbox Modal -->
+<div
+  id="lightbox"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 p-4 cursor-zoom-out"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Image preview"
+>
+  <button
+    type="button"
+    class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+    id="lightbox-close"
+    aria-label="Close"
+  >
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+  <img
+    id="lightbox-image"
+    src=""
+    alt=""
+    class="max-w-full max-h-full object-contain"
+  />
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
+  const lightboxClose = document.getElementById('lightbox-close');
+  const triggers = document.querySelectorAll('[data-lightbox-trigger]');
+
+  function openLightbox(src: string, alt: string) {
+    if (lightbox && lightboxImage) {
+      lightboxImage.src = src;
+      lightboxImage.alt = alt;
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeLightbox() {
+    if (lightbox) {
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+  }
+
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const src = trigger.getAttribute('data-src') || '';
+      const alt = trigger.getAttribute('data-alt') || '';
+      openLightbox(src, alt);
+    });
+  });
+
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox || e.target === lightboxImage) {
+      closeLightbox();
+    }
+  });
+
+  lightboxClose?.addEventListener('click', closeLightbox);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeLightbox();
+    }
+  });
+</script>

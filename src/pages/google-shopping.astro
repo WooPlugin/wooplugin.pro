@@ -2,8 +2,32 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ImageGallery from '../components/ImageGallery.astro';
 import { Check } from 'lucide-react';
 import { getCollection } from 'astro:content';
+
+const screenshots = [
+  {
+    src: '/images/screenshots/woocommerce-google-shopping-product-tab.webp',
+    alt: 'WooCommerce Google Shopping product tab with GTIN, MPN, Brand fields',
+    caption: 'Google Shopping tab with GTIN, Brand, MPN, and Condition fields.',
+  },
+  {
+    src: '/images/screenshots/google-shopping-feed-dashboard-woocommerce.webp',
+    alt: 'Google Shopping feed dashboard for WooCommerce showing feed status and quick start',
+    caption: 'Dashboard showing feed status, product count, and quick start guide.',
+  },
+  {
+    src: '/images/screenshots/woocommerce-product-gtin-brand-mpn-fields.webp',
+    alt: 'WooCommerce product GTIN Brand MPN fields in inventory tab',
+    caption: 'Product Identifiers in the WooCommerce Inventory tab.',
+  },
+  {
+    src: '/images/screenshots/google-shopping-feed-widget-woocommerce.webp',
+    alt: 'Google Shopping feed widget showing product count and feed status',
+    caption: 'Feed widget on the product edit page with quick regenerate.',
+  },
+];
 
 // Get related guides
 const allGuides = await getCollection('guides');
@@ -86,60 +110,7 @@ const changelog = [
     <section id="screenshots" class="py-16 px-4 sm:px-6 lg:px-8 bg-bg-alt">
       <div class="max-w-5xl mx-auto">
         <h2 class="text-2xl font-bold text-text mb-8 text-center">Screenshots</h2>
-
-        <div class="grid md:grid-cols-2 gap-6">
-          <!-- Screenshot 1: Google Shopping Product Tab -->
-          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
-            <img
-              src="/images/screenshots/woocommerce-google-shopping-product-tab.png"
-              alt="WooCommerce Google Shopping product tab with GTIN, MPN, Brand fields"
-              class="w-full"
-              loading="lazy"
-            />
-            <div class="p-4">
-              <p class="text-sm text-text-muted">Google Shopping tab with GTIN, Brand, MPN, and Condition fields.</p>
-            </div>
-          </div>
-
-          <!-- Screenshot 2: Feed Dashboard -->
-          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
-            <img
-              src="/images/screenshots/google-shopping-feed-dashboard-woocommerce.png"
-              alt="Google Shopping feed dashboard for WooCommerce showing feed status and quick start"
-              class="w-full"
-              loading="lazy"
-            />
-            <div class="p-4">
-              <p class="text-sm text-text-muted">Dashboard showing feed status, product count, and quick start guide.</p>
-            </div>
-          </div>
-
-          <!-- Screenshot 3: Inventory Tab Fields -->
-          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
-            <img
-              src="/images/screenshots/woocommerce-product-gtin-brand-mpn-fields.png"
-              alt="WooCommerce product GTIN Brand MPN fields in inventory tab"
-              class="w-full"
-              loading="lazy"
-            />
-            <div class="p-4">
-              <p class="text-sm text-text-muted">Product Identifiers in the WooCommerce Inventory tab.</p>
-            </div>
-          </div>
-
-          <!-- Screenshot 4: Feed Widget -->
-          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
-            <img
-              src="/images/screenshots/google-shopping-feed-widget-woocommerce.png"
-              alt="Google Shopping feed widget showing product count and feed status"
-              class="w-full"
-              loading="lazy"
-            />
-            <div class="p-4">
-              <p class="text-sm text-text-muted">Feed widget on the product edit page with quick regenerate.</p>
-            </div>
-          </div>
-        </div>
+        <ImageGallery screenshots={screenshots} />
       </div>
     </section>
 
