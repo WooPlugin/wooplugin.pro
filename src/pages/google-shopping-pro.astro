@@ -231,7 +231,7 @@ const comparisonFeatures = [
             <div class="p-4 font-semibold text-primary text-center bg-primary/5">Pro</div>
           </div>
           {comparisonFeatures.map((item, i) => (
-            <div class={`grid grid-cols-3 ${i < comparisonFeatures.length - 1 ? 'border-b border-gray-100' : ''}`}>
+            <div class={`grid grid-cols-3 hover:bg-gray-50 transition-colors ${i < comparisonFeatures.length - 1 ? 'border-b border-gray-100' : ''}`}>
               <div class="p-4 text-text-muted">{item.feature}</div>
               <div class="p-4 flex justify-center">
                 {item.free === true ? (
