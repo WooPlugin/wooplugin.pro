@@ -34,9 +34,8 @@ You should see a green success message confirming activation.
 
 | License | Sites | Price |
 |---------|-------|-------|
-| Single Site | 1 | $49/year |
-| 5-Site | Up to 5 | $99/year |
-| Agency | Unlimited | $199/year |
+| Pro | 1 site | $7/month |
+| Agency | Unlimited | $25/month |
 
 ## Managing Activations
 

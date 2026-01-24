@@ -39,9 +39,8 @@ After purchase, you'll receive an email with a download link. You can also log i
 
 ### Can I use one license on multiple sites?
 
-Depends on your license tier:
-- **Single Site**: 1 site
-- **5-Site**: Up to 5 sites
+Depends on your license:
+- **Pro**: 1 site
 - **Agency**: Unlimited sites
 
 Staging and local development sites don't count against your limit.
