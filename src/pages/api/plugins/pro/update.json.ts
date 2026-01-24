@@ -43,14 +43,6 @@ export const GET: APIRoute = async ({ request, url }) => {
       `.trim(),
     },
     download_url: '',
-    banners: {
-      high: 'https://wooplugin.pro/images/plugin-banner-1544x500.png',
-      low: 'https://wooplugin.pro/images/plugin-banner-772x250.png',
-    },
-    icons: {
-      '1x': 'https://wooplugin.pro/images/plugin-icon-128x128.png',
-      '2x': 'https://wooplugin.pro/images/plugin-icon-256x256.png',
-    },
   };
 
   // Only provide download URL if license is provided

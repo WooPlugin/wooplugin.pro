@@ -7,7 +7,7 @@ description: How to upgrade from the free plugin to Pro without losing your sett
 
 The Pro version is a complete replacement for the free plugin, not an add-on. When you install Pro, it automatically migrates all your settings and data from the free version.
 
-**New to the plugin?** If you haven't used the free version, just install Pro directly—no migration needed.
+**New to the plugin?** You still need the Free plugin first—it provides the easiest way to install Pro. See the [installation guide](/docs/getting-started/installation).
 
 ## What Gets Migrated
 
@@ -17,43 +17,38 @@ Everything transfers automatically:
 - **Product fields** (GTIN, Brand, MPN values stored in products)
 - **Feed URLs stay the same** (no need to update Merchant Center)
 
-## Migration Steps
+## Upgrade Steps
 
-### Step 1: Install Pro
+### Step 1: Enter Your License Key
 
-Follow the [installation guide](/docs/getting-started/installation) to upload and install the Pro plugin. **Do not deactivate the free version yet.**
+1. Go to **WooCommerce → Google Shopping** in your WordPress admin
+2. Scroll to the "Upgrade to Pro" section
+3. Enter your license key (from purchase email)
+4. Click **Validate & Install Pro**
 
-### Step 2: Activate Pro
+### Step 2: Automatic Migration
 
-When you activate Pro, it will:
+Pro installs and activates automatically. During activation:
 
-1. Check for existing Free plugin data
-2. Automatically copy settings to Pro
-3. Show a notice to deactivate the free version
+1. Pro copies all settings from the Free plugin
+2. Pro copies your license key (already activated)
+3. Free plugin deactivates automatically
 
-### Step 3: Deactivate Free
+### Step 3: Verify
 
-Pro will display a notice with a button to deactivate the free version. Click it, or manually:
-
-1. Go to **Plugins**
-2. Find "Product Feed for WooCommerce" (the free version)
-3. Click **Deactivate**
-
-You can delete the free plugin after deactivating—Pro has all the functionality.
-
-### Step 4: Activate Your License
-
-Don't forget to [activate your license](/docs/getting-started/license-activation) to enable updates and support.
-
-### Step 5: Verify
-
-1. Go to **WooCommerce → Product Feeds Pro**
+1. Go to **WooCommerce → Settings → Product Feeds**
 2. Verify your feeds appear and URLs are correct
 3. Check that feeds still work in Merchant Center
+
+That's it. You're now running Pro.
 
 ## Feed URLs
 
 Your feed URLs remain the same after migration. Both plugins use identical URL structures, so there's no need to update your Google Merchant Center or other platform configurations.
+
+## After Migration
+
+You can safely delete the free plugin—Pro has all its functionality plus advanced features. The free plugin is only needed for the initial Pro installation.
 
 ## Troubleshooting
 
@@ -79,8 +74,8 @@ The same meta keys are used by both Free and Pro, so data should be available.
 
 If you need to go back to the free version:
 
-1. Deactivate Pro (this automatically clears Pro's scheduled tasks)
-2. Reactivate the free version
+1. Deactivate Pro
+2. Reactivate the free version (reinstall from WordPress.org if deleted)
 3. Your basic settings and product data will still work
 
 Note: Pro-only features (additional feed channels, smart auto-fill, advanced filters) won't be available in the free version.

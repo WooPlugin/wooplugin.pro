@@ -13,13 +13,21 @@ Your license key unlocks:
 
 ## Finding Your License Key
 
-Your license key was sent to your email after purchase. You can also find it in your customer portal:
+Your license key was sent to your email after purchase. You can also find it:
 
-1. Check your purchase confirmation email
-2. Or log in to your customer portal (link in email)
-3. Copy your license key
+1. Check your purchase confirmation email from LemonSqueezy
+2. Log in to your [LemonSqueezy customer portal](https://app.lemonsqueezy.com/my-orders)
+3. Find your order and view the license key
 
 ## Activating Your License
+
+### Automatic Activation (Recommended)
+
+If you installed Pro through the Free plugin, your license is already activated. No action needed.
+
+### Manual Activation
+
+If you installed Pro manually, or need to activate on a new site:
 
 1. Go to **WooCommerce → Settings → Product Feeds**
 2. Click the **License** tab
@@ -32,8 +40,8 @@ You should see a green success message confirming activation.
 
 | License | Sites | Price |
 |---------|-------|-------|
-| Pro | 1 site | $7/month |
-| Agency | Unlimited | $25/month |
+| Pro | 1 site | $79/year |
+| Agency | Unlimited | $299/year |
 
 ## Managing Activations
 
@@ -65,11 +73,11 @@ This usually means your server can't make outbound HTTPS requests. Check that:
 - No firewall is blocking external API calls
 - cURL is enabled on your server
 
-If issues persist, [contact support](/#contact) with your license key and we'll help resolve it.
+If issues persist, email support@wooplugin.pro with your license key and we'll help resolve it.
 
 ## Renewals
 
-Licenses are valid for 1 year. You'll receive a reminder email before expiration. Renewing ensures continued access to updates and support.
+Licenses renew annually. You'll receive a reminder email before expiration. Renewing ensures continued access to updates and support.
 
 If your license expires:
 
