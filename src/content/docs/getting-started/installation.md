@@ -12,9 +12,7 @@ Before installing the Pro plugin, ensure your site meets these requirements:
 - PHP 8.0 or higher
 - At least 128MB of PHP memory
 
-## Recommended: Automatic Installation via Free Plugin
-
-The easiest way to install Pro is through the free plugin:
+## Installation Steps
 
 1. Install **"GTIN Product Feed for Google Shopping"** from [WordPress.org](https://wordpress.org/plugins/product-feed-for-woocommerce/)
 2. Go to **WooCommerce → Google Shopping** in your WordPress admin
@@ -24,21 +22,7 @@ The easiest way to install Pro is through the free plugin:
 6. Pro downloads and installs automatically
 7. The free plugin deactivates and Pro activates with your license ready
 
-That's it! No ZIP files to download or upload.
-
-## Manual Installation
-
-If automatic installation doesn't work, contact support@wooplugin.pro for a direct download link.
-
-### Upload via WordPress Admin
-
-1. Download the Pro ZIP file (from email or support)
-2. Go to **Plugins → Add New** in your WordPress admin
-3. Click the **Upload Plugin** button at the top
-4. Choose the downloaded ZIP file
-5. Click **Install Now**
-6. After installation, click **Activate Plugin**
-7. Go to **WooCommerce → Settings → Product Feeds → License** to activate your license
+That's it. No ZIP files to download or upload.
 
 ## After Installation
 
@@ -49,18 +33,15 @@ Your next steps:
 1. [Activate your license](/docs/getting-started/license-activation) (if not auto-activated)
 2. [Create your first feed](/docs/feeds/google-shopping) for Google Shopping or other platforms
 
-## Troubleshooting Installation
+## Troubleshooting
 
-### "Upload failed: destination folder already exists"
+### Installation fails with an error
 
-This means you already have a version installed. Options:
+Contact support@wooplugin.pro with the error message. Common causes:
 
-- **If you have Free installed**: Use the automatic installation method above instead
-- **If you have an older Pro version**: Deactivate and delete it first, then install the new version
-
-### "Installation failed: could not create directory"
-
-Check that your `/wp-content/plugins/` directory is writable. Contact your hosting provider if you're unsure how to fix permissions.
+- PHP memory limit too low (needs 128MB+)
+- Server can't make outbound HTTPS requests
+- Plugin folder permissions issue
 
 ### Memory or timeout errors
 
