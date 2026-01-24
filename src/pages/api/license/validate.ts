@@ -8,9 +8,10 @@ export const prerender = false;
 const RATE_LIMIT_MAX_REQUESTS = 5; // 5 attempts per minute per IP
 
 // Initialize Upstash Redis rate limiter
+// Vercel KV integration uses KV_REST_API_* env vars
 const redis = new Redis({
-  url: import.meta.env.UPSTASH_REDIS_REST_URL,
-  token: import.meta.env.UPSTASH_REDIS_REST_TOKEN,
+  url: import.meta.env.KV_REST_API_URL,
+  token: import.meta.env.KV_REST_API_TOKEN,
 });
 
 const ratelimit = new Ratelimit({
