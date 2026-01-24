@@ -24,7 +24,7 @@ Platforms fetch your feed on their own schedule, but they can only get current d
 
 Each feed can have its own update schedule:
 
-1. Go to **WooCommerce → Product Feed**
+1. Go to **WooCommerce → Product Feeds Pro**
 2. Click on a feed to edit it
 3. Find **Update Schedule**
 4. Choose a frequency
@@ -110,7 +110,7 @@ define('WP_MEMORY_LIMIT', '256M');
 
 You can regenerate feeds manually anytime:
 
-1. Go to **WooCommerce → Product Feed**
+1. Go to **WooCommerce → Product Feeds Pro**
 2. Find your feed
 3. Click **Regenerate**
 4. Wait for completion
@@ -162,9 +162,9 @@ Check these common issues:
 
 For large catalogs:
 
-- Background processing should handle this automatically
-- Check **Settings → Performance** for chunk size options
+- The plugin processes feeds efficiently in the background
 - Consider filtering unnecessary products from feeds
+- Increase PHP memory limits if needed
 
 ### Feeds Outdated Despite Schedule
 
@@ -189,10 +189,10 @@ Regularly check:
 - Platform diagnostics for data issues
 - Update history for failures
 
-### Use Background Processing
+### Large Catalogs
 
-For 500+ products, always use background processing:
+For stores with 500+ products:
 
-1. Go to **Settings → Performance**
-2. Enable **Background Feed Generation**
-3. Set appropriate chunk size (50-100 products)
+- Feed generation runs efficiently in the background
+- Consider filtering to only include products you're advertising
+- Ensure adequate PHP memory (256MB recommended)

@@ -9,32 +9,39 @@ Product fields let you add important product identifiers like GTIN (barcode), Br
 
 ## Available Fields
 
-### Standard Fields
+### Product Identifiers
 
 | Field | Description | Example |
 |-------|-------------|---------|
 | GTIN | Global Trade Item Number (barcode) | 012345678905 |
 | Brand | Manufacturer or brand name | Apple |
 | MPN | Manufacturer Part Number | A2894 |
+| Condition | new, refurbished, used | new |
+| Identifier exists | Yes/No for custom products | No |
 
-### GTIN Types
+### Product Attributes (Pro)
 
-GTIN is a universal identifier that includes:
+| Field | Description |
+|-------|-------------|
+| Google Product Category | Category ID or path |
+| Age Group | newborn, infant, toddler, kids, adult |
+| Gender | male, female, unisex |
+| Color | Product color |
+| Size | Product size |
+| Material | Product material |
+| Pattern | Product pattern |
 
-- **UPC** (12 digits) - North America
-- **EAN** (13 digits) - International
-- **ISBN** (13 digits) - Books
-- **JAN** (13 digits) - Japan
+### Custom Labels
 
-The plugin accepts any valid GTIN format.
+Custom labels 0-4 for campaign segmentation in Google Ads.
 
 ## Adding Fields to Products
 
 ### Single Product
 
 1. Edit a product
-2. Go to the **Product Feed** tab (in Product Data section)
-3. Enter values for GTIN, Brand, MPN
+2. Go to the **Product Feeds** tab (in Product Data section)
+3. Enter values for GTIN, Brand, MPN, and other fields
 4. Save the product
 
 ### Variable Products
@@ -43,74 +50,26 @@ For variable products, you can set fields at:
 
 **Product Level** (default for all variations):
 - Edit the parent product
-- Set values in Product Feed tab
+- Set values in Product Feeds tab
 - All variations inherit these values
 
 **Variation Level** (overrides parent):
 - Edit the product
 - Go to **Variations** tab
 - Expand a variation
-- Find Product Feed fields
+- Find Product Feed fields (GTIN, MPN, Brand, Color, Size)
 - Enter variation-specific values
 
-### Bulk Editing
+## GTIN Types
 
-Edit multiple products at once:
+GTIN is a universal identifier that includes:
 
-1. Go to **Products → All Products**
-2. Select products to edit
-3. Choose **Edit** from Bulk Actions
-4. Click **Apply**
-5. Find Product Feed fields in the bulk edit panel
-6. Enter values and save
+- **UPC** (12 digits) - North America
+- **EAN** (13 digits) - International
+- **ISBN** (13 digits) - Books
+- **JAN** (13 digits) - Japan
 
-## Import/Export
-
-### Exporting Product Data
-
-Download your current product feed data:
-
-1. Go to **WooCommerce → Product Feed → Settings**
-2. Click **Import/Export** tab
-3. Click **Export**
-4. Choose format (CSV or JSON)
-5. Download the file
-
-The export includes:
-
-- Product ID
-- SKU
-- Title
-- GTIN
-- Brand
-- MPN
-- Google Product Category
-
-### Importing Product Data
-
-Upload product field data in bulk:
-
-1. Prepare your CSV file with columns:
-   - `sku` or `id` (required, to match products)
-   - `gtin`
-   - `brand`
-   - `mpn`
-
-2. Go to **WooCommerce → Product Feed → Settings**
-3. Click **Import/Export** tab
-4. Click **Choose File** and select your CSV
-5. Click **Import**
-6. Review the import summary
-
-### CSV Template
-
-Download a template with your products pre-filled:
-
-1. Click **Download Template**
-2. Open in Excel or Google Sheets
-3. Fill in GTIN, Brand, MPN columns
-4. Save as CSV
-5. Import back into the plugin
+The plugin accepts any valid GTIN format and also reads from WooCommerce's built-in GTIN field.
 
 ## Field Validation
 
@@ -124,21 +83,9 @@ The plugin validates GTINs:
 
 Invalid GTINs show a warning but can still be saved.
 
-### Brand Validation
+### Brand and MPN
 
-No strict validation, but recommendations:
-
-- Use official brand names
-- Be consistent across products
-- Match manufacturer's branding
-
-### MPN Validation
-
-No format requirements. MPNs vary by manufacturer:
-
-- Alphanumeric combinations
-- May include dashes or dots
-- Case-sensitive on some platforms
+No strict validation. Use official brand names and be consistent across products.
 
 ## Where to Find Product Data
 
@@ -161,9 +108,21 @@ No format requirements. MPNs vary by manufacturer:
 - Product packaging
 - Invoice or purchase order
 
+## Bulk Import via WooCommerce
+
+To import product data in bulk, use WooCommerce's built-in product importer:
+
+1. Go to **Products → All Products**
+2. Click **Import**
+3. In your CSV, include columns for custom meta:
+   - `meta:_gswc_gtin`
+   - `meta:_gswc_brand`
+   - `meta:_gswc_mpn`
+4. Upload and import
+
 ## Field Mapping
 
-The plugin automatically maps these fields to platform requirements:
+The plugin automatically maps fields to platform requirements:
 
 | Your Field | Google | Facebook | Bing |
 |------------|--------|----------|------|
@@ -212,7 +171,7 @@ Use an online GTIN validator to verify.
 Platforms warn about missing identifiers. Address by:
 
 - Adding GTIN/Brand/MPN where available
-- Using the exempt values for custom products
+- Setting "Identifier exists" to No for custom products
 - Using [Smart Auto-Fill](/docs/features/smart-auto-fill) for suggestions
 
 ### Field Not Saving

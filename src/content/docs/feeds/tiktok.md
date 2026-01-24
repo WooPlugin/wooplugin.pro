@@ -9,7 +9,7 @@ TikTok Shop lets you sell products directly within the TikTok app. This guide co
 
 ## Creating a TikTok Feed
 
-1. Go to **WooCommerce → Product Feed**
+1. Go to **WooCommerce → Product Feeds Pro**
 2. Click **Add New Feed**
 3. Select **TikTok** as the feed type
 4. Configure your settings

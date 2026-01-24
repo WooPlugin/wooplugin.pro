@@ -115,12 +115,11 @@ For products without standard identifiers (custom, handmade, vintage):
 
 ### How do I add product data in bulk?
 
-Use the import feature:
+Use WooCommerce's built-in product importer:
 
-1. Go to **Settings → Import/Export**
-2. Download the CSV template
-3. Fill in GTIN, Brand, MPN
-4. Upload and import
+1. Go to **Products → All Products → Import**
+2. In your CSV, include columns: `meta:_gswc_gtin`, `meta:_gswc_brand`, `meta:_gswc_mpn`
+3. Upload and import
 
 Or use [Smart Auto-Fill](/docs/features/smart-auto-fill) for automatic suggestions.
 

@@ -21,7 +21,7 @@ Your license key was sent to your email after purchase. You can also find it in 
 
 ## Activating Your License
 
-1. Go to **WooCommerce → Product Feed → Settings**
+1. Go to **WooCommerce → Settings → Product Feeds**
 2. Click the **License** tab
 3. Enter your license key
 4. Click **Activate License**
@@ -39,7 +39,7 @@ You should see a green success message confirming activation.
 
 **Pro licenses** allow 1 site activation. To move your license to a different site:
 
-1. Go to **WooCommerce → Product Feed → Settings → License**
+1. Go to **WooCommerce → Settings → Product Feeds → License**
 2. Click **Deactivate License**
 3. Activate on your new site
 

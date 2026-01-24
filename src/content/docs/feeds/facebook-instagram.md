@@ -9,7 +9,7 @@ Facebook and Instagram use a shared product catalog system. Once you set up your
 
 ## Creating a Facebook Feed
 
-1. Go to **WooCommerce → Product Feed**
+1. Go to **WooCommerce → Product Feeds Pro**
 2. Click **Add New Feed**
 3. Select **Facebook / Instagram** as the feed type
 4. Configure your settings

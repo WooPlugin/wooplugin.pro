@@ -23,7 +23,7 @@ Based on this data, it suggests appropriate values that you can accept or modify
 
 ### Global Setting
 
-1. Go to **WooCommerce → Product Feed → Settings**
+1. Go to **WooCommerce → Settings → Product Feeds**
 2. Find **Smart Auto-Fill**
 3. Toggle it **On**
 4. Choose which fields to auto-fill:

@@ -9,7 +9,7 @@ Snapchat Dynamic Product Ads let you automatically show products to users based 
 
 ## Creating a Snapchat Feed
 
-1. Go to **WooCommerce → Product Feed**
+1. Go to **WooCommerce → Product Feeds Pro**
 2. Click **Add New Feed**
 3. Select **Snapchat** as the feed type
 4. Configure your settings

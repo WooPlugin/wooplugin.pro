@@ -47,7 +47,7 @@ Don't forget to [activate your license](/docs/getting-started/license-activation
 
 ### Step 5: Verify
 
-1. Go to **WooCommerce → Product Feed**
+1. Go to **WooCommerce → Product Feeds Pro**
 2. Verify your feeds appear and URLs are correct
 3. Check that feeds still work in Merchant Center
 

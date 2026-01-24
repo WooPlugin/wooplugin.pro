@@ -9,7 +9,7 @@ Microsoft Advertising (formerly Bing Ads) powers shopping ads across Bing, MSN, 
 
 ## Creating a Bing Feed
 
-1. Go to **WooCommerce → Product Feed**
+1. Go to **WooCommerce → Product Feeds Pro**
 2. Click **Add New Feed**
 3. Select **Bing Shopping** as the feed type
 4. Configure your settings

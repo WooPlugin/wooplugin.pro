@@ -16,12 +16,7 @@ Your server ran out of memory during feed generation.
    define('WP_MEMORY_LIMIT', '256M');
    ```
 
-2. Enable background processing:
-   - Go to **Settings → Performance**
-   - Enable **Background Feed Generation**
-   - Set smaller chunk sizes (50-100 products)
-
-3. Contact your host to increase memory limits
+2. The plugin handles large catalogs efficiently, but if issues persist, contact your host to increase memory limits
 
 ### "Maximum execution time exceeded"
 

@@ -9,7 +9,7 @@ Google Shopping is the most popular product advertising platform for e-commerce.
 
 ## Creating a Google Shopping Feed
 
-1. Go to **WooCommerce → Product Feed**
+1. Go to **WooCommerce → Product Feeds Pro**
 2. Click **Add New Feed**
 3. Select **Google Shopping** as the feed type
 4. Configure your feed settings (see below)
@@ -47,19 +47,17 @@ These improve ad performance:
 ### Per-Product
 
 1. Edit a product
-2. Go to the **Product Feed** tab
+2. Go to the **Product Feeds** tab
 3. Enter GTIN, Brand, and MPN values
 4. Save the product
 
 ### Bulk Import
 
-For many products, use the bulk import feature:
+For many products, use WooCommerce's built-in product importer:
 
-1. Go to **WooCommerce → Product Feed → Settings**
-2. Click **Import/Export**
-3. Download the CSV template
-4. Fill in GTIN, Brand, MPN columns
-5. Upload the completed file
+1. Go to **Products → All Products → Import**
+2. In your CSV, include columns: `meta:_gswc_gtin`, `meta:_gswc_brand`, `meta:_gswc_mpn`
+3. Upload and import
 
 ### Smart Auto-Fill
 
@@ -101,7 +99,7 @@ See [Product Filters](/docs/features/product-filters) for details.
 
 ### Getting Your Feed URL
 
-1. Go to **WooCommerce → Product Feed**
+1. Go to **WooCommerce → Product Feeds Pro**
 2. Find your Google Shopping feed
 3. Copy the feed URL
 

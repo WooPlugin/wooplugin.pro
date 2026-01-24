@@ -9,7 +9,7 @@ Pinterest product catalogs let you create shoppable Pins that link directly to y
 
 ## Creating a Pinterest Feed
 
-1. Go to **WooCommerce → Product Feed**
+1. Go to **WooCommerce → Product Feeds Pro**
 2. Click **Add New Feed**
 3. Select **Pinterest** as the feed type
 4. Configure your settings

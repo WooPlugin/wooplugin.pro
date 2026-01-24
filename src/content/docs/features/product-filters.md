@@ -36,7 +36,7 @@ Products matching these rules are removed from the feed.
 
 Each feed can have its own filters:
 
-1. Go to **WooCommerce → Product Feed**
+1. Go to **WooCommerce → Product Feeds Pro**
 2. Edit a feed
 3. Click the **Filters** tab
 4. Add include and exclude rules
@@ -46,7 +46,7 @@ Each feed can have its own filters:
 
 Apply filters to all feeds:
 
-1. Go to **WooCommerce → Product Feed → Settings**
+1. Go to **WooCommerce → Settings → Product Feeds**
 2. Click **Global Filters**
 3. Set rules that apply everywhere
 

@@ -40,7 +40,7 @@ After purchasing Pro, you'll receive an email with your download link. You can a
 
 ## After Installation
 
-Once activated, you'll find the plugin at **WooCommerce → Product Feed**.
+Once activated, you'll find the plugin at **WooCommerce → Product Feeds Pro**.
 
 Your next steps:
 
