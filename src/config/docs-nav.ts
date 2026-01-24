@@ -36,7 +36,6 @@ export const docsNav: NavSection[] = [
       { title: 'Product Fields', slug: 'features/product-fields' },
       { title: 'Category Mapping', slug: 'features/category-mapping' },
       { title: 'Product Filters', slug: 'features/product-filters' },
-      { title: 'Feed Customization', slug: 'features/feed-customization' },
     ],
   },
   {
