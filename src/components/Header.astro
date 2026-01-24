@@ -1,4 +1,15 @@
 ---
+interface Props {
+  promotion?: {
+    title: string;
+    message: string;
+    code?: string;
+    style?: 'highlight' | 'subtle' | 'urgent';
+  };
+}
+
+const { promotion } = Astro.props;
+
 const navLinks = [
   { href: '/google-shopping-pro', label: 'Pro' },
   { href: '/guides', label: 'Guides' },
@@ -8,6 +19,20 @@ const navLinks = [
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+  {promotion && (
+    <div class={`promo-banner promo-banner-${promotion.style || 'highlight'}`}>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-3 flex-wrap text-sm">
+        <span class="font-semibold">{promotion.title}:</span>
+        <span>{promotion.message}</span>
+        {promotion.code && (
+          <code class="bg-white/20 px-2 py-0.5 rounded font-mono font-bold text-xs">{promotion.code}</code>
+        )}
+        <a href="/google-shopping-pro#pricing" class="bg-white text-gray-900 px-3 py-1 rounded-full text-xs font-semibold hover:bg-gray-100 transition-colors">
+          Claim Offer
+        </a>
+      </div>
+    </div>
+  )}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
@@ -40,3 +65,23 @@ const navLinks = [
     </div>
   </div>
 </header>
+
+<style>
+  .promo-banner {
+    padding: 8px 0;
+    text-align: center;
+    color: white;
+  }
+
+  .promo-banner-urgent {
+    background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
+  }
+
+  .promo-banner-highlight {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  }
+
+  .promo-banner-subtle {
+    background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+  }
+</style>

@@ -88,22 +88,7 @@ const comparisonFeatures = [
   title="Google Shopping Pro - Automated Feed Updates for WooCommerce"
   description="Automate your Google Shopping feed. Scheduled updates, auto-regenerate on product changes, priority support. $79/year."
 >
-  <Header />
-
-  {promotion && (
-    <div class={`promo-banner promo-banner-${promotion.style}`}>
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-4 flex-wrap">
-        <span class="font-semibold">{promotion.title}:</span>
-        <span>{promotion.message}</span>
-        {promotion.code && (
-          <code class="bg-white/20 px-2 py-1 rounded font-mono font-bold">{promotion.code}</code>
-        )}
-        <a href="#pricing" class="bg-white text-gray-900 px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-gray-100 transition-colors">
-          Claim Offer
-        </a>
-      </div>
-    </div>
-  )}
+  <Header promotion={promotion} />
 
   <main>
     <!-- Hero -->
@@ -486,26 +471,3 @@ const comparisonFeatures = [
   <Footer />
 </Layout>
 
-<style>
-  .promo-banner {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    padding: 12px 0;
-    text-align: center;
-    font-size: 14px;
-    color: white;
-  }
-
-  .promo-banner-urgent {
-    background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
-  }
-
-  .promo-banner-highlight {
-    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
-  }
-
-  .promo-banner-subtle {
-    background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
-  }
-</style>
