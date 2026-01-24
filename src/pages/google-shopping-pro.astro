@@ -5,6 +5,36 @@ import Footer from '../components/Footer.astro';
 import FAQ from '../components/FAQ';
 import { Check, X, Clock, RefreshCw, Mail, Zap } from 'lucide-react';
 
+// Active promotion (sync with /api/pricing.json)
+const promotion = {
+  title: 'Launch Sale',
+  message: 'Get 25% off Pro - limited time!',
+  code: 'LAUNCH25',
+  discount: 25,
+  expires: '2026-02-28',
+  style: 'urgent', // 'highlight' | 'subtle' | 'urgent'
+};
+// Set to null to disable: const promotion = null;
+
+// Pricing (with optional discount)
+const pricing = {
+  pro: {
+    price: 79,
+    monthly: 7,
+  },
+  agency: {
+    price: 299,
+    monthly: 25,
+  },
+};
+
+// Calculate discounted prices
+const discount = promotion?.discount || 0;
+const proPrice = Math.round(pricing.pro.price * (1 - discount / 100));
+const proMonthly = Math.round(proPrice / 12);
+const agencyPrice = Math.round(pricing.agency.price * (1 - discount / 100));
+const agencyMonthly = Math.round(agencyPrice / 12);
+
 const proFaqs = [
   {
     question: 'Do I need Pro?',
@@ -59,6 +89,22 @@ const comparisonFeatures = [
   description="Automate your Google Shopping feed. Scheduled updates, auto-regenerate on product changes, priority support. $79/year."
 >
   <Header />
+
+  {promotion && (
+    <div class={`promo-banner promo-banner-${promotion.style}`}>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-4 flex-wrap">
+        <span class="font-semibold">{promotion.title}:</span>
+        <span>{promotion.message}</span>
+        {promotion.code && (
+          <code class="bg-white/20 px-2 py-1 rounded font-mono font-bold">{promotion.code}</code>
+        )}
+        <a href="#pricing" class="bg-white text-gray-900 px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-gray-100 transition-colors">
+          Claim Offer
+        </a>
+      </div>
+    </div>
+  )}
+
   <main>
     <!-- Hero -->
     <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
@@ -271,11 +317,26 @@ const comparisonFeatures = [
 
             <div class="text-center mb-8">
               <h3 class="text-xl font-semibold text-text mb-2">Pro</h3>
+              {promotion && (
+                <div class="inline-block bg-red-100 text-red-700 text-xs font-semibold px-2 py-1 rounded-full mb-2">
+                  {promotion.discount}% OFF
+                </div>
+              )}
               <div class="flex items-baseline justify-center gap-1">
-                <span class="text-4xl font-bold text-text">$7</span>
+                <span class="text-4xl font-bold text-text">${proMonthly}</span>
                 <span class="text-text-muted">/month</span>
               </div>
-              <p class="text-sm text-text-muted mt-1">Billed at $79/year</p>
+              <p class="text-sm text-text-muted mt-1">
+                {promotion ? (
+                  <>
+                    <span class="line-through text-text-muted/60">${pricing.pro.price}</span>
+                    {' '}
+                    <span class="text-green-600 font-semibold">${proPrice}/year</span>
+                  </>
+                ) : (
+                  `Billed at $${pricing.pro.price}/year`
+                )}
+              </p>
               <p class="text-sm text-text-muted">Single site license</p>
             </div>
 
@@ -314,11 +375,26 @@ const comparisonFeatures = [
           <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex flex-col">
             <div class="text-center mb-8">
               <h3 class="text-xl font-semibold text-text mb-2">Agency</h3>
+              {promotion && (
+                <div class="inline-block bg-red-100 text-red-700 text-xs font-semibold px-2 py-1 rounded-full mb-2">
+                  {promotion.discount}% OFF
+                </div>
+              )}
               <div class="flex items-baseline justify-center gap-1">
-                <span class="text-4xl font-bold text-text">$25</span>
+                <span class="text-4xl font-bold text-text">${agencyMonthly}</span>
                 <span class="text-text-muted">/month</span>
               </div>
-              <p class="text-sm text-text-muted mt-1">Billed at $299/year</p>
+              <p class="text-sm text-text-muted mt-1">
+                {promotion ? (
+                  <>
+                    <span class="line-through text-text-muted/60">${pricing.agency.price}</span>
+                    {' '}
+                    <span class="text-green-600 font-semibold">${agencyPrice}/year</span>
+                  </>
+                ) : (
+                  `Billed at $${pricing.agency.price}/year`
+                )}
+              </p>
               <p class="text-sm text-text-muted">Unlimited sites</p>
             </div>
 
@@ -409,3 +485,27 @@ const comparisonFeatures = [
   </main>
   <Footer />
 </Layout>
+
+<style>
+  .promo-banner {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 12px 0;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+  }
+
+  .promo-banner-urgent {
+    background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
+  }
+
+  .promo-banner-highlight {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  }
+
+  .promo-banner-subtle {
+    background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+  }
+</style>

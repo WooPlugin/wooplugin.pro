@@ -32,16 +32,14 @@ export const GET: APIRoute = async () => {
     ],
 
     // Optional promotion (null if no active promo)
-    promotion: null,
-    // Example promotion:
-    // promotion: {
-    //   title: 'Black Friday Sale',
-    //   message: 'Get 30% off Pro with code BLACKFRIDAY',
-    //   code: 'BLACKFRIDAY',
-    //   discount: 30,
-    //   expires: '2026-12-01',
-    //   style: 'highlight', // 'highlight' | 'subtle' | 'urgent'
-    // },
+    promotion: {
+      title: 'Launch Sale',
+      message: 'Get 25% off Pro - limited time!',
+      code: 'LAUNCH25',
+      discount: 25,
+      expires: '2026-02-28',
+      style: 'urgent',
+    },
   };
 
   return new Response(JSON.stringify(pricing, null, 2), {
