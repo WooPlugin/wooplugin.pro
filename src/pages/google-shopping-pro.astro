@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FAQ from '../components/FAQ';
 import CompactContactForm from '../components/CompactContactForm';
+import Tooltip from '../components/Tooltip';
 import { Check, X, Clock, RefreshCw, Mail, Zap } from 'lucide-preact';
 import { pricing, getDiscountedPrices } from '../config/pricing';
 
@@ -47,16 +48,16 @@ const comparisonFeatures = [
   { feature: 'Unlimited products', free: true, pro: true },
   { feature: 'Google Merchant feed', free: true, pro: true },
   { feature: 'Variable product support', free: true, pro: true },
-  { feature: 'HPOS compatible', free: true, pro: true },
-  { feature: 'Scheduled auto-updates', free: false, pro: true },
-  { feature: 'Update on product save', free: false, pro: true },
-  { feature: 'Facebook/Meta Catalog feed', free: false, pro: true },
-  { feature: 'Pinterest, TikTok, Bing, Snapchat feeds', free: false, pro: true },
-  { feature: 'Advanced fields (color, size, age, gender)', free: false, pro: true },
-  { feature: 'Google Product Category (5,500+ categories)', free: false, pro: true },
-  { feature: 'Smart Auto-fill from product data', free: false, pro: true },
-  { feature: 'Custom Labels for campaigns', free: false, pro: true },
-  { feature: 'Advanced product filters', free: false, pro: true },
+  { feature: 'HPOS compatible', free: true, pro: true, description: 'Fully compatible with WooCommerce High-Performance Order Storage for faster, more scalable stores.' },
+  { feature: 'Scheduled auto-updates', free: false, pro: true, description: 'Automatically regenerate your feed on a schedule—hourly, twice daily, or daily. Set it once and forget it.' },
+  { feature: 'Update on product save', free: false, pro: true, description: 'Feed regenerates instantly whenever you save a product. Price changes, stock updates, and new products sync automatically.' },
+  { feature: 'Facebook/Meta Catalog feed', free: false, pro: true, description: 'Generate feeds optimized for Facebook Shops, Instagram Shopping, and Meta advertising campaigns.' },
+  { feature: 'Pinterest, TikTok, Bing, Snapchat feeds', free: false, pro: true, description: 'Reach more customers with feeds formatted for each platform\'s specific requirements.' },
+  { feature: 'Advanced fields (color, size, age, gender)', free: false, pro: true, description: 'Add detailed product attributes that help shoppers filter and find exactly what they\'re looking for.' },
+  { feature: 'Google Product Category (5,500+ categories)', free: false, pro: true, description: 'Access the complete Google taxonomy with searchable dropdown. Proper categorization improves ad relevance and performance.' },
+  { feature: 'Smart Auto-fill from product data', free: false, pro: true, description: 'Automatically detects color, size, material, and brand from your product titles and attributes. Suggests matching categories.' },
+  { feature: 'Custom Labels for campaigns', free: false, pro: true, description: 'Tag products with custom labels (0-4) for campaign segmentation—group by margin, season, bestseller status, etc.' },
+  { feature: 'Advanced product filters', free: false, pro: true, description: 'Include or exclude products by category, tag, stock status, price range, or custom rules.' },
   { feature: 'Priority email support', free: false, pro: true },
 ];
 ---
@@ -245,7 +246,12 @@ const comparisonFeatures = [
           </div>
           {comparisonFeatures.map((item, i) => (
             <div class={`grid grid-cols-3 hover:bg-gray-50 transition-colors ${i < comparisonFeatures.length - 1 ? 'border-b border-gray-100' : ''}`}>
-              <div class="p-4 text-text-muted">{item.feature}</div>
+              <div class="p-4 text-text-muted flex items-center justify-between gap-2">
+                <span>{item.feature}</span>
+                {item.description && (
+                  <Tooltip client:visible content={item.description} />
+                )}
+              </div>
               <div class="p-4 flex justify-center">
                 {item.free === true ? (
                   <Check className="w-5 h-5 text-accent" />
