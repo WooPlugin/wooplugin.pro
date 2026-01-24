@@ -8,7 +8,7 @@ import vercel from '@astrojs/vercel';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://wooplugin.pro',
-  output: 'hybrid',
+  output: 'static',
   adapter: vercel(),
   build: {
     inlineStylesheets: 'always'
