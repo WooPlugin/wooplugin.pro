@@ -19,17 +19,58 @@ export const GET: APIRoute = async () => {
       url: 'https://wooplugin.pro/google-shopping-pro',
     },
 
-    // Pro features list
+    // Pro features list (shown in plugin sidebar)
     features: [
       'Scheduled feed updates (hourly/daily)',
       'Auto-regenerate on product save',
       'Facebook/Meta Catalog feed',
-      'Pinterest feed',
-      'TikTok Catalog feed',
-      'Bing Shopping feed',
-      'Snapchat Catalog feed',
+      'Pinterest, TikTok, Bing, Snapchat feeds',
+      'Advanced product fields (color, size, etc.)',
+      'Category mapping to Google taxonomy',
+      'Advanced filters & custom labels',
       'Priority email support',
     ],
+
+    // Full feature categories (for Pro page)
+    featureCategories: {
+      automation: {
+        title: 'Automation',
+        features: [
+          'Scheduled feed updates (hourly/daily/weekly)',
+          'Auto-regenerate when products change',
+          'WP-Cron based scheduling',
+        ],
+      },
+      feeds: {
+        title: 'Multi-Channel Feeds',
+        features: [
+          'Google Shopping',
+          'Facebook/Meta Catalog',
+          'Pinterest Catalog',
+          'TikTok Catalog',
+          'Bing Shopping',
+          'Snapchat Catalog',
+        ],
+      },
+      fields: {
+        title: 'Advanced Product Fields',
+        features: [
+          'Google Product Category (with autocomplete)',
+          'Age Group, Gender, Color, Size',
+          'Material, Pattern',
+          'Custom Labels 0-4 for campaigns',
+        ],
+      },
+      filters: {
+        title: 'Advanced Filters',
+        features: [
+          'Exclude by category or tag',
+          'Filter by price range',
+          'Filter by stock status',
+          'Include/exclude specific products',
+        ],
+      },
+    },
 
     // Optional promotion (null if no active promo)
     promotion: {
