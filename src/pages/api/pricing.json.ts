@@ -72,15 +72,16 @@ export const GET: APIRoute = async () => {
       },
     },
 
+    promotion: null,
     // Optional promotion (null if no active promo)
-    promotion: {
-      title: 'Launch Sale',
-      message: 'Get 25% off Pro - limited time!',
-      code: 'LAUNCH25',
-      discount: 25,
-      expires: '2026-02-28',
-      style: 'urgent',
-    },
+    // promotion: {
+    //   title: 'Launch Sale',
+    //   message: 'Get 25% off Pro - limited time!',
+    //   code: 'LAUNCH25',
+    //   discount: 25,
+    //   expires: '2026-02-28',
+    //   style: 'urgent',
+    // },
   };
 
   return new Response(JSON.stringify(pricing, null, 2), {
