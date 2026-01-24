@@ -51,13 +51,14 @@ export const pricing: PricingConfig = {
   // },
 
   features: [
-    'Scheduled feed updates (hourly/daily)',
-    'Auto-regenerate on product save',
-    'Facebook/Meta Catalog feed',
-    'Pinterest, TikTok, Bing, Snapchat feeds',
-    'Advanced product fields (color, size, etc.)',
-    'Category mapping to Google taxonomy',
-    'Advanced filters & custom labels',
+    'Multi-channel: Facebook, Pinterest, TikTok, Bing, Snapchat',
+    'Scheduled feed updates (hourly/daily/weekly)',
+    'Auto-regenerate on product changes',
+    'Smart Auto-fill from product data',
+    'Google Product Category with autocomplete',
+    'Category Mapping for bulk assignment',
+    'Advanced filters (category, tag, price)',
+    'Custom Labels 0-4 for campaigns',
     'Priority email support',
   ],
 
