@@ -2,7 +2,49 @@ import type { APIRoute } from 'astro';
 
 export const prerender = false;
 
-const LEMONSQUEEZY_API_KEY = import.meta.env.LEMONSQUEEZY_API_KEY;
+// Rate limiting configuration
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const RATE_LIMIT_MAX_REQUESTS = 5; // 5 attempts per minute per IP
+
+// In-memory rate limit store (per serverless instance)
+// For production, use Upstash Redis or Vercel KV for distributed rate limiting
+const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
+
+function getRateLimitKey(request: Request): string {
+  // Get client IP from various headers
+  const forwarded = request.headers.get('x-forwarded-for');
+  const realIp = request.headers.get('x-real-ip');
+  const cfIp = request.headers.get('cf-connecting-ip');
+
+  return cfIp || realIp || forwarded?.split(',')[0]?.trim() || 'unknown';
+}
+
+function checkRateLimit(ip: string): { allowed: boolean; remaining: number; resetIn: number } {
+  const now = Date.now();
+  const record = rateLimitStore.get(ip);
+
+  // Clean up expired entries periodically
+  if (rateLimitStore.size > 10000) {
+    for (const [key, value] of rateLimitStore) {
+      if (now > value.resetTime) {
+        rateLimitStore.delete(key);
+      }
+    }
+  }
+
+  if (!record || now > record.resetTime) {
+    // New window
+    rateLimitStore.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return { allowed: true, remaining: RATE_LIMIT_MAX_REQUESTS - 1, resetIn: RATE_LIMIT_WINDOW_MS };
+  }
+
+  if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return { allowed: false, remaining: 0, resetIn: record.resetTime - now };
+  }
+
+  record.count++;
+  return { allowed: true, remaining: RATE_LIMIT_MAX_REQUESTS - record.count, resetIn: record.resetTime - now };
+}
 
 interface LemonSqueezyResponse {
   valid: boolean;
@@ -44,6 +86,27 @@ export const POST: APIRoute = async ({ request }) => {
   // Handle preflight
   if (request.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: corsHeaders });
+  }
+
+  // Rate limiting
+  const clientIp = getRateLimitKey(request);
+  const rateLimit = checkRateLimit(clientIp);
+
+  if (!rateLimit.allowed) {
+    return new Response(JSON.stringify({
+      success: false,
+      error: 'Too many requests. Please try again later.',
+    }), {
+      status: 429,
+      headers: {
+        'Content-Type': 'application/json',
+        'Retry-After': String(Math.ceil(rateLimit.resetIn / 1000)),
+        'X-RateLimit-Limit': String(RATE_LIMIT_MAX_REQUESTS),
+        'X-RateLimit-Remaining': '0',
+        'X-RateLimit-Reset': String(Math.ceil(Date.now() / 1000 + rateLimit.resetIn / 1000)),
+        ...corsHeaders,
+      },
+    });
   }
 
   try {
