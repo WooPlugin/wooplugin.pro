@@ -14,7 +14,6 @@ const { variant = 'default', promotion } = Astro.props;
 const defaultLinks = [
   { href: '/google-shopping-pro', label: 'Pro' },
   { href: '/guides', label: 'Guides' },
-  { href: '/#pricing', label: 'Pricing' },
   { href: '/#contact', label: 'Contact' },
 ];
 
@@ -29,7 +28,7 @@ const navLinks = variant === 'pro' ? proLinks : defaultLinks;
 
 const ctaLink = variant === 'pro'
   ? { href: '#pricing', label: 'Buy Pro' }
-  : { href: 'https://github.com/WooPlugin/product-feed-for-woocommerce/releases/latest/download/product-feed-for-woocommerce.zip', label: 'Download' };
+  : { href: 'https://wordpress.org/plugins/gtin-product-feed-for-google-shopping/?utm_source=wooplugin&utm_medium=website&utm_campaign=header_cta', label: 'Get Free' };
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
@@ -69,13 +68,41 @@ const ctaLink = variant === 'pro'
         ))}
       </nav>
 
-      <!-- CTA Button -->
-      <a
-        href={ctaLink.href}
-        class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary-dark rounded-lg transition-colors"
-      >
-        {ctaLink.label}
-      </a>
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2">
+        {variant === 'default' && (
+          <>
+            <a
+              href="https://github.com/WooPlugin/product-feed-for-woocommerce"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center w-9 h-9 text-text-muted hover:text-primary hover:bg-gray-100 rounded-lg transition-colors"
+              title="View on GitHub"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
+            <a
+              href="https://wordpress.org/plugins/gtin-product-feed-for-google-shopping/?utm_source=wooplugin&utm_medium=website&utm_campaign=header"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center w-9 h-9 text-text-muted hover:text-primary hover:bg-gray-100 rounded-lg transition-colors"
+              title="View on WordPress.org"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.258 14.717L7.362 5.87c.542-.027 1.031-.08 1.031-.08.486-.054.429-.771-.057-.744 0 0-1.458.114-2.4.114-.168 0-.366-.005-.578-.014C6.924 2.586 9.29 1.2 12 1.2c2.02 0 3.862.773 5.243 2.04-.033-.002-.066-.007-.1-.007-.9 0-1.54.784-1.54 1.628 0 .757.437 1.4.9 2.157.35.614.757 1.4.757 2.537 0 .786-.3 1.7-.7 2.97l-.92 3.065-3.33-9.9c.543-.027 1.03-.08 1.03-.08.486-.054.43-.771-.056-.744 0 0-1.458.114-2.4.114-.166 0-.362-.004-.572-.013l4.946 14.692c-1.536.494-3.17.494-4.718-.027zM2.4 12c0-1.727.458-3.345 1.258-4.745l3.47 9.5C4.195 15.318 2.4 13.837 2.4 12zm18.345 1.2c0 .957-.357 2.042-.828 3.57l-1.084 3.628-3.93-11.684c.542-.027 1.03-.08 1.03-.08.485-.054.428-.771-.058-.744 0 0-.796.063-1.485.098.985-1.494 2.687-2.484 4.61-2.484.507 0 1 .057 1.474.162-.025.168-.047.343-.047.528 0 1.028.6 2.157 1.2 3.342.464.943.928 2.042.928 3.7l.19-.037z"/>
+              </svg>
+            </a>
+          </>
+        )}
+        <a
+          href={ctaLink.href}
+          class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary-dark rounded-lg transition-colors"
+        >
+          {ctaLink.label}
+        </a>
+      </div>
     </div>
   </div>
 </header>
