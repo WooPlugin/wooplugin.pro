@@ -1,0 +1,43 @@
+---
+import { docsNav } from '../../config/docs-nav';
+
+interface Props {
+  currentSlug?: string;
+}
+
+const { currentSlug = '' } = Astro.props;
+---
+
+<nav class="space-y-6">
+  <a href="/docs" class="block text-lg font-semibold text-text hover:text-primary transition-colors">
+    Documentation
+  </a>
+
+  {docsNav.map((section) => (
+    <div>
+      <h3 class="text-sm font-semibold text-text uppercase tracking-wider mb-2">
+        {section.title}
+      </h3>
+      <ul class="space-y-1">
+        {section.items.map((item) => {
+          const isActive = currentSlug === item.slug;
+          return (
+            <li>
+              <a
+                href={`/docs/${item.slug}`}
+                class:list={[
+                  'block py-1.5 px-3 text-sm rounded-md transition-colors',
+                  isActive
+                    ? 'bg-primary/10 text-primary font-medium'
+                    : 'text-text-muted hover:text-text hover:bg-gray-100',
+                ]}
+              >
+                {item.title}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  ))}
+</nav>

@@ -1,0 +1,57 @@
+---
+interface Props {
+  src: string;
+  title?: string;
+  provider?: 'youtube' | 'vimeo';
+}
+
+const { src, title = 'Video', provider = 'youtube' } = Astro.props;
+
+// Extract video ID and create embed URL
+function getEmbedUrl(url: string, provider: 'youtube' | 'vimeo'): string {
+  if (provider === 'youtube') {
+    // Handle various YouTube URL formats
+    const patterns = [
+      /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\?\/]+)/,
+    ];
+    for (const pattern of patterns) {
+      const match = url.match(pattern);
+      if (match) {
+        return `https://www.youtube.com/embed/${match[1]}?rel=0&modestbranding=1`;
+      }
+    }
+    // Already an embed URL or just the ID
+    if (url.includes('youtube.com/embed')) return url;
+    return `https://www.youtube.com/embed/${url}?rel=0&modestbranding=1`;
+  }
+
+  if (provider === 'vimeo') {
+    // Handle Vimeo URLs
+    const match = url.match(/vimeo\.com\/(\d+)/);
+    if (match) {
+      return `https://player.vimeo.com/video/${match[1]}?dnt=1`;
+    }
+    // Already an embed URL or just the ID
+    if (url.includes('player.vimeo.com')) return url;
+    return `https://player.vimeo.com/video/${url}?dnt=1`;
+  }
+
+  return url;
+}
+
+const embedUrl = getEmbedUrl(src, provider);
+---
+
+<div class="my-6">
+  <div class="relative w-full overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+    <iframe
+      src={embedUrl}
+      title={title}
+      class="absolute inset-0 w-full h-full"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      loading="lazy"
+    ></iframe>
+  </div>
+</div>

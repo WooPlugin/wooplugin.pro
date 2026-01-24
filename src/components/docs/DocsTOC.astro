@@ -1,0 +1,84 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+
+// Only show h2 and h3 headings
+const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+
+{filteredHeadings.length > 0 && (
+  <nav class="toc">
+    <h4 class="text-sm font-semibold text-text mb-3">On this page</h4>
+    <ul class="space-y-2 text-sm" id="toc-list">
+      {filteredHeadings.map((heading) => (
+        <li>
+          <a
+            href={`#${heading.slug}`}
+            class:list={[
+              'toc-link block text-text-muted hover:text-text transition-colors',
+              heading.depth === 3 && 'pl-3',
+            ]}
+            data-heading={heading.slug}
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<style>
+  .toc-link.active {
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+</style>
+
+<script>
+  function initScrollSpy() {
+    const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
+    const headings = Array.from(tocLinks).map((link) => {
+      const id = link.getAttribute('data-heading');
+      return document.getElementById(id || '');
+    }).filter(Boolean) as HTMLElement[];
+
+    if (headings.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            tocLinks.forEach((link) => {
+              link.classList.toggle('active', link.getAttribute('data-heading') === id);
+            });
+          }
+        });
+      },
+      {
+        rootMargin: '-80px 0px -80% 0px',
+        threshold: 0,
+      }
+    );
+
+    headings.forEach((heading) => observer.observe(heading));
+
+    return () => observer.disconnect();
+  }
+
+  // Run on initial load
+  initScrollSpy();
+
+  // Re-run on page navigation (for Astro view transitions)
+  document.addEventListener('astro:page-load', initScrollSpy);
+</script>

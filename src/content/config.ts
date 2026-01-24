@@ -15,6 +15,16 @@ const guides = defineCollection({
   }),
 });
 
+const docs = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    updatedAt: z.date().optional(),
+  }),
+});
+
 export const collections = {
   guides,
+  docs,
 };

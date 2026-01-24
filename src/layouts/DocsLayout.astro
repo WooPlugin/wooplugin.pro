@@ -1,0 +1,137 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import DocsSidebar from '../components/docs/DocsSidebar.astro';
+import DocsTOC from '../components/docs/DocsTOC.astro';
+import MobileSidebar from '../components/docs/MobileSidebar';
+import { docsNav, getPrevNextDocs, getDocSection } from '../config/docs-nav';
+
+interface Props {
+  title: string;
+  description: string;
+  headings?: { depth: number; slug: string; text: string }[];
+  slug?: string;
+}
+
+const { title, description, headings = [], slug = '' } = Astro.props;
+
+const siteUrl = 'https://wooplugin.pro';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+
+const { prev, next } = slug ? getPrevNextDocs(slug) : { prev: null, next: null };
+const currentSection = slug ? getDocSection(slug) : null;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>{title} | WooPlugin Docs</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}/og-image.png`} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}/og-image.png`} />
+  </head>
+  <body class="antialiased bg-white">
+    <Header variant="pro" />
+
+    <!-- Mobile sidebar toggle -->
+    <div class="lg:hidden fixed top-16 left-0 right-0 z-40 bg-white border-b border-gray-200 px-4 py-2">
+      <MobileSidebar client:load nav={docsNav} currentSlug={slug} sectionTitle={currentSection?.title || 'Documentation'} />
+    </div>
+
+    <div class="pt-16 lg:pt-16">
+      <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:flex">
+          <!-- Left Sidebar - Desktop only -->
+          <aside class="hidden lg:block lg:w-72 flex-shrink-0">
+            <div class="sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto pb-10 pr-4">
+              <DocsSidebar currentSlug={slug} />
+            </div>
+          </aside>
+
+          <!-- Main Content -->
+          <main class="flex-1 min-w-0 pt-14 lg:pt-0 lg:pl-8 lg:pr-8">
+            <article class="max-w-3xl py-8">
+              <!-- Breadcrumb -->
+              {currentSection && (
+                <nav class="mb-4 text-sm">
+                  <ol class="flex items-center gap-2 text-text-muted">
+                    <li><a href="/docs" class="hover:text-primary">Docs</a></li>
+                    <li class="text-gray-300">/</li>
+                    <li>{currentSection.title}</li>
+                  </ol>
+                </nav>
+              )}
+
+              <header class="mb-8">
+                <h1 class="text-3xl font-bold text-text mb-2">{title}</h1>
+                <p class="text-lg text-text-muted">{description}</p>
+              </header>
+
+              <div class="prose prose-gray max-w-none
+                prose-headings:scroll-mt-20
+                prose-h2:text-2xl prose-h2:font-semibold prose-h2:mt-10 prose-h2:mb-4
+                prose-h3:text-xl prose-h3:font-medium prose-h3:mt-8 prose-h3:mb-3
+                prose-p:text-text prose-p:leading-relaxed
+                prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+                prose-code:text-primary prose-code:bg-primary/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+                prose-pre:bg-gray-900 prose-pre:text-gray-100
+                prose-img:rounded-lg prose-img:shadow-md
+                prose-strong:text-text
+                prose-ul:my-4 prose-ol:my-4
+                prose-li:my-1">
+                <slot />
+              </div>
+
+              <!-- Prev/Next Navigation -->
+              {(prev || next) && (
+                <nav class="mt-16 pt-8 border-t border-gray-200">
+                  <div class="flex justify-between gap-4">
+                    {prev ? (
+                      <a href={`/docs/${prev.slug}`} class="group flex-1 flex flex-col items-start p-4 border border-gray-200 rounded-lg hover:border-primary/50 hover:bg-primary/5 transition-colors">
+                        <span class="text-sm text-text-muted mb-1">Previous</span>
+                        <span class="font-medium text-text group-hover:text-primary">&larr; {prev.title}</span>
+                      </a>
+                    ) : <div class="flex-1" />}
+                    {next ? (
+                      <a href={`/docs/${next.slug}`} class="group flex-1 flex flex-col items-end p-4 border border-gray-200 rounded-lg hover:border-primary/50 hover:bg-primary/5 transition-colors">
+                        <span class="text-sm text-text-muted mb-1">Next</span>
+                        <span class="font-medium text-text group-hover:text-primary">{next.title} &rarr;</span>
+                      </a>
+                    ) : <div class="flex-1" />}
+                  </div>
+                </nav>
+              )}
+            </article>
+          </main>
+
+          <!-- Right TOC - Desktop only -->
+          {headings.length > 0 && (
+            <aside class="hidden xl:block xl:w-60 flex-shrink-0">
+              <div class="sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto pb-10 pl-4">
+                <DocsTOC headings={headings} />
+              </div>
+            </aside>
+          )}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
