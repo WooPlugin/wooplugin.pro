@@ -102,6 +102,10 @@ Time your content to match this planning behavior.
 ### Create or Convert to Business Account
 
 1. Go to business.pinterest.com
+
+![Pinterest Business Hub dashboard for managing your shop](/images/guides/pinterest-guide-01-business-hub.png)
+*Pinterest Business Hub dashboard*
+
 2. Click "Join as a business" or "Convert existing account"
 3. Enter your business name and website
 4. Select your business type
@@ -112,6 +116,10 @@ Time your content to match this planning behavior.
 Claiming your website unlocks analytics and shows your profile on all pins from your domain.
 
 1. Go to Settings > Claimed Accounts
+
+![Claiming your website in Pinterest Business settings](/images/guides/pinterest-guide-02-claim-website.png)
+*Pinterest website claiming settings page*
+
 2. Click "Claim" next to Websites
 3. Choose a verification method:
    - **HTML tag** - Add a meta tag to your homepage (easiest)
@@ -184,6 +192,10 @@ Pinterest accepts XML (RSS 2.0) or CSV/TSV formats. XML is generally more reliab
 
 1. In Pinterest Business Hub, go to Catalogs
 2. Click "Create catalog" or "Add data source"
+
+![Uploading a product catalog to Pinterest](/images/guides/pinterest-guide-03-catalog-upload.png)
+*Pinterest catalog creation and feed upload screen*
+
 3. Choose your feed format (RSS/XML recommended)
 4. Enter your feed URL
 5. Set update frequency (daily recommended)
@@ -212,6 +224,9 @@ Each product pin shows:
 - In-stock status
 - Your store name
 - Direct link to purchase
+
+![Pinterest product pin showing price and availability](/images/guides/pinterest-guide-04-product-pin.png)
+*Example of a product pin with price and shop button*
 
 When prices or availability change in your feed, pins update automatically.
 

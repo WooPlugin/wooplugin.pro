@@ -112,6 +112,10 @@ If you don't have one:
 Business Manager (now Meta Business Suite) is where you manage everything:
 
 1. Go to business.facebook.com
+
+![Meta Business Suite dashboard for managing Facebook and Instagram commerce](/images/guides/facebook-guide-01-business-suite.png)
+*Meta Business Suite dashboard*
+
 2. Click "Create Account"
 3. Enter your business name and details
 4. Add your Facebook Page to Business Manager
@@ -164,6 +168,10 @@ The product catalog is the central hub for all your commerce data. Every product
 ### Create a Catalog
 
 1. Click "Add Catalog"
+
+![Meta Commerce Manager catalog for Facebook and Instagram shops](/images/guides/facebook-guide-02-commerce-manager.png)
+*Commerce Manager catalog creation screen*
+
 2. Choose "E-commerce" as the catalog type
 3. Select "Upload Product Info" (for feed-based management)
 4. Name your catalog
@@ -236,6 +244,10 @@ Once you have your feed URL:
 
 1. Go to Commerce Manager > Catalog > Data Sources
 2. Click "Add Data Source"
+
+![Adding a product feed data source in Meta Commerce Manager](/images/guides/facebook-guide-03-add-data-source.png)
+*Add data source dialog with scheduled feed option*
+
 3. Choose "Data Feed"
 4. Select "Scheduled Feed"
 5. Enter your feed URL
@@ -267,6 +279,10 @@ If you've set up Facebook Shop with a linked Instagram account:
 1. Instagram Shop is automatically created
 2. Go to your Instagram profile
 3. Tap the shopping bag icon to see your shop
+
+![Instagram Shop tab on a business profile](/images/guides/facebook-guide-04-instagram-shop.png)
+*Instagram profile with the Shop tab visible*
+
 4. Verify products are displaying correctly
 
 ### Create Collections
@@ -297,6 +313,10 @@ Product tagging lets you tag products in posts, Stories, and Reels.
 
 1. Create a new post with a product image
 2. Tap "Tag Products"
+
+![Tagging products in an Instagram post](/images/guides/facebook-guide-05-product-tagging.png)
+*Product tagging interface when creating a post*
+
 3. Tap the product in the image
 4. Search for the product from your catalog
 5. Select and position the tag

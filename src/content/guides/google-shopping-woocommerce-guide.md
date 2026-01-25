@@ -52,6 +52,9 @@ Google Merchant Center is where you manage your product data for Google Shopping
 
 1. Go to [merchants.google.com](https://merchants.google.com)
 2. Sign in with your Google account
+
+![Google Merchant Center dashboard showing product overview](/images/guides/google-shopping-guide-01-merchant-center-dashboard.png)
+*Google Merchant Center home screen showing your products overview*
 3. Enter your business information
 4. Verify and claim your website URL
 5. Set up shipping and tax information
@@ -99,6 +102,9 @@ WooCommerce doesn't include GTIN, Brand, or MPN fields by default. You need a pl
 4. Fill in GTIN, Brand, and MPN fields
 5. Save the product
 
+![WooCommerce product edit screen showing GTIN, Brand, and MPN fields](/images/guides/google-shopping-guide-02-woocommerce-gtin-fields.png)
+*GTIN, Brand, and MPN fields in the WooCommerce product Inventory tab*
+
 The fields appear for both simple products and variations.
 
 ## Step 3: Generate Your Product Feed
@@ -130,9 +136,16 @@ The easiest way to generate feeds is with a plugin. Good options include:
 **With Google Shopping for WooCommerce:**
 
 1. Go to WooCommerce > Settings > Google Shopping
+
+![Google Shopping for WooCommerce plugin settings page](/images/guides/google-shopping-guide-03-plugin-settings.png)
+*Plugin settings page in WooCommerce > Settings > Google Shopping*
+
 2. Configure your store name and default brand
 3. Click "Generate Feed Now"
 4. Copy the feed URL
+
+![Generated product feed URL ready to submit to Google](/images/guides/google-shopping-guide-04-feed-generated.png)
+*Your feed URL is displayed after generation*
 
 The plugin generates a Google-compliant XML feed automatically.
 
@@ -143,6 +156,10 @@ Once your feed is generated:
 1. Log in to Google Merchant Center
 2. Go to Products > Feeds
 3. Click the **+** button to add a new feed
+
+![Adding a new product feed in Google Merchant Center](/images/guides/google-shopping-guide-05-merchant-center-add-feed.png)
+*Add feed dialog in Google Merchant Center*
+
 4. Select your country and language
 5. Choose "Scheduled fetch" as the input method
 6. Enter your feed URL
@@ -154,6 +171,9 @@ Google will fetch your feed and process your products. Initial processing can ta
 ## Step 5: Fix Common Errors
 
 After submitting your feed, check the Diagnostics section in Merchant Center for errors.
+
+![Google Merchant Center diagnostics showing product issues](/images/guides/google-shopping-guide-06-diagnostics.png)
+*Diagnostics page showing product issues that need attention*
 
 ### Missing GTIN
 
