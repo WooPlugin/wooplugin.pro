@@ -64,6 +64,7 @@ export default function FAQ({
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="flex items-center justify-between w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition-colors"
+                data-faq-question
               >
                 <span className="font-medium text-text">{faq.question}</span>
                 <ChevronDown

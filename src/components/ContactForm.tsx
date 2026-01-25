@@ -25,6 +25,13 @@ export default function ContactForm() {
       if (result.success) {
         setFormState('success');
         form.reset();
+        // Track successful form submission
+        if (typeof window !== 'undefined' && (window as any).posthog) {
+          (window as any).posthog.capture('contact_form_submit', {
+            page: window.location.pathname,
+            form_type: 'contact'
+          });
+        }
       } else {
         setFormState('error');
         setErrorMessage(result.message || 'Something went wrong');

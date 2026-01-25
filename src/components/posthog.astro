@@ -1,6 +1,14 @@
 ---
 ---
+<!-- PostHog Analytics (production only) -->
 <script is:inline type="text/javascript" id="posthog-js">
+  // Skip tracking on dev environments
+  if (window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1' ||
+      window.location.hostname.includes('host.docker.internal') ||
+      window.location.port !== '') {
+    window.posthog = { capture: function(){}, identify: function(){}, reset: function(){} };
+  } else {
   !(function(t, e) {
     var o, n, p, r;
     e.__SV ||
@@ -39,4 +47,81 @@
       (e.__SV = 1));
   })(document, window.posthog || []);
   posthog.init('phc_htqvSmNlidLdFZEjwaZZioaFvJJfDYi9z3AYYMClumu', { api_host: 'https://us.i.posthog.com', defaults: '2025-05-24' });
+  }
+</script>
+
+<!-- Custom Event Tracking -->
+<script is:inline type="text/javascript" id="posthog-events">
+  (function() {
+    // Helper: Get UTM parameters
+    function getUtm(param) {
+      var urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param) || null;
+    }
+
+    // Helper: Get section from element
+    function getSection(el) {
+      var section = el.closest('section');
+      return section ? (section.id || 'unknown') : 'unknown';
+    }
+
+    // Wait for DOM
+    document.addEventListener('DOMContentLoaded', function() {
+
+      // Track: Download clicks (WordPress.org links)
+      document.querySelectorAll('a[href*="wordpress.org/plugins"]').forEach(function(link) {
+        link.addEventListener('click', function() {
+          posthog.capture('download_click', {
+            destination: 'wordpress_org',
+            button_location: getSection(link),
+            utm_source: getUtm('utm_source'),
+            utm_campaign: getUtm('utm_campaign'),
+            utm_term: getUtm('utm_term')
+          });
+        });
+      });
+
+      // Track: Pro CTA clicks (links to Pro page)
+      document.querySelectorAll('a[href*="/google-shopping-pro"], a[href*="shop.wooplugin.pro"]').forEach(function(link) {
+        link.addEventListener('click', function() {
+          var isCheckout = link.href.includes('shop.wooplugin.pro');
+          posthog.capture('pro_cta_click', {
+            destination: isCheckout ? 'checkout' : 'pro_page',
+            button_location: getSection(link),
+            button_text: link.textContent.trim()
+          });
+        });
+      });
+
+      // Track: Section views with Intersection Observer
+      var observedSections = ['pricing', 'comparison', 'how-it-works', 'contact'];
+      var viewedSections = {};
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !viewedSections[entry.target.id]) {
+            viewedSections[entry.target.id] = true;
+            posthog.capture(entry.target.id + '_viewed', {
+              page: window.location.pathname
+            });
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observedSections.forEach(function(id) {
+        var section = document.getElementById(id);
+        if (section) observer.observe(section);
+      });
+
+      // Track: FAQ interactions
+      document.querySelectorAll('[data-faq-question]').forEach(function(faq) {
+        faq.addEventListener('click', function() {
+          posthog.capture('faq_opened', {
+            question: faq.textContent.trim().substring(0, 50)
+          });
+        });
+      });
+
+    });
+  })();
 </script>
