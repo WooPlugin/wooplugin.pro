@@ -1,7 +1,7 @@
 ---
 title: "Facebook & Instagram Shopping Strategy: Optimize Your Catalog for Sales"
 description: "Proven strategies to optimize your Facebook and Instagram Shop for more sales. Learn image best practices, retargeting tactics, and common mistakes to avoid."
-publishedAt: 2026-01-24
+publishedAt: 2026-01-15
 category: general
 keywords:
   - facebook shopping tips

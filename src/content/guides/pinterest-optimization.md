@@ -1,7 +1,7 @@
 ---
 title: "Pinterest Shopping Strategy: How to Turn Pins into Purchases"
 description: "Proven Pinterest marketing strategies to drive sales from your WooCommerce store. Learn pin optimization, seasonal timing, and common mistakes to avoid."
-publishedAt: 2026-01-24
+publishedAt: 2026-01-20
 category: general
 keywords:
   - pinterest shopping tips

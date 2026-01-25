@@ -1,7 +1,7 @@
 ---
 title: "Google for WooCommerce vs Feed Plugins: Which Should You Use?"
 description: "Compare Google's official WooCommerce plugin with feed-based alternatives. Learn when to use each approach and why many stores use both."
-publishedAt: 2026-01-24
+publishedAt: 2025-12-15
 category: google-shopping
 keywords:
   - google for woocommerce alternative

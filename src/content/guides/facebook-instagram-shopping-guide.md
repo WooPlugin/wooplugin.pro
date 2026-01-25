@@ -1,7 +1,7 @@
 ---
 title: "Selling on Facebook & Instagram Shops: The Complete 2026 Guide"
 description: "Learn how to sell your WooCommerce products on Facebook and Instagram Shops. Complete guide covering Commerce Manager, catalogs, product tagging, and setup."
-publishedAt: 2026-01-24
+publishedAt: 2026-01-05
 category: general
 keywords:
   - facebook shopping woocommerce

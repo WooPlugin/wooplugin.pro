@@ -1,7 +1,7 @@
 ---
 title: "Google Shopping for WooCommerce: The Complete 2026 Guide"
 description: "Learn how to sell your WooCommerce products on Google Shopping. Step-by-step guide covering setup, product identifiers, feed generation, and optimization tips."
-publishedAt: 2026-01-23
+publishedAt: 2025-11-15
 category: google-shopping
 keywords:
   - woocommerce google shopping

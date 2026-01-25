@@ -1,7 +1,7 @@
 ---
 title: "Best Google Shopping Plugins for WooCommerce Compared (2026)"
 description: "Compare the top Google Shopping and product feed plugins for WooCommerce. Features, pricing, pros and cons of each option including Google's official plugin."
-publishedAt: 2026-01-23
+publishedAt: 2025-12-05
 category: google-shopping
 keywords:
   - best google shopping plugin woocommerce

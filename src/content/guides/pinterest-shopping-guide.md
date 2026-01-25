@@ -1,7 +1,7 @@
 ---
 title: "Selling on Pinterest: The Complete 2026 Guide for WooCommerce Stores"
 description: "Learn how to sell your WooCommerce products on Pinterest. Complete guide covering catalogs, product pins, Pinterest SEO, and shopping ads setup."
-publishedAt: 2026-01-24
+publishedAt: 2026-01-10
 category: general
 keywords:
   - pinterest shopping woocommerce

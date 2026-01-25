@@ -1,7 +1,7 @@
 ---
 title: "GTIN, UPC, EAN Explained: What WooCommerce Store Owners Need to Know"
 description: "Understand product identifiers like GTIN, UPC, and EAN. Learn why Google Shopping requires them and how to add them to your WooCommerce products."
-publishedAt: 2026-01-23
+publishedAt: 2025-11-22
 category: google-shopping
 keywords:
   - gtin woocommerce
