@@ -19,8 +19,8 @@ Before installing the Pro plugin, ensure your site meets these requirements:
 3. Scroll to the "Upgrade to Pro" section
 4. Enter your license key (received after purchase)
 5. Click **Validate & Install Pro**
-6. Pro downloads and installs automatically
-7. The free plugin deactivates and Pro activates with your license ready
+6. Pro plugin downloads and installs automatically
+7. Pro plugin activates with your license ready
 
 That's it. No ZIP files to download or upload.
 
