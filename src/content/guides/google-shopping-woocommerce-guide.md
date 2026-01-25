@@ -52,9 +52,6 @@ Google Merchant Center is where you manage your product data for Google Shopping
 
 1. Go to [merchants.google.com](https://merchants.google.com)
 2. Sign in with your Google account
-
-![Google Merchant Center dashboard showing product overview](/images/guides/google-shopping-guide-01-merchant-center-dashboard.png)
-*Google Merchant Center home screen showing your products overview*
 3. Enter your business information
 4. Verify and claim your website URL
 5. Set up shipping and tax information
@@ -156,10 +153,6 @@ Once your feed is generated:
 1. Log in to Google Merchant Center
 2. Go to Products > Feeds
 3. Click the **+** button to add a new feed
-
-![Adding a new product feed in Google Merchant Center](/images/guides/google-shopping-guide-05-merchant-center-add-feed.png)
-*Add feed dialog in Google Merchant Center*
-
 4. Select your country and language
 5. Choose "Scheduled fetch" as the input method
 6. Enter your feed URL
@@ -171,9 +164,6 @@ Google will fetch your feed and process your products. Initial processing can ta
 ## Step 5: Fix Common Errors
 
 After submitting your feed, check the Diagnostics section in Merchant Center for errors.
-
-![Google Merchant Center diagnostics showing product issues](/images/guides/google-shopping-guide-06-diagnostics.png)
-*Diagnostics page showing product issues that need attention*
 
 ### Missing GTIN
 

@@ -87,9 +87,6 @@ If you don't provide a GTIN:
 
 Look for the barcode on the product packaging. The number below the barcode is typically the GTIN.
 
-![Product barcode showing GTIN number below the bars](/images/guides/gtin-guide-01-barcode-example.png)
-*The GTIN appears as the number below the barcode*
-
 ### From Manufacturers
 
 Contact your manufacturer or check their website. Many provide GTIN information in product documentation or data sheets.
@@ -204,9 +201,6 @@ The last digit of a GTIN is a check digit calculated from the other digits. You 
 
 - [GS1 Check Digit Calculator](https://www.gs1.org/check-digit-calculator)
 - [Barcode Lookup](https://www.barcodelookup.com)
-
-![GS1 check digit calculator validating a GTIN](/images/guides/gtin-guide-03-gs1-validator.png)
-*GS1 website check digit calculator for validating GTINs*
 
 ### Common GTIN Errors
 

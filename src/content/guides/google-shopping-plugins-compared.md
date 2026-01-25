@@ -69,10 +69,6 @@ Google for WooCommerce is the native integration recommended during WooCommerce 
 ### Cons
 - **Requires WordPress.com/Jetpack connection** - your store connects to external services
 - **No GTIN/Brand/MPN fields** - you still need another plugin for product identifiers
-
-![Google for WooCommerce plugin does not add GTIN fields to products](/images/guides/plugins-compared-01-google-plugin-no-gtin.png)
-*Google for WooCommerce doesn't add GTIN fields to the product editor*
-
 - **Google only** - no Facebook, Pinterest, TikTok support
 - **Known sync issues** - users report stale data, images not updating
 - **Limited feed control** - can't inspect or customize the feed

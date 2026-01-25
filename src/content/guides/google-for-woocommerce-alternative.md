@@ -36,9 +36,6 @@ Google for WooCommerce (formerly Google Listings & Ads) is the official native i
 
 Here's what most people don't realize: **Google for WooCommerce doesn't add GTIN, Brand, or MPN fields to your products.**
 
-![Comparison showing Google for WooCommerce lacks GTIN fields while WooPlugin includes them](/images/guides/alternative-guide-01-comparison.png)
-*Side-by-side: Google for WooCommerce (left) vs WooPlugin (right) showing GTIN field availability*
-
 These product identifiers are essential for Google Shopping. Without GTINs:
 - Products may be disapproved
 - Products may not appear in Shopping results
