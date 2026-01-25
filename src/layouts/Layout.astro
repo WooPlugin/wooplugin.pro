@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import PostHog from '../components/posthog.astro';
 
 interface Props {
   title?: string;
@@ -40,6 +41,8 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${siteUrl}/og-image.png`} />
+
+    <PostHog />
   </head>
   <body class="antialiased">
     <slot />

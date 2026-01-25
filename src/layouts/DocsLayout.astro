@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import DocsSidebar from '../components/docs/DocsSidebar.astro';
 import DocsTOC from '../components/docs/DocsTOC.astro';
 import MobileSidebar from '../components/docs/MobileSidebar';
+import PostHog from '../components/posthog.astro';
 import { docsNav, getPrevNextDocs, getDocSection } from '../config/docs-nav';
 
 interface Props {
@@ -47,6 +48,8 @@ const currentSection = slug ? getDocSection(slug) : null;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${siteUrl}/og-image.png`} />
+
+    <PostHog />
   </head>
   <body class="antialiased bg-white">
     <Header variant="pro" />
@@ -107,13 +110,13 @@ const currentSection = slug ? getDocSection(slug) : null;
                     {prev ? (
                       <a href={`/docs/${prev.slug}`} class="group flex-1 flex flex-col items-start p-4 border border-gray-200 rounded-lg hover:border-primary/50 hover:bg-primary/5 transition-colors">
                         <span class="text-sm text-text-muted mb-1">Previous</span>
-                        <span class="font-medium text-text group-hover:text-primary">&larr; {prev.title}</span>
+                        <span class="font-medium text-text group-hover:text-primary">← {prev.title}</span>
                       </a>
                     ) : <div class="flex-1" />}
                     {next ? (
                       <a href={`/docs/${next.slug}`} class="group flex-1 flex flex-col items-end p-4 border border-gray-200 rounded-lg hover:border-primary/50 hover:bg-primary/5 transition-colors">
                         <span class="text-sm text-text-muted mb-1">Next</span>
-                        <span class="font-medium text-text group-hover:text-primary">{next.title} &rarr;</span>
+                        <span class="font-medium text-text group-hover:text-primary">{next.title} →</span>
                       </a>
                     ) : <div class="flex-1" />}
                   </div>
