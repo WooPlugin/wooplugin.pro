@@ -11,6 +11,11 @@ keywords:
   - google for woocommerce vs product feed
 readingTime: "12 min read"
 featured: true
+coverImage:
+  src: /images/covers/plugins-compared.jpg
+  alt: Data analytics dashboard on laptop screen
+  credit: Luke Chesser
+  creditUrl: https://unsplash.com/@lukechesser
 ---
 
 Choosing the right Google Shopping plugin for WooCommerce can be confusing. There are dozens of options with different features, pricing, and limitations. This guide compares the top plugins to help you make an informed decision.

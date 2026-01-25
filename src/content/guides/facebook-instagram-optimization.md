@@ -10,6 +10,11 @@ keywords:
   - meta commerce optimization
 readingTime: "10 min read"
 featured: false
+coverImage:
+  src: /images/covers/social-media-strategy.jpg
+  alt: Social media marketing workspace with phone and laptop
+  credit: Austin Distel
+  creditUrl: https://unsplash.com/@austindistel
 ---
 
 Having a Facebook or Instagram Shop is just the beginning. The stores that succeed are the ones that optimize their catalogs, create compelling content, and use the platforms strategically. This guide covers how to turn your Meta commerce presence into a real sales channel.

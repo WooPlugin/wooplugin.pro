@@ -11,6 +11,11 @@ keywords:
   - instagram shop setup
 readingTime: "14 min read"
 featured: false
+coverImage:
+  src: /images/covers/facebook-instagram.jpg
+  alt: Instagram app on smartphone screen
+  credit: Alexander Shatov
+  creditUrl: https://unsplash.com/@alexbemore
 ---
 
 Facebook and Instagram together reach over 3 billion people. These platforms have evolved from social networks into full-fledged shopping destinations where users discover, browse, and buy products without leaving the app. This guide covers everything you need to know to sell your WooCommerce products on Meta's commerce platforms.

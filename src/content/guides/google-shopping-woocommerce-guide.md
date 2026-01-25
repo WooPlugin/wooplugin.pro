@@ -10,6 +10,11 @@ keywords:
   - woocommerce product feed
 readingTime: "12 min read"
 featured: true
+coverImage:
+  src: /images/covers/google-shopping.jpg
+  alt: Woman shopping online with credit card and laptop
+  credit: rupixen.com
+  creditUrl: https://unsplash.com/@rupixen
 ---
 
 Google Shopping is one of the most effective channels for e-commerce stores. When someone searches for a product, your items appear right at the top with images, prices, and your store name. This guide covers everything you need to know to get your WooCommerce products on Google Shopping.

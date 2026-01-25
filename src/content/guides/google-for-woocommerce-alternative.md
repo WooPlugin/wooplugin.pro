@@ -11,6 +11,11 @@ keywords:
   - google merchant center woocommerce
 readingTime: "8 min read"
 featured: false
+coverImage:
+  src: /images/covers/woocommerce-alternative.jpg
+  alt: Person using laptop for online shopping
+  credit: rupixen.com
+  creditUrl: https://unsplash.com/@rupixen
 ---
 
 If you've set up WooCommerce recently, you've probably seen "Google for WooCommerce" recommended during onboarding. It's the official plugin built by WooCommerce and Google. But is it the right choice for your store?

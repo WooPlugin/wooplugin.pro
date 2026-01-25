@@ -10,6 +10,11 @@ keywords:
   - pinterest for ecommerce
 readingTime: "9 min read"
 featured: false
+coverImage:
+  src: /images/covers/pinterest-strategy.jpg
+  alt: Content planning workspace with phone and notebook
+  credit: NordWood Themes
+  creditUrl: https://unsplash.com/@nordwood
 ---
 
 Pinterest drives more referral traffic to shopping sites than any other social platform except Facebook. But turning that traffic into sales requires understanding how Pinterest users think, plan, and buy. This guide covers the strategies that separate Pinterest shops that sell from those that just collect followers.

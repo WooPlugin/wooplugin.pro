@@ -11,6 +11,11 @@ keywords:
   - pinterest shop setup
 readingTime: "13 min read"
 featured: false
+coverImage:
+  src: /images/covers/pinterest-shopping.jpg
+  alt: Pinterest app showing shopping inspiration boards
+  credit: Souvik Banerjee
+  creditUrl: https://unsplash.com/@rswebsols
 ---
 
 Pinterest is not a social network—it's a visual search engine where people plan purchases. When someone pins your product, they're saving it to buy later. This planning mindset makes Pinterest one of the highest-intent shopping platforms available. This guide covers everything you need to sell your WooCommerce products on Pinterest.

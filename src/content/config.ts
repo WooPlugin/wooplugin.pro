@@ -12,6 +12,12 @@ const guides = defineCollection({
     keywords: z.array(z.string()).optional(),
     readingTime: z.string().optional(),
     featured: z.boolean().default(false),
+    coverImage: z.object({
+      src: z.string(),
+      alt: z.string(),
+      credit: z.string().optional(),
+      creditUrl: z.string().optional(),
+    }).optional(),
   }),
 });
 

@@ -10,6 +10,11 @@ keywords:
   - product identifiers
 readingTime: "8 min read"
 featured: false
+coverImage:
+  src: /images/covers/gtin-barcode.jpg
+  alt: Ecommerce shipping boxes and packaging
+  credit: Brandable Box
+  creditUrl: https://unsplash.com/@brandablebox
 ---
 
 If you're trying to sell on Google Shopping, you've probably encountered the term "GTIN" and wondered what it means. This guide explains everything WooCommerce store owners need to know about product identifiers.
