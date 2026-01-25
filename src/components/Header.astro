@@ -11,22 +11,12 @@ interface Props {
 
 const { variant = 'default', promotion } = Astro.props;
 
-const defaultLinks = [
+const navLinks = [
   { href: '/google-shopping-pro', label: 'Pro' },
   { href: '/docs', label: 'Docs' },
   { href: '/guides', label: 'Guides' },
-  { href: '/#contact', label: 'Contact' },
-];
-
-const proLinks = [
-  { href: '/', label: 'Free' },
-  { href: '/docs', label: 'Docs' },
-  { href: '/guides', label: 'Guides' },
   { href: '/google-shopping-pro#pricing', label: 'Pricing' },
-  { href: '/google-shopping-pro#contact', label: 'Contact' },
 ];
-
-const navLinks = variant === 'pro' ? proLinks : defaultLinks;
 
 const ctaLink = variant === 'pro'
   ? { href: '/google-shopping-pro#pricing', label: 'Buy Pro' }
