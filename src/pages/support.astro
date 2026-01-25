@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactForm from '../components/ContactForm.tsx';
+
+const quickLinks = [
+  {
+    title: 'Getting Started',
+    description: 'Installation, setup, and first steps',
+    href: '/docs/getting-started/installation',
+  },
+  {
+    title: 'Troubleshooting',
+    description: 'Solutions to common issues',
+    href: '/docs/troubleshooting/common-errors',
+  },
+  {
+    title: 'FAQ',
+    description: 'Frequently asked questions',
+    href: '/docs/troubleshooting/faq',
+  },
+  {
+    title: 'Documentation',
+    description: 'Full plugin documentation',
+    href: '/docs',
+  },
+];
+---
+
+<Layout
+  title="Support"
+  description="Get help with Product Feed for WooCommerce. Browse documentation or contact us directly."
+>
+  <Header />
+  <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-4xl font-bold text-text mb-4">Support</h1>
+      <p class="text-lg text-text-muted mb-12">
+        Find answers in our documentation or contact us directly.
+      </p>
+
+      <section class="mb-16">
+        <h2 class="text-2xl font-semibold text-text mb-6">Quick Links</h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {quickLinks.map(link => (
+            <a
+              href={link.href}
+              class="block p-6 border border-gray-200 rounded-xl hover:border-primary hover:shadow-sm transition-all"
+            >
+              <h3 class="font-semibold text-text mb-1">{link.title}</h3>
+              <p class="text-sm text-text-muted">{link.description}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-semibold text-text mb-2">Still need help?</h2>
+        <p class="text-text-muted mb-6">
+          Send us a message and we'll get back to you within 24 hours.
+        </p>
+        <div class="border border-gray-200 rounded-xl p-6">
+          <ContactForm client:load />
+        </div>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Layout>
