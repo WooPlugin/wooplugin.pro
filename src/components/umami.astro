@@ -1,57 +1,29 @@
 ---
 ---
-<!-- PostHog Analytics (production only) -->
-<script is:inline type="text/javascript" id="posthog-js">
+<!-- Umami Analytics (production only) -->
+<script is:inline type="text/javascript" id="umami-js">
   // Skip tracking on dev environments
   if (window.location.hostname === 'localhost' ||
       window.location.hostname === '127.0.0.1' ||
       window.location.hostname.includes('host.docker.internal') ||
       window.location.port !== '') {
-    window.posthog = { capture: function(){}, identify: function(){}, reset: function(){} };
+    window.umami = { track: function(){}, identify: function(){} };
   } else {
-  !(function(t, e) {
-    var o, n, p, r;
-    e.__SV ||
-      ((window.posthog = e),
-      (e._i = []),
-      (e.init = function(i, s, a) {
-        function g(t, e) {
-          var o = e.split('.');
-          2 == o.length && ((t = t[o[0]]), (e = o[1])),
-            (t[e] = function() {
-              t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
-            });
-        }
-        ((p = t.createElement('script')).type = 'text/javascript'),
-          (p.crossOrigin = 'anonymous'),
-          (p.async = true),
-          (p.src = s.api_host + '/static/array.js'),
-          (r = t.getElementsByTagName('script')[0]).parentNode.insertBefore(p, r);
-        var u = e;
-        void 0 !== a ? (u = e[a] = []) : (a = 'posthog');
-        u.people = u.people || [];
-        u.toString = function(t) {
-          var e = 'posthog';
-          return 'posthog' !== a && (e += '.' + a), t || (e += ' (stub)'), e;
-        };
-        u.people.toString = function() {
-          return u.toString(1) + '.people (stub)';
-        };
-        o =
-          'capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId'.split(
-            ' '
-          );
-        for (n = 0; n < o.length; n++) g(u, o[n]);
-        e._i.push([i, s, a]);
-      }),
-      (e.__SV = 1));
-  })(document, window.posthog || []);
-  posthog.init('phc_htqvSmNlidLdFZEjwaZZioaFvJJfDYi9z3AYYMClumu', { api_host: 'https://us.i.posthog.com', defaults: '2025-05-24' });
+    (function(w,d,s){
+      w.umami = w.umami || {};
+      w.umami.track = w.umami.track || function(){(w.umami.q = w.umami.q || []).push(arguments)};
+      var a = d.getElementsByTagName(s)[0],
+          b = d.createElement(s);
+      b.async = true;
+      b.src = 'https://analytics.coverimage.app/script.js';
+      b.dataset.websiteId = '0d1a48c7-0fd6-479a-b392-5e44bd3808dc';
+      a.parentNode.insertBefore(b, a);
+    })(window, document, 'script');
   }
 </script>
 
 <!-- Custom Event Tracking -->
-<script is:inline type="text/javascript" id="posthog-events">
+<script is:inline type="text/javascript" id="umami-events">
   (function() {
     // Helper: Get UTM parameters
     function getUtm(param) {
@@ -71,7 +43,7 @@
       // Track: Download clicks (WordPress.org links)
       document.querySelectorAll('a[href*="wordpress.org/plugins"]').forEach(function(link) {
         link.addEventListener('click', function() {
-          posthog.capture('download_click', {
+          umami.track('download_click', {
             destination: 'wordpress_org',
             button_location: getSection(link),
             utm_source: getUtm('utm_source'),
@@ -85,7 +57,7 @@
       document.querySelectorAll('a[href*="/google-shopping-pro"], a[href*="shop.wooplugin.pro"]').forEach(function(link) {
         link.addEventListener('click', function() {
           var isCheckout = link.href.includes('shop.wooplugin.pro');
-          posthog.capture('pro_cta_click', {
+          umami.track('pro_cta_click', {
             destination: isCheckout ? 'checkout' : 'pro_page',
             button_location: getSection(link),
             button_text: link.textContent.trim()
@@ -101,7 +73,7 @@
         entries.forEach(function(entry) {
           if (entry.isIntersecting && !viewedSections[entry.target.id]) {
             viewedSections[entry.target.id] = true;
-            posthog.capture(entry.target.id + '_viewed', {
+            umami.track(entry.target.id + '_viewed', {
               page: window.location.pathname
             });
           }
@@ -116,7 +88,7 @@
       // Track: FAQ interactions
       document.querySelectorAll('[data-faq-question]').forEach(function(faq) {
         faq.addEventListener('click', function() {
-          posthog.capture('faq_opened', {
+          umami.track('faq_opened', {
             question: faq.textContent.trim().substring(0, 50)
           });
         });

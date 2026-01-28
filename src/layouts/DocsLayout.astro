@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import DocsSidebar from '../components/docs/DocsSidebar.astro';
 import DocsTOC from '../components/docs/DocsTOC.astro';
 import MobileSidebar from '../components/docs/MobileSidebar';
-import PostHog from '../components/posthog.astro';
+import Umami from '../components/umami.astro';
 import { docsNav, getPrevNextDocs, getDocSection } from '../config/docs-nav';
 
 interface Props {
@@ -49,7 +49,7 @@ const currentSection = slug ? getDocSection(slug) : null;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${siteUrl}/og-image.png`} />
 
-    <PostHog />
+    <Umami />
   </head>
   <body class="antialiased bg-white">
     <Header variant="pro" />

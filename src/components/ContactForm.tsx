@@ -26,8 +26,8 @@ export default function ContactForm() {
         setFormState('success');
         form.reset();
         // Track successful form submission
-        if (typeof window !== 'undefined' && (window as any).posthog) {
-          (window as any).posthog.capture('contact_form_submit', {
+        if (typeof window !== 'undefined' && (window as any).umami) {
+          (window as any).umami.track('contact_form_submit', {
             page: window.location.pathname,
             form_type: 'contact'
           });
