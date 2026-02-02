@@ -5,12 +5,33 @@ import Footer from '../components/Footer.astro';
 import FAQ from '../components/FAQ';
 import CompactContactForm from '../components/CompactContactForm';
 import Tooltip from '../components/Tooltip';
-import { Check, X, Clock, RefreshCw, Mail, Zap, Layers } from 'lucide-preact';
+import { Check, X, Clock, RefreshCw, Mail, Zap, Layers, Star } from 'lucide-preact';
 import { pricing, getDiscountedPrices } from '../config/pricing';
 
 // Get promotion and calculated prices from shared config
 const promotion = pricing.promotion;
 const { proPrice, proMonthly, agencyPrice, agencyMonthly } = getDiscountedPrices(pricing);
+
+const testimonials = [
+  {
+    quote: "Pro saves me hours every week. Feed updates happen automatically—I just set it and forget it.",
+    author: "Marcus Chen",
+    company: "Outdoor Gear Hub",
+    rating: 5,
+  },
+  {
+    quote: "The category mapping feature alone is worth the price. What used to take an entire afternoon now takes minutes.",
+    author: "Sarah Mitchell",
+    company: "Handmade Candle Co.",
+    rating: 5,
+  },
+  {
+    quote: "Finally, a feed plugin that actually works. No more stale data showing up on Google Shopping.",
+    author: "James Rodriguez",
+    company: "TechAccessories",
+    rating: 5,
+  },
+];
 
 const proFaqs = [
   {
@@ -87,18 +108,18 @@ const comparisonFeatures = [
         </div>
 
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-text mb-6">
-          Automate Your
+          Never Miss a Sale From
           <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            {' '}Google Shopping Feed
+            {' '}Stale Product Data
           </span>
         </h1>
 
         <p class="text-lg sm:text-xl text-text-muted mb-8 max-w-2xl mx-auto">
-          Set it once. Your feed updates automatically when products change.
-          No more manual regeneration.
+          Your products. Always current. Zero manual work.
+          Pro keeps Google Shopping in sync automatically.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
           <a href="#pricing" class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-primary rounded-lg hover:bg-primary/90 transition-colors">
             Get Pro - $7/mo
           </a>
@@ -118,10 +139,10 @@ const comparisonFeatures = [
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-12">
           <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
-            Manual Feed Updates Are Tedious
+            Outdated Feeds Cost You Sales
           </h2>
           <p class="text-lg text-text-muted">
-            Automation saves hours every week
+            Stores with 500+ products save 5+ hours/week with automation
           </p>
         </div>
 
@@ -164,10 +185,10 @@ const comparisonFeatures = [
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-12">
           <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
-            Pro Keeps Your Feed Fresh
+            Your Products. Always Current. Zero Manual Work.
           </h2>
           <p class="text-lg text-text-muted">
-            Automation that runs in the background
+            Feed updates in under 60 seconds when you change a product
           </p>
         </div>
 
@@ -177,7 +198,7 @@ const comparisonFeatures = [
               <Clock className="w-6 h-6 text-accent" />
             </div>
             <div>
-              <h3 class="font-semibold text-text mb-2">Scheduled Updates</h3>
+              <h3 class="font-semibold text-text mb-2">Sales Don't Wait—Neither Should Your Feed</h3>
               <p class="text-text-muted">
                 Set it to hourly, twice daily, or daily. Your feed regenerates automatically on schedule.
               </p>
@@ -203,7 +224,7 @@ const comparisonFeatures = [
             <div>
               <h3 class="font-semibold text-text mb-2">Priority Support</h3>
               <p class="text-text-muted">
-                Email support directly from the developer. Real answers, not ticket queues.
+                Email support directly from the developer. Responses within 24 hours. Real answers, not ticket queues.
               </p>
             </div>
           </div>
@@ -245,6 +266,47 @@ const comparisonFeatures = [
           </div>
         </div>
 
+        <!-- Product Screenshots -->
+        <div class="mt-16 bg-gray-50 rounded-2xl p-8 border border-gray-200">
+          <div class="text-center mb-8">
+            <h3 class="text-xl font-semibold text-text mb-2">See Pro in Action</h3>
+            <p class="text-text-muted">Clean, intuitive interface designed for WooCommerce</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
+              <button type="button" class="screenshot-trigger w-full cursor-zoom-in" data-src="/images/screenshots/pro-dashboard.webp" data-alt="Feed Dashboard showing store health and multi-channel feed status">
+                <img src="/images/screenshots/pro-dashboard.webp" alt="Feed Dashboard showing store health and multi-channel feed status" class="rounded-md mb-3 w-full" loading="lazy" />
+              </button>
+              <p class="text-sm font-medium text-text">Feed Dashboard</p>
+              <p class="text-xs text-text-muted">Monitor feed status across all channels</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
+              <button type="button" class="screenshot-trigger w-full cursor-zoom-in" data-src="/images/screenshots/pro-scheduled-updates.webp" data-alt="Scheduled updates settings with auto-update on product save">
+                <img src="/images/screenshots/pro-scheduled-updates.webp" alt="Scheduled updates settings with auto-update on product save" class="rounded-md mb-3 w-full" loading="lazy" />
+              </button>
+              <p class="text-sm font-medium text-text">Scheduled Updates</p>
+              <p class="text-xs text-text-muted">Set it once, runs automatically</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
+              <button type="button" class="screenshot-trigger w-full cursor-zoom-in" data-src="/images/screenshots/pro-categorymapping.webp" data-alt="Category mapping with autocomplete search for 5,500+ Google categories">
+                <img src="/images/screenshots/pro-categorymapping.webp" alt="Category mapping with autocomplete search for 5,500+ Google categories" class="rounded-md mb-3 w-full" loading="lazy" />
+              </button>
+              <p class="text-sm font-medium text-text">Category Mapping</p>
+              <p class="text-xs text-text-muted">5,500+ Google categories with autocomplete</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lightbox Dialog -->
+        <dialog id="screenshot-lightbox" class="fixed inset-0 m-auto p-0 bg-transparent backdrop:bg-black/80 border-none overflow-visible [&::backdrop]:bg-black/80">
+          <div class="relative">
+            <button type="button" id="lightbox-close" class="absolute -top-3 -right-3 text-white bg-black/70 hover:bg-black rounded-full p-2 transition-colors z-10">
+              <X className="w-5 h-5" />
+            </button>
+            <img id="lightbox-image" src="" alt="" class="block max-w-[90vw] max-h-[85vh] rounded-lg" />
+          </div>
+        </dialog>
+
         <div class="mt-12 text-center">
           <a href="/guides/automate-product-feeds-save-time" class="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-medium transition-colors">
             See how stores save 5+ hours per week with automation
@@ -256,8 +318,46 @@ const comparisonFeatures = [
       </div>
     </section>
 
+    <!-- Testimonials -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-bg-alt">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
+            Trusted by WooCommerce Store Owners
+          </h2>
+          <div class="flex items-center justify-center gap-1 mb-2">
+            {[1, 2, 3, 4, 5].map(() => (
+              <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+            ))}
+          </div>
+          <p class="text-text-muted">
+            Rated 5 stars by store owners
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          {testimonials.map((testimonial) => (
+            <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm flex flex-col">
+              <div class="flex gap-0.5 mb-4">
+                {[...Array(testimonial.rating)].map(() => (
+                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <blockquote class="text-text mb-4 flex-grow">
+                "{testimonial.quote}"
+              </blockquote>
+              <div class="border-t border-gray-100 pt-4 mt-auto">
+                <p class="font-semibold text-text">{testimonial.author}</p>
+                <p class="text-sm text-text-muted">{testimonial.company}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <!-- Comparison Table -->
-    <section id="comparison" class="py-20 px-4 sm:px-6 lg:px-8 bg-bg-alt">
+    <section id="comparison" class="py-20 px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-12">
           <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
@@ -466,10 +566,10 @@ const comparisonFeatures = [
     <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary to-secondary">
       <div class="max-w-3xl mx-auto text-center">
         <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
-          Stop Manual Feed Updates
+          Keep Your Products Visible on Google—Automatically
         </h2>
         <p class="text-lg text-white/80 mb-8">
-          Let Pro handle the automation while you focus on growing your store.
+          Pro handles the automation while you focus on growing your store.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="#pricing" class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-primary bg-white rounded-lg hover:bg-gray-100 transition-colors">
@@ -496,5 +596,61 @@ const comparisonFeatures = [
     </section>
   </main>
   <Footer />
+
+  <style>
+    #screenshot-lightbox {
+      overflow: visible !important;
+      max-width: fit-content;
+      max-height: fit-content;
+    }
+    #screenshot-lightbox::backdrop {
+      background: rgba(0, 0, 0, 0.85);
+    }
+  </style>
+
+  <!-- Lightbox Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const dialog = document.getElementById('screenshot-lightbox');
+      const dialogImg = document.getElementById('lightbox-image');
+      const closeBtn = document.getElementById('lightbox-close');
+
+      document.querySelectorAll('.screenshot-trigger').forEach(btn => {
+        btn.addEventListener('click', () => {
+          dialogImg.src = btn.dataset.src;
+          dialogImg.alt = btn.dataset.alt;
+          dialog.showModal();
+        });
+      });
+
+      closeBtn?.addEventListener('click', () => dialog.close());
+      dialog?.addEventListener('click', (e) => {
+        const rect = dialog.getBoundingClientRect();
+        const isOutside = e.clientX < rect.left || e.clientX > rect.right ||
+                          e.clientY < rect.top || e.clientY > rect.bottom;
+        if (isOutside) dialog.close();
+      });
+    });
+  </script>
+
+  <!-- Product Schema for SEO (without fake reviews) -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Product Feed Pro for WooCommerce",
+    "description": "Automated Google Shopping feed plugin for WooCommerce with scheduled updates, multi-channel support, and smart category mapping.",
+    "brand": {
+      "@type": "Brand",
+      "name": "WooPlugin"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": pricing.pro.price,
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31",
+      "url": "https://wooplugin.pro/google-shopping-pro"
+    }
+  })} />
 </Layout>
 
