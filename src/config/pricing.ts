@@ -130,3 +130,4 @@ export function getDiscountedPrices(config: PricingConfig) {
     agencyMonthly: Math.round((config.agency.price * (1 - discount / 100)) / 12),
   };
 }
+
