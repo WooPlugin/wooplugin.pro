@@ -6,7 +6,7 @@ import FAQ from '../components/FAQ';
 import CompactContactForm from '../components/CompactContactForm';
 import Tooltip from '../components/Tooltip';
 import { Check, X, Clock, RefreshCw, Mail, Zap, Layers, Star } from 'lucide-preact';
-import { pricing, getDiscountedPrices } from '../config/pricing';
+import { pricing, getDiscountedPrices, getCheckoutUrl } from '../config/pricing';
 
 // Get promotion and calculated prices from shared config
 const promotion = pricing.promotion;
@@ -482,7 +482,7 @@ const comparisonFeatures = [
             </ul>
 
             <a
-              href="https://shop.wooplugin.pro/checkout/buy/4adfa24d-5083-4cef-82d7-685e1106a6ad"
+              href={getCheckoutUrl(pricing, 'pro')}
               class="block w-full text-center px-6 py-3 rounded-lg font-medium bg-primary hover:bg-primary-dark text-white transition-colors mt-auto"
             >
               Buy Pro
@@ -540,7 +540,7 @@ const comparisonFeatures = [
             </ul>
 
             <a
-              href="https://shop.wooplugin.pro/checkout/buy/d246c2b8-f8a7-41dd-831c-fe4a51199fc0"
+              href={getCheckoutUrl(pricing, 'agency')}
               class="block w-full text-center px-6 py-3 rounded-lg font-medium bg-gray-100 hover:bg-gray-200 text-text transition-colors mt-auto"
             >
               Buy Agency

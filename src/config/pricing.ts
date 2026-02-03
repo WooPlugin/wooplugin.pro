@@ -14,11 +14,14 @@ export interface PricingConfig {
   pro: {
     price: number;
     monthly: number;
+    variantId: string;
   };
   agency: {
     price: number;
     monthly: number;
+    variantId: string;
   };
+  checkoutBaseUrl: string;
   promotion: Promotion | null;
   features: string[];
   featureCategories: {
@@ -29,14 +32,23 @@ export interface PricingConfig {
   };
 }
 
+// LemonSqueezy variant IDs
+// Test mode:  Pro: 1246828, Agency: 1246835
+// Live mode:  Pro: 1274257, Agency: 1274256
+// Set LEMONSQUEEZY_TEST_MODE=true in .env for local testing
+const LEMONSQUEEZY_TEST_MODE = import.meta.env.LEMONSQUEEZY_TEST_MODE === 'true';
+
 export const pricing: PricingConfig = {
+  checkoutBaseUrl: 'https://shop.wooplugin.pro/checkout/buy',
   pro: {
     price: 79,
     monthly: 7,
+    variantId: LEMONSQUEEZY_TEST_MODE ? '1246828' : '1274257',
   },
   agency: {
     price: 299,
     monthly: 25,
+    variantId: LEMONSQUEEZY_TEST_MODE ? '1246835' : '1274256',
   },
 
   // Set to null to disable promotion
@@ -102,6 +114,11 @@ export const pricing: PricingConfig = {
     },
   },
 };
+
+// Helper to get checkout URL for a plan
+export function getCheckoutUrl(config: PricingConfig, plan: 'pro' | 'agency'): string {
+  return `${config.checkoutBaseUrl}/${config[plan].variantId}`;
+}
 
 // Helper to calculate discounted prices
 export function getDiscountedPrices(config: PricingConfig) {
