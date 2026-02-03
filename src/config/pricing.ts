@@ -32,9 +32,9 @@ export interface PricingConfig {
   };
 }
 
-// LemonSqueezy variant IDs
-// Test mode:  Pro: 1246828, Agency: 1246835
-// Live mode:  Pro: 1274257, Agency: 1274256
+// LemonSqueezy checkout UUIDs
+// Test mode:  Pro: 4adfa24d-5083-4cef-82d7-685e1106a6ad, Agency: d246c2b8-f8a7-41dd-831c-fe4a51199fc0
+// Live mode:  Pro: 15e2235c-cd1e-45e1-bca1-bee51766170a, Agency: 92bb41b5-349f-49f0-bd03-664baab553b2
 // Set LEMONSQUEEZY_TEST_MODE=true in .env for local testing
 const LEMONSQUEEZY_TEST_MODE = import.meta.env.LEMONSQUEEZY_TEST_MODE === 'true';
 
@@ -43,12 +43,12 @@ export const pricing: PricingConfig = {
   pro: {
     price: 79,
     monthly: 7,
-    variantId: LEMONSQUEEZY_TEST_MODE ? '1246828' : '1274257',
+    variantId: LEMONSQUEEZY_TEST_MODE ? '4adfa24d-5083-4cef-82d7-685e1106a6ad' : '15e2235c-cd1e-45e1-bca1-bee51766170a',
   },
   agency: {
     price: 299,
     monthly: 25,
-    variantId: LEMONSQUEEZY_TEST_MODE ? '1246835' : '1274256',
+    variantId: LEMONSQUEEZY_TEST_MODE ? 'd246c2b8-f8a7-41dd-831c-fe4a51199fc0' : '92bb41b5-349f-49f0-bd03-664baab553b2',
   },
 
   // Set to null to disable promotion
