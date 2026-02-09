@@ -467,6 +467,49 @@ const comparisonFeatures = [
       </div>
     </section>
 
+    <!-- Product Screenshots -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-2">See It in Action</h2>
+          <p class="text-lg text-text-muted">Clean, intuitive interface built for WordPress</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
+            <button type="button" class="screenshot-trigger w-full cursor-zoom-in" data-src="/images/screenshots/accessibility-dashboard.webp" data-alt="Accessibility Dashboard showing score, issue counts, recent scans and top issues">
+              <img src="/images/screenshots/accessibility-dashboard.webp" alt="Accessibility Dashboard showing score, issue counts, recent scans and top issues" class="rounded-md mb-3 w-full" loading="lazy" />
+            </button>
+            <p class="text-sm font-medium text-text">Accessibility Dashboard</p>
+            <p class="text-xs text-text-muted">Score, issue breakdown, and recent scans at a glance</p>
+          </div>
+          <div class="bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
+            <button type="button" class="screenshot-trigger w-full cursor-zoom-in" data-src="/images/screenshots/accessibility-scan-results.webp" data-alt="Scan results with accessibility score, issue counts by severity, and scan time">
+              <img src="/images/screenshots/accessibility-scan-results.webp" alt="Scan results with accessibility score, issue counts by severity, and scan time" class="rounded-md mb-3 w-full" loading="lazy" />
+            </button>
+            <p class="text-sm font-medium text-text">Scan Results</p>
+            <p class="text-xs text-text-muted">Score and issue breakdown by severity</p>
+          </div>
+          <div class="bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
+            <button type="button" class="screenshot-trigger w-full cursor-zoom-in" data-src="/images/screenshots/accessibility-issues.webp" data-alt="Issues list with severity labels, WCAG references, and quick fix buttons">
+              <img src="/images/screenshots/accessibility-issues.webp" alt="Issues list with severity labels, WCAG references, and quick fix buttons" class="rounded-md mb-3 w-full" loading="lazy" />
+            </button>
+            <p class="text-sm font-medium text-text">Issues List</p>
+            <p class="text-xs text-text-muted">Fix, ignore, or view each issue on your site</p>
+          </div>
+        </div>
+
+        <!-- Lightbox Dialog -->
+        <dialog id="screenshot-lightbox" class="fixed inset-0 m-auto p-0 bg-transparent backdrop:bg-black/80 border-none overflow-visible [&::backdrop]:bg-black/80">
+          <div class="relative">
+            <button type="button" id="lightbox-close" class="absolute -top-3 -right-3 text-white bg-black/70 hover:bg-black rounded-full p-2 transition-colors z-10">
+              <X className="w-5 h-5" />
+            </button>
+            <img id="lightbox-image" src="" alt="" class="block max-w-[90vw] max-h-[85vh] rounded-lg" />
+          </div>
+        </dialog>
+      </div>
+    </section>
+
     <!-- Comparison Table -->
     <section id="comparison" class="py-20 px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
@@ -724,6 +767,42 @@ const comparisonFeatures = [
     </section>
   </main>
   <Footer />
+
+  <style>
+    #screenshot-lightbox {
+      overflow: visible !important;
+      max-width: fit-content;
+      max-height: fit-content;
+    }
+    #screenshot-lightbox::backdrop {
+      background: rgba(0, 0, 0, 0.85);
+    }
+  </style>
+
+  <!-- Lightbox Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const dialog = document.getElementById('screenshot-lightbox');
+      const dialogImg = document.getElementById('lightbox-image');
+      const closeBtn = document.getElementById('lightbox-close');
+
+      document.querySelectorAll('.screenshot-trigger').forEach(btn => {
+        btn.addEventListener('click', () => {
+          dialogImg.src = btn.dataset.src;
+          dialogImg.alt = btn.dataset.alt;
+          dialog.showModal();
+        });
+      });
+
+      closeBtn?.addEventListener('click', () => dialog.close());
+      dialog?.addEventListener('click', (e) => {
+        const rect = dialog.getBoundingClientRect();
+        const isOutside = e.clientX < rect.left || e.clientX > rect.right ||
+                          e.clientY < rect.top || e.clientY > rect.bottom;
+        if (isOutside) dialog.close();
+      });
+    });
+  </script>
 
   <!-- Product Schema for SEO -->
   <script type="application/ld+json" set:html={JSON.stringify({
