@@ -1,11 +1,12 @@
 ---
-import { docsNav } from '../../config/docs-nav';
+import type { NavSection } from '../../config/docs-nav';
 
 interface Props {
   currentSlug?: string;
+  sections: NavSection[];
 }
 
-const { currentSlug = '' } = Astro.props;
+const { currentSlug = '', sections } = Astro.props;
 ---
 
 <nav class="space-y-6">
@@ -13,7 +14,7 @@ const { currentSlug = '' } = Astro.props;
     Documentation
   </a>
 
-  {docsNav.map((section) => (
+  {sections.map((section) => (
     <div>
       <h3 class="text-sm font-semibold text-text uppercase tracking-wider mb-2">
         {section.title}

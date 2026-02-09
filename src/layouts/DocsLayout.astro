@@ -5,7 +5,7 @@ import DocsSidebar from '../components/docs/DocsSidebar.astro';
 import DocsTOC from '../components/docs/DocsTOC.astro';
 import MobileSidebar from '../components/docs/MobileSidebar';
 import Umami from '../components/umami.astro';
-import { docsNav, getPrevNextDocs, getDocSection } from '../config/docs-nav';
+import { docsNav, getPrevNextDocs, getDocSection, getPluginForSlug, getPluginSections } from '../config/docs-nav';
 
 interface Props {
   title: string;
@@ -21,6 +21,8 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
 
 const { prev, next } = slug ? getPrevNextDocs(slug) : { prev: null, next: null };
 const currentSection = slug ? getDocSection(slug) : null;
+const currentPlugin = slug ? getPluginForSlug(slug) : null;
+const sidebarNav = currentPlugin ? getPluginSections(currentPlugin.id) : docsNav;
 ---
 
 <!doctype html>
@@ -56,7 +58,7 @@ const currentSection = slug ? getDocSection(slug) : null;
 
     <!-- Mobile sidebar toggle -->
     <div class="lg:hidden fixed top-16 left-0 right-0 z-40 bg-white border-b border-gray-200 px-4 py-2">
-      <MobileSidebar client:load nav={docsNav} currentSlug={slug} sectionTitle={currentSection?.title || 'Documentation'} />
+      <MobileSidebar client:load nav={sidebarNav} currentSlug={slug} sectionTitle={currentSection?.title || 'Documentation'} />
     </div>
 
     <div class="pt-16 lg:pt-16">
@@ -65,7 +67,7 @@ const currentSection = slug ? getDocSection(slug) : null;
           <!-- Left Sidebar - Desktop only -->
           <aside class="hidden lg:block lg:w-56 flex-shrink-0">
             <div class="sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto pb-10 pr-4">
-              <DocsSidebar currentSlug={slug} />
+              <DocsSidebar currentSlug={slug} sections={sidebarNav} />
             </div>
           </aside>
 
