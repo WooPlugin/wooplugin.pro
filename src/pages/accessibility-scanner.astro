@@ -6,6 +6,10 @@ import FAQ from '../components/FAQ';
 import CompactContactForm from '../components/CompactContactForm';
 import Tooltip from '../components/Tooltip';
 import { Check, X, Shield, Search, FileText, Clock, Globe, Eye } from 'lucide-preact';
+import { accessibilityPricing, getAccessibilityCheckoutUrl } from '../config/accessibility-pricing';
+
+const proCheckoutUrl = getAccessibilityCheckoutUrl('pro');
+const agencyCheckoutUrl = getAccessibilityCheckoutUrl('agency');
 
 const faqs = [
   {
@@ -564,57 +568,12 @@ const comparisonFeatures = [
             Simple Pricing
           </h2>
           <p class="text-lg text-text-muted">
-            Choose your plan. Cancel anytime.
+            Start free, upgrade when you need full compliance
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <!-- Pro Single Site -->
-          <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex flex-col hover:scale-[1.02] hover:shadow-lg transition-all duration-200">
-            <div class="text-center mb-8">
-              <h3 class="text-xl font-semibold text-text mb-2">Pro</h3>
-              <div class="flex items-baseline justify-center gap-1">
-                <span class="text-4xl font-bold text-text">$8</span>
-                <span class="text-text-muted">/month</span>
-              </div>
-              <p class="text-sm text-text-muted mt-1">
-                Billed at $99/year
-              </p>
-              <p class="text-sm text-text-muted">1 site license</p>
-            </div>
-
-            <ul class="space-y-4 mb-8">
-              <li class="flex items-start gap-3">
-                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span class="text-text-muted">All Free features</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span class="text-text-muted">Full site crawl</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span class="text-text-muted">50+ Level AA checks</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span class="text-text-muted">PDF compliance reports</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span class="text-text-muted">1 year of updates & support</span>
-              </li>
-            </ul>
-
-            <a
-              href="#pricing-pro"
-              class="block w-full text-center px-6 py-3 rounded-lg font-medium bg-gray-100 hover:bg-gray-200 text-text transition-colors mt-auto"
-            >
-              Coming Soon
-            </a>
-          </div>
-
-          <!-- Business -->
+        <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          <!-- Pro -->
           <div class="bg-white rounded-2xl p-8 shadow-sm border-2 border-primary relative flex flex-col hover:scale-[1.02] hover:shadow-lg transition-all duration-200">
             <div class="absolute -top-4 left-1/2 -translate-x-1/2">
               <span class="inline-flex items-center px-3 py-1 text-xs font-semibold text-white bg-primary rounded-full">
@@ -623,25 +582,31 @@ const comparisonFeatures = [
             </div>
 
             <div class="text-center mb-8">
-              <h3 class="text-xl font-semibold text-text mb-2">Business</h3>
+              <h3 class="text-xl font-semibold text-text mb-2">Pro</h3>
               <div class="flex items-baseline justify-center gap-1">
-                <span class="text-4xl font-bold text-text">$12</span>
+                <span class="text-4xl font-bold text-text">$8</span>
                 <span class="text-text-muted">/month</span>
               </div>
-              <p class="text-sm text-text-muted mt-1">
-                Billed at $149/year
-              </p>
-              <p class="text-sm text-text-muted">5 site licenses</p>
+              <p class="text-sm text-text-muted mt-1">Billed at $99/year</p>
+              <p class="text-sm text-text-muted">1 site license</p>
             </div>
 
             <ul class="space-y-4 mb-8">
               <li class="flex items-start gap-3">
                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span class="text-text-muted">Everything in Pro</span>
+                <span class="text-text-muted">Everything in Free</span>
               </li>
               <li class="flex items-start gap-3">
                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span class="text-text-muted">5 site activations</span>
+                <span class="text-text-muted">Full site crawl</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">30+ Level AA checks</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">PDF compliance reports</span>
               </li>
               <li class="flex items-start gap-3">
                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
@@ -649,23 +614,15 @@ const comparisonFeatures = [
               </li>
               <li class="flex items-start gap-3">
                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span class="text-text-muted">WooCommerce checks</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span class="text-text-muted">Monitoring & alerts</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span class="text-text-muted">Priority support</span>
+                <span class="text-text-muted">Priority email support</span>
               </li>
             </ul>
 
             <a
-              href="#pricing-business"
+              href={proCheckoutUrl}
               class="block w-full text-center px-6 py-3 rounded-lg font-medium bg-primary hover:bg-primary-dark text-white transition-colors mt-auto"
             >
-              Coming Soon
+              Get Pro
             </a>
           </div>
 
@@ -677,16 +634,14 @@ const comparisonFeatures = [
                 <span class="text-4xl font-bold text-text">$21</span>
                 <span class="text-text-muted">/month</span>
               </div>
-              <p class="text-sm text-text-muted mt-1">
-                Billed at $249/year
-              </p>
+              <p class="text-sm text-text-muted mt-1">Billed at $249/year</p>
               <p class="text-sm text-text-muted">Unlimited sites</p>
             </div>
 
             <ul class="space-y-4 mb-8">
               <li class="flex items-start gap-3">
                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span class="text-text-muted">Everything in Business</span>
+                <span class="text-text-muted">Everything in Pro</span>
               </li>
               <li class="flex items-start gap-3">
                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
@@ -698,29 +653,29 @@ const comparisonFeatures = [
               </li>
               <li class="flex items-start gap-3">
                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Monitoring & Slack alerts</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                 <span class="text-text-muted">Bulk fix across all pages</span>
               </li>
               <li class="flex items-start gap-3">
                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                 <span class="text-text-muted">Early access to new features</span>
               </li>
-              <li class="flex items-start gap-3">
-                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span class="text-text-muted">1 year of updates & support</span>
-              </li>
             </ul>
 
             <a
-              href="#pricing-agency"
+              href={agencyCheckoutUrl}
               class="block w-full text-center px-6 py-3 rounded-lg font-medium bg-gray-100 hover:bg-gray-200 text-text transition-colors mt-auto"
             >
-              Coming Soon
+              Get Agency
             </a>
           </div>
         </div>
 
         <p class="text-center text-sm text-text-muted mt-8">
-          30-day money-back guarantee.
+          30-day money-back guarantee. 1 year of updates and support included.
         </p>
       </div>
     </section>
@@ -817,7 +772,7 @@ const comparisonFeatures = [
       "lowPrice": "0",
       "highPrice": "249",
       "priceCurrency": "USD",
-      "offerCount": "4"
+      "offerCount": "2"
     },
     "brand": {
       "@type": "Brand",
