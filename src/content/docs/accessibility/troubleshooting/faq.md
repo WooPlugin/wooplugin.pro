@@ -128,7 +128,7 @@ No. Pro is a complete replacement. When you install Pro, it includes everything 
 
 ### How do I contact support?
 
-- **Free users:** [WordPress.org support forum](https://wordpress.org/support/plugin/wp-accessibility-scanner/)
+- **Free users:** [WordPress.org support forum](https://wordpress.org/support/plugin/accessibility-scanner/)
 - **Pro users:** Email support@wooplugin.pro for priority support
 
 ### What should I include in a support request?

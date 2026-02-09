@@ -20,7 +20,7 @@ WooCommerce is **not required**. The plugin works with any WordPress site.
 
 ### Manual Installation
 
-1. Download the plugin ZIP from [WordPress.org](https://wordpress.org/plugins/wp-accessibility-scanner/)
+1. Download the plugin ZIP from [WordPress.org](https://wordpress.org/plugins/accessibility-scanner/)
 2. Go to **Plugins → Add New → Upload Plugin**
 3. Select the ZIP file and click **Install Now**
 4. Click **Activate**
