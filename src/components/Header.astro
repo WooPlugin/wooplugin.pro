@@ -1,26 +1,38 @@
 ---
 interface Props {
-  variant?: 'default' | 'pro';
   promotion?: {
     title: string;
     message: string;
     code?: string;
     style?: 'highlight' | 'subtle' | 'urgent';
+    href?: string;
   };
 }
 
-const { variant = 'default', promotion } = Astro.props;
+const { promotion } = Astro.props;
 
-const navLinks = [
-  { href: '/google-shopping-pro', label: 'Pro' },
-  { href: '/docs', label: 'Docs' },
-  { href: '/guides', label: 'Guides' },
-  { href: '/google-shopping-pro#pricing', label: 'Pricing' },
+const plugins = [
+  {
+    href: '/google-shopping',
+    label: 'Google Shopping',
+    description: 'Product feeds for WooCommerce',
+    docsHref: '/docs/getting-started/installation',
+    supportHref: '/support#google-shopping',
+  },
+  {
+    href: '/accessibility-scanner',
+    label: 'Accessibility Scanner',
+    description: 'WCAG compliance for WordPress',
+    docsHref: '/docs/accessibility/getting-started/installation',
+    supportHref: '/support#accessibility-scanner',
+  },
 ];
 
-const ctaLink = variant === 'pro'
-  ? { href: '/google-shopping-pro#pricing', label: 'Buy Pro' }
-  : { href: 'https://wordpress.org/plugins/gtin-product-feed-for-google-shopping/?utm_source=wooplugin&utm_medium=website&utm_campaign=header_cta', label: 'Get Free' };
+const navLinks = [
+  { href: '/docs', label: 'Docs' },
+  { href: '/guides', label: 'Guides' },
+  { href: '/support', label: 'Support' },
+];
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
@@ -32,7 +44,7 @@ const ctaLink = variant === 'pro'
         {promotion.code && (
           <code class="bg-white/20 px-2 py-0.5 rounded font-mono font-bold text-xs">{promotion.code}</code>
         )}
-        <a href="/google-shopping-pro#pricing" class="bg-white text-gray-900 px-3 py-1 rounded-full text-xs font-semibold hover:bg-gray-100 transition-colors">
+        <a href={promotion.href || '/google-shopping#pricing'} class="bg-white text-gray-900 px-3 py-1 rounded-full text-xs font-semibold hover:bg-gray-100 transition-colors">
           Claim Offer
         </a>
       </div>
@@ -50,6 +62,36 @@ const ctaLink = variant === 'pro'
 
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-8">
+        <!-- Plugins Dropdown -->
+        <div class="plugins-dropdown relative">
+          <button type="button" class="text-sm font-medium text-text-muted hover:text-primary transition-colors inline-flex items-center gap-1">
+            Plugins
+            <svg class="w-3.5 h-3.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="plugins-dropdown-menu absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible transition-all duration-150">
+            <div class="bg-white rounded-xl border border-gray-200 shadow-lg p-2 min-w-[280px]">
+              {plugins.map((plugin, i) => (
+                <div class:list={[i > 0 && 'border-t border-gray-100 mt-1 pt-1']}>
+                  <a
+                    href={plugin.href}
+                    class="flex flex-col gap-0.5 px-3 py-2.5 rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    <span class="text-sm font-medium text-text">{plugin.label}</span>
+                    <span class="text-xs text-text-muted">{plugin.description}</span>
+                  </a>
+                  <div class="flex gap-1 px-3 pb-2">
+                    <a href={plugin.docsHref} class="text-xs text-text-muted hover:text-primary transition-colors">Docs</a>
+                    <span class="text-xs text-gray-300">&middot;</span>
+                    <a href={plugin.supportHref} class="text-xs text-text-muted hover:text-primary transition-colors">Support</a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {navLinks.map(link => (
           <a
             href={link.href}
@@ -63,7 +105,7 @@ const ctaLink = variant === 'pro'
       <!-- Action Buttons -->
       <div class="flex items-center gap-2">
         <a
-          href="https://github.com/WooPlugin/product-feed-for-woocommerce"
+          href="https://github.com/WooPlugin"
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center justify-center w-9 h-9 text-text-muted hover:text-primary hover:bg-gray-100 rounded-lg transition-colors"
@@ -85,10 +127,10 @@ const ctaLink = variant === 'pro'
           </svg>
         </a>
         <a
-          href={ctaLink.href}
+          href="/#plugins"
           class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary-dark rounded-lg transition-colors"
         >
-          {ctaLink.label}
+          Get Started
         </a>
       </div>
     </div>
@@ -96,6 +138,16 @@ const ctaLink = variant === 'pro'
 </header>
 
 <style>
+  .plugins-dropdown:hover .plugins-dropdown-menu,
+  .plugins-dropdown:focus-within .plugins-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .plugins-dropdown:hover button svg {
+    transform: rotate(180deg);
+  }
+
   .promo-banner {
     padding: 8px 0;
     text-align: center;

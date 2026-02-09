@@ -1,0 +1,752 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FAQ from '../components/FAQ';
+import CompactContactForm from '../components/CompactContactForm';
+import Tooltip from '../components/Tooltip';
+import { Check, X, Shield, Search, FileText, Clock, Globe, Eye } from 'lucide-preact';
+
+const faqs = [
+  {
+    question: 'How is this different from overlay widgets like accessiBe?',
+    answer: 'Overlay widgets add a JavaScript layer on top of your site but don\'t fix the underlying HTML issues. This plugin scans your actual HTML and helps you fix real problems.',
+  },
+  {
+    question: 'Do I need WooCommerce?',
+    answer: 'No. This works with any WordPress site. WooCommerce-specific checks are available in Pro for stores that need them.',
+  },
+  {
+    question: 'What is WCAG 2.2?',
+    answer: 'The current international standard for web accessibility with three levels: A (minimum), AA (recommended), AAA (highest). Most laws require Level AA.',
+  },
+  {
+    question: 'How many scans do I get?',
+    answer: 'Free: 5 scans per month, one page per scan. Pro removes limits and adds full-site scanning.',
+  },
+  {
+    question: 'Does this slow down my site?',
+    answer: 'No. Scanning runs server-side in the admin only. Zero frontend JavaScript or CSS.',
+  },
+  {
+    question: 'Is this enough for legal compliance?',
+    answer: 'This plugin finds and helps fix accessibility issues. Full legal compliance also involves manual testing and ongoing monitoring. We recommend using this alongside professional audits.',
+  },
+  {
+    question: 'What happens when my Pro license expires?',
+    answer: 'The plugin keeps working. You just won\'t receive updates or support until you renew.',
+  },
+];
+
+const comparisonFeatures = [
+  { feature: 'WCAG 2.2 Level A checks (20+)', free: true, pro: true, description: 'Automated checks for missing alt text, empty links, form labels, heading structure, color contrast, ARIA validation, and more.' },
+  { feature: 'Accessibility score (0-100)', free: true, pro: true, description: 'A weighted score showing how well a page meets accessibility standards, with breakdown by severity.' },
+  { feature: 'Quick fixes', free: true, pro: true, description: 'Fix common issues like missing alt text, empty links, and missing form labels directly from the dashboard.' },
+  { feature: 'Statement generator', free: true, pro: true, description: 'Generate a WCAG-compliant accessibility statement page for your site with auto-filled scan data.' },
+  { feature: '5 scans per month', free: true, pro: true, description: 'Free includes 5 scans per month. Pro removes this limit entirely.' },
+  { feature: 'Unlimited scans', free: false, pro: true, description: 'No monthly scan limit. Scan as many pages as you need, as often as you need.' },
+  { feature: 'Full site crawl', free: false, pro: true, description: 'Automatically scan every page, post, and product on your site in one click.' },
+  { feature: 'Level AA checks (50+)', free: false, pro: true, description: 'Complete WCAG 2.2 Level AA testing including text spacing, focus visibility, target size, and more.' },
+  { feature: 'Scheduled auto-scans', free: false, pro: true, description: 'Set daily, weekly, or monthly automatic scans with email notifications on completion.' },
+  { feature: 'PDF compliance reports', free: false, pro: true, description: 'Professional PDF reports with executive summary, issue details, and remediation guidance.' },
+  { feature: 'WooCommerce checks', free: false, pro: true, description: 'Product image alt text, cart/checkout form labels, price announcements, and variation accessibility.' },
+  { feature: 'Monitoring & alerts', free: false, pro: true, description: 'Email and Slack notifications when your accessibility score drops below a threshold.' },
+  { feature: 'Bulk fix', free: false, pro: true, description: 'Fix issues across your entire site at once with a review queue to approve, skip, or edit each fix.' },
+  { feature: 'Agency white-label', free: false, pro: true, description: 'Custom branding on PDF reports with your logo, company name, and footer.' },
+  { feature: 'Priority support', free: false, pro: true },
+];
+---
+
+<Layout
+  title="Accessibility Scanner for WordPress - WCAG Compliance"
+  description="Scan your WordPress site for WCAG 2.2 accessibility issues. 20+ automated checks, quick fixes, compliance reports. Free plugin."
+>
+  <Header />
+
+  <main>
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+          </span>
+          Free WordPress Plugin
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-text mb-6">
+          Your WordPress Site
+          <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            {' '}Probably Isn't Accessible
+          </span>
+        </h1>
+
+        <p class="text-lg sm:text-xl text-text-muted mb-8 max-w-2xl mx-auto">
+          The European Accessibility Act is law. Overlay widgets don't fix your HTML.
+          Scan your site, find real issues, fix them.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <span class="relative group inline-flex">
+            <span class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gray-400 rounded-lg cursor-not-allowed">
+              Get Free Plugin
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </span>
+            <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 px-3 py-1 text-xs font-medium text-white bg-gray-800 rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+              Coming Soon
+            </span>
+          </span>
+          <a href="#pro" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-text border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+            See Pro Features ↓
+          </a>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-text-muted">
+          <span class="flex items-center gap-2">
+            <Check className="w-4 h-4 text-accent" />
+            20+ WCAG 2.2 checks
+          </span>
+          <span class="flex items-center gap-2">
+            <Check className="w-4 h-4 text-accent" />
+            No overlay widgets
+          </span>
+          <span class="flex items-center gap-2">
+            <Check className="w-4 h-4 text-accent" />
+            Quick fixes included
+          </span>
+          <span class="flex items-center gap-2">
+            <Check className="w-4 h-4 text-accent" />
+            No frontend impact
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Accessibility Now -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-bg-alt">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl sm:text-3xl font-bold text-text mb-3">
+            Why Accessibility Now
+          </h2>
+          <p class="text-text-muted max-w-2xl mx-auto">
+            Accessibility isn't optional anymore
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-6">
+          <div class="text-center p-6 bg-white rounded-xl border border-gray-100">
+            <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+              <Shield className="w-6 h-6 text-primary" />
+            </div>
+            <h3 class="font-semibold text-text mb-2">It's the Law</h3>
+            <p class="text-sm text-text-muted">The European Accessibility Act became mandatory in June 2025. Sites serving EU customers must meet accessibility standards.</p>
+          </div>
+
+          <div class="text-center p-6 bg-white rounded-xl border border-gray-100">
+            <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
+              <X className="w-6 h-6 text-accent" />
+            </div>
+            <h3 class="font-semibold text-text mb-2">Overlays Don't Work</h3>
+            <p class="text-sm text-text-muted">Overlay widgets add a JavaScript layer but don't fix your HTML. They're widely criticized by accessibility experts.</p>
+          </div>
+
+          <div class="text-center p-6 bg-white rounded-xl border border-gray-100">
+            <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-secondary/10 flex items-center justify-center">
+              <Globe className="w-6 h-6 text-secondary" />
+            </div>
+            <h3 class="font-semibold text-text mb-2">Everyone Benefits</h3>
+            <p class="text-sm text-text-muted">Accessible sites are better for SEO, mobile users, and everyone. Good accessibility is good UX.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem / Solution Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-bg-alt">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
+            Real Scanning, Real Fixes
+          </h2>
+          <p class="text-lg text-text-muted max-w-2xl mx-auto">
+            No overlays. No cosmetic patches. Actual HTML analysis.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Problems -->
+          <div class="space-y-4">
+            <h3 class="font-semibold text-text mb-4 flex items-center gap-2">
+              <X className="w-5 h-5 text-red-500" />
+              The Problems
+            </h3>
+            <div class="bg-white rounded-lg p-4 border border-red-100">
+              <p class="text-text-muted text-sm">Overlay widgets that don't fix real issues</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 border border-red-100">
+              <p class="text-text-muted text-sm">No idea which pages have problems</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 border border-red-100">
+              <p class="text-text-muted text-sm">Manual WCAG audits cost thousands</p>
+            </div>
+          </div>
+
+          <!-- Solutions -->
+          <div class="space-y-4">
+            <h3 class="font-semibold text-text mb-4 flex items-center gap-2">
+              <Check className="w-5 h-5 text-accent" />
+              Our Solution
+            </h3>
+            <div class="bg-white rounded-lg p-4 border border-green-100">
+              <p class="text-text-muted text-sm">Real HTML scanning with DOMDocument</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 border border-green-100">
+              <p class="text-text-muted text-sm">Automated checks against WCAG 2.2 Level A</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 border border-green-100">
+              <p class="text-text-muted text-sm">Quick fixes for common issues, free</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
+            How It Works
+          </h2>
+          <p class="text-lg text-text-muted">
+            Three steps to better accessibility
+          </p>
+        </div>
+
+        <div class="relative grid md:grid-cols-3 gap-8">
+          <!-- Connecting line (desktop only) -->
+          <div class="hidden md:block absolute top-6 left-[16.67%] right-[16.67%] h-0.5 bg-gradient-to-r from-primary via-primary to-primary opacity-20"></div>
+
+          <div class="relative text-center">
+            <div class="relative z-10 flex items-center justify-center w-12 h-12 mx-auto mb-6 bg-primary text-white rounded-full font-bold text-lg shadow-lg shadow-primary/25">
+              1
+            </div>
+            <h3 class="text-xl font-semibold text-text mb-3">Install Plugin</h3>
+            <p class="text-text-muted">
+              Activate from WordPress.org. No configuration needed. Works with any WordPress site.
+            </p>
+          </div>
+
+          <div class="relative text-center">
+            <div class="relative z-10 flex items-center justify-center w-12 h-12 mx-auto mb-6 bg-primary text-white rounded-full font-bold text-lg shadow-lg shadow-primary/25">
+              2
+            </div>
+            <h3 class="text-xl font-semibold text-text mb-3">Scan a Page</h3>
+            <p class="text-text-muted">
+              Enter a URL or click a quick-scan shortcut. Results in seconds with a score from 0-100.
+            </p>
+          </div>
+
+          <div class="relative text-center">
+            <div class="relative z-10 flex items-center justify-center w-12 h-12 mx-auto mb-6 bg-primary text-white rounded-full font-bold text-lg shadow-lg shadow-primary/25">
+              3
+            </div>
+            <h3 class="text-xl font-semibold text-text mb-3">Fix Issues</h3>
+            <p class="text-text-muted">
+              View issues by severity. Apply quick fixes for common problems. Generate an accessibility statement.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What Gets Checked (Free) -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-bg-alt">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
+            What Gets Checked
+          </h2>
+          <p class="text-lg text-text-muted">
+            20+ automated WCAG 2.2 Level A checks, free
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="flex items-start gap-4 p-6 bg-white rounded-xl">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <Eye className="w-5 h-5 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-1">Images</h3>
+              <p class="text-sm text-text-muted">Missing alt text, decorative images without proper markup.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 p-6 bg-white rounded-xl">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <FileText className="w-5 h-5 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-1">Forms</h3>
+              <p class="text-sm text-text-muted">Missing labels, input associations, unlabeled form controls.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 p-6 bg-white rounded-xl">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <Globe className="w-5 h-5 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-1">Navigation</h3>
+              <p class="text-sm text-text-muted">Empty links, empty buttons, missing skip navigation.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 p-6 bg-white rounded-xl">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <Search className="w-5 h-5 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-1">Structure</h3>
+              <p class="text-sm text-text-muted">Heading hierarchy, landmarks, page title, document language.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 p-6 bg-white rounded-xl">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <Shield className="w-5 h-5 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-1">ARIA</h3>
+              <p class="text-sm text-text-muted">Invalid roles, broken references, missing ARIA properties.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 p-6 bg-white rounded-xl">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <Eye className="w-5 h-5 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-1">Visual</h3>
+              <p class="text-sm text-text-muted">Color contrast for text and large text against backgrounds.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="flex flex-wrap items-center justify-center gap-8 text-text-muted">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-text">Free</div>
+            <div class="text-sm">Core Scanner</div>
+          </div>
+          <div class="w-px h-12 bg-gray-200"></div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-text">20+</div>
+            <div class="text-sm">WCAG Checks</div>
+          </div>
+          <div class="w-px h-12 bg-gray-200"></div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-text">WCAG 2.2</div>
+            <div class="text-sm">Current Standard</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRO DIVIDER -->
+    <section id="pro" class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-bg-alt">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 mb-4 text-sm font-medium text-primary bg-primary/10 rounded-full">
+          <Shield className="w-4 h-4" />
+          Pro
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
+          Need Full Compliance?
+        </h2>
+        <p class="text-lg text-text-muted">
+          Unlimited scans, full site crawl, Level AA checks, PDF reports, and more.
+        </p>
+      </div>
+    </section>
+
+    <!-- Pro Features -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-bg-alt">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
+            Pro Features
+          </h2>
+          <p class="text-lg text-text-muted">
+            Everything in Free, plus full compliance tools
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-8">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <Search className="w-6 h-6 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-2">Unlimited Scans</h3>
+              <p class="text-text-muted">
+                No monthly limit. Scan as many pages as you need, as often as you need.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <Globe className="w-6 h-6 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-2">Full Site Crawl</h3>
+              <p class="text-text-muted">
+                Scan every page, post, and product on your site automatically in one click.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <Clock className="w-6 h-6 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-2">Scheduled Scans</h3>
+              <p class="text-text-muted">
+                Daily, weekly, or monthly auto-scans with email notifications on completion.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <Shield className="w-6 h-6 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-2">Level AA Checks</h3>
+              <p class="text-text-muted">
+                50+ WCAG 2.2 AA checks including text spacing, focus visibility, and target size.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <FileText className="w-6 h-6 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-2">PDF Reports</h3>
+              <p class="text-text-muted">
+                Professional compliance reports with executive summary, issue details, and remediation guidance.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <Eye className="w-6 h-6 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-2">WooCommerce Checks</h3>
+              <p class="text-text-muted">
+                Product images, cart labels, checkout accessibility. Loads conditionally when WooCommerce is active.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section id="comparison" class="py-20 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
+            Free vs Pro
+          </h2>
+          <p class="text-lg text-text-muted">
+            Everything in Free, plus full compliance
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <div class="grid grid-cols-3 bg-gray-50 border-b border-gray-200">
+            <div class="p-4 font-semibold text-text">Feature</div>
+            <div class="p-4 font-semibold text-text text-center">Free</div>
+            <div class="p-4 font-semibold text-primary text-center bg-primary/5">Pro</div>
+          </div>
+          {comparisonFeatures.map((item, i) => (
+            <div class={`grid grid-cols-3 hover:bg-gray-50 transition-colors ${i < comparisonFeatures.length - 1 ? 'border-b border-gray-100' : ''}`}>
+              <div class="p-4 text-text-muted flex items-center justify-between gap-2">
+                <span>{item.feature}</span>
+                {item.description && (
+                  <Tooltip client:visible content={item.description} />
+                )}
+              </div>
+              <div class="p-4 flex justify-center">
+                {item.free === true ? (
+                  <Check className="w-5 h-5 text-accent" />
+                ) : (
+                  <X className="w-5 h-5 text-gray-300" />
+                )}
+              </div>
+              <div class="p-4 flex justify-center bg-primary/5">
+                {item.pro === true ? (
+                  <Check className="w-5 h-5 text-accent" />
+                ) : (
+                  <X className="w-5 h-5 text-gray-300" />
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-20 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
+            Simple Pricing
+          </h2>
+          <p class="text-lg text-text-muted">
+            Choose your plan. Cancel anytime.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <!-- Pro Single Site -->
+          <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex flex-col hover:scale-[1.02] hover:shadow-lg transition-all duration-200">
+            <div class="text-center mb-8">
+              <h3 class="text-xl font-semibold text-text mb-2">Pro</h3>
+              <div class="flex items-baseline justify-center gap-1">
+                <span class="text-4xl font-bold text-text">$8</span>
+                <span class="text-text-muted">/month</span>
+              </div>
+              <p class="text-sm text-text-muted mt-1">
+                Billed at $99/year
+              </p>
+              <p class="text-sm text-text-muted">1 site license</p>
+            </div>
+
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">All Free features</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Unlimited scans</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Full site crawl</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">50+ Level AA checks</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">PDF compliance reports</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">1 year of updates & support</span>
+              </li>
+            </ul>
+
+            <a
+              href="#pricing-pro"
+              class="block w-full text-center px-6 py-3 rounded-lg font-medium bg-gray-100 hover:bg-gray-200 text-text transition-colors mt-auto"
+            >
+              Coming Soon
+            </a>
+          </div>
+
+          <!-- Business -->
+          <div class="bg-white rounded-2xl p-8 shadow-sm border-2 border-primary relative flex flex-col hover:scale-[1.02] hover:shadow-lg transition-all duration-200">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+              <span class="inline-flex items-center px-3 py-1 text-xs font-semibold text-white bg-primary rounded-full">
+                Most Popular
+              </span>
+            </div>
+
+            <div class="text-center mb-8">
+              <h3 class="text-xl font-semibold text-text mb-2">Business</h3>
+              <div class="flex items-baseline justify-center gap-1">
+                <span class="text-4xl font-bold text-text">$12</span>
+                <span class="text-text-muted">/month</span>
+              </div>
+              <p class="text-sm text-text-muted mt-1">
+                Billed at $149/year
+              </p>
+              <p class="text-sm text-text-muted">5 site licenses</p>
+            </div>
+
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Everything in Pro</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">5 site activations</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Scheduled auto-scans</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">WooCommerce checks</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Monitoring & alerts</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Priority support</span>
+              </li>
+            </ul>
+
+            <a
+              href="#pricing-business"
+              class="block w-full text-center px-6 py-3 rounded-lg font-medium bg-primary hover:bg-primary-dark text-white transition-colors mt-auto"
+            >
+              Coming Soon
+            </a>
+          </div>
+
+          <!-- Agency -->
+          <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex flex-col hover:scale-[1.02] hover:shadow-lg transition-all duration-200">
+            <div class="text-center mb-8">
+              <h3 class="text-xl font-semibold text-text mb-2">Agency</h3>
+              <div class="flex items-baseline justify-center gap-1">
+                <span class="text-4xl font-bold text-text">$21</span>
+                <span class="text-text-muted">/month</span>
+              </div>
+              <p class="text-sm text-text-muted mt-1">
+                Billed at $249/year
+              </p>
+              <p class="text-sm text-text-muted">Unlimited sites</p>
+            </div>
+
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Everything in Business</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Unlimited site activations</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">White-label PDF reports</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Bulk fix across all pages</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">Early access to new features</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-text-muted">1 year of updates & support</span>
+              </li>
+            </ul>
+
+            <a
+              href="#pricing-agency"
+              class="block w-full text-center px-6 py-3 rounded-lg font-medium bg-gray-100 hover:bg-gray-200 text-text transition-colors mt-auto"
+            >
+              Coming Soon
+            </a>
+          </div>
+        </div>
+
+        <p class="text-center text-sm text-text-muted mt-8">
+          14-day money-back guarantee.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <FAQ
+      client:visible
+      faqs={faqs}
+      title="Questions?"
+      subtitle="Common questions answered"
+    />
+
+    <!-- Final CTA -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary to-secondary">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+          Make Your Site Accessible
+        </h2>
+        <p class="text-lg text-white/80 mb-8">
+          Start with a free scan. Upgrade when you need full compliance.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <span class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white/60 bg-white/20 rounded-lg cursor-not-allowed">
+            Coming Soon
+          </span>
+          <a href="#how-it-works" class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white border border-white/30 rounded-lg hover:bg-white/10 transition-colors">
+            Learn More
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-xl mx-auto">
+        <h2 class="text-xl font-bold text-text mb-2 text-center">
+          Questions?
+        </h2>
+        <p class="text-text-muted mb-6 text-center text-sm">
+          I respond personally to every message.
+        </p>
+        <CompactContactForm client:visible subject="Accessibility Scanner Question" />
+      </div>
+    </section>
+  </main>
+  <Footer />
+
+  <!-- Product Schema for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Accessibility Scanner for WordPress",
+    "description": "Scan your WordPress site for WCAG 2.2 accessibility issues. 20+ automated checks, quick fixes, compliance reports.",
+    "applicationCategory": "WebApplication",
+    "operatingSystem": "WordPress",
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "0",
+      "highPrice": "249",
+      "priceCurrency": "USD",
+      "offerCount": "4"
+    },
+    "brand": {
+      "@type": "Brand",
+      "name": "WooPlugin"
+    }
+  })} />
+</Layout>

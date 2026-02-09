@@ -4,57 +4,79 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ContactForm from '../components/ContactForm.tsx';
 
-const quickLinks = [
+const pluginSupport = [
   {
-    title: 'Getting Started',
-    description: 'Installation, setup, and first steps',
-    href: '/docs/getting-started/installation',
+    id: 'google-shopping',
+    name: 'Google Shopping',
+    description: 'Product Feed for WooCommerce',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />',
+    links: [
+      { title: 'Getting Started', description: 'Installation and setup', href: '/docs/getting-started/installation' },
+      { title: 'Troubleshooting', description: 'Common errors and solutions', href: '/docs/troubleshooting/common-errors' },
+      { title: 'FAQ', description: 'Frequently asked questions', href: '/docs/troubleshooting/faq' },
+      { title: 'Full Documentation', description: 'All Google Shopping docs', href: '/docs' },
+    ],
   },
   {
-    title: 'Troubleshooting',
-    description: 'Solutions to common issues',
-    href: '/docs/troubleshooting/common-errors',
-  },
-  {
-    title: 'FAQ',
-    description: 'Frequently asked questions',
-    href: '/docs/troubleshooting/faq',
-  },
-  {
-    title: 'Documentation',
-    description: 'Full plugin documentation',
-    href: '/docs',
+    id: 'accessibility-scanner',
+    name: 'Accessibility Scanner',
+    description: 'WCAG Compliance for WordPress',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />',
+    links: [
+      { title: 'Getting Started', description: 'Installation and first scan', href: '/docs/accessibility/getting-started/installation' },
+      { title: 'FAQ', description: 'Frequently asked questions', href: '/docs/accessibility/troubleshooting/faq' },
+      { title: 'Full Documentation', description: 'All Accessibility docs', href: '/docs' },
+    ],
   },
 ];
 ---
 
 <Layout
   title="Support"
-  description="Get help with Product Feed for WooCommerce. Browse documentation or contact us directly."
+  description="Get help with WooPlugin products. Browse per-plugin documentation or contact us directly."
 >
   <Header />
   <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-3xl mx-auto">
-      <h1 class="text-4xl font-bold text-text mb-4">Support</h1>
-      <p class="text-lg text-text-muted mb-12">
-        Find answers in our documentation or contact us directly.
-      </p>
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-text mb-4">Support</h1>
+        <p class="text-lg text-text-muted">
+          Choose your plugin to find help, or contact us directly.
+        </p>
+      </div>
 
-      <section class="mb-16">
-        <h2 class="text-2xl font-semibold text-text mb-6">Quick Links</h2>
-        <div class="grid sm:grid-cols-2 gap-4">
-          {quickLinks.map(link => (
-            <a
-              href={link.href}
-              class="block p-6 border border-gray-200 rounded-xl hover:border-primary hover:shadow-sm transition-all"
-            >
-              <h3 class="font-semibold text-text mb-1">{link.title}</h3>
-              <p class="text-sm text-text-muted">{link.description}</p>
-            </a>
-          ))}
-        </div>
-      </section>
+      <!-- Per-plugin support sections -->
+      <div class="space-y-12 mb-16">
+        {pluginSupport.map((plugin) => (
+          <section id={plugin.id} class="scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <Fragment set:html={plugin.icon} />
+                </svg>
+              </div>
+              <div>
+                <h2 class="text-2xl font-bold text-text">{plugin.name}</h2>
+                <p class="text-sm text-text-muted">{plugin.description}</p>
+              </div>
+            </div>
 
+            <div class="grid sm:grid-cols-2 gap-4">
+              {plugin.links.map(link => (
+                <a
+                  href={link.href}
+                  class="block p-5 border border-gray-200 rounded-xl hover:border-primary hover:shadow-sm transition-all"
+                >
+                  <h3 class="font-semibold text-text mb-1">{link.title}</h3>
+                  <p class="text-sm text-text-muted">{link.description}</p>
+                </a>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+
+      <!-- Contact form -->
       <section>
         <h2 class="text-2xl font-semibold text-text mb-2">Still need help?</h2>
         <p class="text-text-muted mb-6">

@@ -2,70 +2,40 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import FAQ from '../components/FAQ';
 import ContactForm from '../components/ContactForm';
-import { Check, X } from 'lucide-preact';
-
-const wpOrgUrl = 'https://wordpress.org/plugins/gtin-product-feed-for-google-shopping/?utm_source=wooplugin&utm_medium=website&utm_campaign=homepage';
-
-const homepageFaqs = [
-  {
-    question: 'Is GTIN/Brand/MPN really free?',
-    answer: 'Yes, completely free with no limits. We believe product identifiers are essential features, not premium upsells. Use them on all your products and variations.',
-  },
-  {
-    question: 'What\'s the catch? Why is it free?',
-    answer: 'No catch. The Pro version adds automation (scheduled updates, auto-regeneration) for stores that need it. Most stores work great with the free version forever.',
-  },
-  {
-    question: 'How is this different from Google\'s official plugin?',
-    answer: 'Google\'s plugin requires WordPress.com/Jetpack connection. Ours is standalone—just install and use. No account required, no external dependencies.',
-  },
-  {
-    question: 'Do I need a GTIN for every product?',
-    answer: 'Google requires GTINs for most manufactured products. Products without GTINs (handmade, custom, vintage) can use identifier_exists=false. But products with GTINs get priority placement in both paid ads and free organic listings—Google uses them to show reviews, ratings, and price comparisons.',
-  },
-];
+import { Check } from 'lucide-preact';
 ---
 
 <Layout
-  title="WooPlugin.pro - Google Shopping for WooCommerce"
-  description="Add GTIN, Brand, MPN fields to WooCommerce products. Generate Google Merchant Center feeds. Free plugin, unlimited products."
+  title="WooPlugin - WordPress Plugins That Actually Work"
+  description="Focused WordPress plugins for WooCommerce stores and site owners. Google Shopping feeds, accessibility scanning, and more. Free on WordPress.org."
 >
   <Header />
   <main>
     <!-- Hero Section -->
     <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
       <div class="max-w-6xl mx-auto text-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full">
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-          </span>
-          Free WooCommerce Plugin
-        </div>
-
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-text mb-6">
-          Sell on Google Shopping
+          WordPress Plugins
           <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            {' '}in 5 Minutes
+            {' '}That Actually Work
           </span>
         </h1>
 
         <p class="text-lg sm:text-xl text-text-muted mb-8 max-w-2xl mx-auto">
-          Add GTIN, Brand, MPN fields to your products.
-          Auto-generate Google Merchant Center feeds.
+          Focused tools for WooCommerce store owners and WordPress site managers.
+          No bloat. No tracking. Just clean code that solves real problems.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-          <a href={wpOrgUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary rounded-lg hover:bg-primary/90 transition-colors">
-            Get Free Plugin
+          <a href="#plugins" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary rounded-lg hover:bg-primary/90 transition-colors">
+            Browse Plugins
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
           </a>
-          <a href="/google-shopping-pro" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-text border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-            View Pro Features
+          <a href="https://wordpress.org/plugins/gtin-product-feed-for-google-shopping/?utm_source=wooplugin&utm_medium=website&utm_campaign=homepage" target="_blank" rel="noopener" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-text border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+            View on WordPress.org
           </a>
         </div>
 
@@ -73,310 +43,185 @@ const homepageFaqs = [
         <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-text-muted">
           <span class="flex items-center gap-2">
             <Check className="w-4 h-4 text-accent" />
-            Unlimited products
+            Free on WordPress.org
           </span>
           <span class="flex items-center gap-2">
             <Check className="w-4 h-4 text-accent" />
-            No credit card required
+            No tracking
           </span>
           <span class="flex items-center gap-2">
             <Check className="w-4 h-4 text-accent" />
-            HPOS compatible
+            WordPress coding standards
           </span>
           <span class="flex items-center gap-2">
             <Check className="w-4 h-4 text-accent" />
-            Google Shopping ready
+            PHP 8.0+
           </span>
         </div>
-
-        <!-- Pro teaser -->
-        <p class="mt-4 text-sm text-text-muted/70">
-          <a href="/google-shopping-pro" class="hover:text-primary transition-colors">
-            <span class="text-primary">Pro:</span> Auto-updates, multi-channel feeds, Smart Auto-fill →
-          </a>
-        </p>
       </div>
     </section>
 
-    <!-- Why GTIN Matters Section -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-bg-alt">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-10">
-          <h2 class="text-2xl sm:text-3xl font-bold text-text mb-3">
-            Why GTINs Matter for Google Shopping
+    <!-- Plugins Section -->
+    <section id="plugins" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-bg-alt">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
+            Our Plugins
           </h2>
-          <p class="text-text-muted max-w-2xl mx-auto">
-            Global Trade Item Numbers aren't optional—they're essential for visibility
+          <p class="text-lg text-text-muted">
+            Each plugin does one thing well
           </p>
         </div>
 
-        <div class="grid sm:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Google Shopping Plugin -->
+          <a href="/google-shopping" class="group bg-white rounded-2xl border border-gray-200 p-8 hover:border-primary/30 hover:shadow-lg transition-all duration-200">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-text group-hover:text-primary transition-colors">Google Shopping</h3>
+                <p class="text-sm text-text-muted">Product Feed for WooCommerce</p>
+              </div>
+            </div>
+
+            <p class="text-text-muted mb-6">
+              Add GTIN, Brand, MPN fields to your products. Generate Google Merchant Center feeds. Sell on Google Shopping in 5 minutes.
+            </p>
+
+            <div class="space-y-2 mb-6">
+              <p class="text-xs font-semibold uppercase tracking-wider text-text-muted">Free</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs px-2 py-1 bg-gray-100 rounded-md text-text-muted">GTIN, Brand, MPN fields</span>
+                <span class="text-xs px-2 py-1 bg-gray-100 rounded-md text-text-muted">Unlimited products</span>
+                <span class="text-xs px-2 py-1 bg-gray-100 rounded-md text-text-muted">XML feed generation</span>
+              </div>
+              <p class="text-xs font-semibold uppercase tracking-wider text-text-muted mt-3">Pro</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs px-2 py-1 bg-primary/5 rounded-md text-primary">Scheduled updates</span>
+                <span class="text-xs px-2 py-1 bg-primary/5 rounded-md text-primary">6 feed channels</span>
+                <span class="text-xs px-2 py-1 bg-primary/5 rounded-md text-primary">Category mapping</span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-1.5 text-xs font-medium text-accent bg-accent/10 px-2 py-1 rounded-full">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                  On WordPress.org
+                </span>
+              </div>
+              <span class="text-sm text-text-muted">
+                Free &middot; Pro from $79/yr
+              </span>
+            </div>
+          </a>
+
+          <!-- Accessibility Scanner Plugin -->
+          <a href="/accessibility-scanner" class="group bg-white rounded-2xl border border-gray-200 p-8 hover:border-primary/30 hover:shadow-lg transition-all duration-200">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-text group-hover:text-primary transition-colors">Accessibility Scanner</h3>
+                <p class="text-sm text-text-muted">WCAG Compliance for WordPress</p>
+              </div>
+            </div>
+
+            <p class="text-text-muted mb-6">
+              Scan your WordPress site for WCAG 2.2 accessibility issues. Find real problems in your HTML, fix them, prove compliance. No overlay widgets.
+            </p>
+
+            <div class="space-y-2 mb-6">
+              <p class="text-xs font-semibold uppercase tracking-wider text-text-muted">Free</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs px-2 py-1 bg-gray-100 rounded-md text-text-muted">20+ WCAG 2.2 checks</span>
+                <span class="text-xs px-2 py-1 bg-gray-100 rounded-md text-text-muted">Quick fixes</span>
+                <span class="text-xs px-2 py-1 bg-gray-100 rounded-md text-text-muted">Accessibility score</span>
+              </div>
+              <p class="text-xs font-semibold uppercase tracking-wider text-text-muted mt-3">Pro</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs px-2 py-1 bg-primary/5 rounded-md text-primary">Unlimited scans</span>
+                <span class="text-xs px-2 py-1 bg-primary/5 rounded-md text-primary">Full site crawl</span>
+                <span class="text-xs px-2 py-1 bg-primary/5 rounded-md text-primary">PDF reports</span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-1.5 text-xs font-medium text-amber-600 bg-amber-50 px-2 py-1 rounded-full">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                  Coming Soon
+                </span>
+              </div>
+              <span class="text-sm text-text-muted">
+                Free &middot; Pro from $99/yr
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why WooPlugin Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-bg-alt">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
+            Why WooPlugin?
+          </h2>
+          <p class="text-lg text-text-muted">
+            What makes us different
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div class="text-center p-6 bg-white rounded-xl border border-gray-100">
             <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
               <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <h3 class="font-semibold text-text mb-2">Required by Google</h3>
-            <p class="text-sm text-text-muted">Google requires GTINs for most products. Missing GTINs = rejected listings or limited reach.</p>
+            <h3 class="font-semibold text-text mb-2">Focused</h3>
+            <p class="text-sm text-text-muted">One job per plugin, done right. No feature creep or kitchen-sink bundles.</p>
           </div>
 
           <div class="text-center p-6 bg-white rounded-xl border border-gray-100">
             <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
               <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 class="font-semibold text-text mb-2">Boost Free Listings</h3>
-            <p class="text-sm text-text-muted">Products with GTINs get priority in Google's free Shopping tab and organic search results.</p>
+            <h3 class="font-semibold text-text mb-2">Actually Free</h3>
+            <p class="text-sm text-text-muted">No artificial product limits. No fake free tiers. Core features stay free forever.</p>
           </div>
 
           <div class="text-center p-6 bg-white rounded-xl border border-gray-100">
             <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-secondary/10 flex items-center justify-center">
               <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
               </svg>
             </div>
-            <h3 class="font-semibold text-text mb-2">Better Ad Performance</h3>
-            <p class="text-sm text-text-muted">GTINs help Google match reviews, ratings, and price comparisons—improving click-through rates.</p>
+            <h3 class="font-semibold text-text mb-2">No Bloat</h3>
+            <p class="text-sm text-text-muted">Lightweight plugins. No jQuery bloat. No tracking scripts. No frontend impact.</p>
+          </div>
+
+          <div class="text-center p-6 bg-white rounded-xl border border-gray-100">
+            <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-text mb-2">Clean Code</h3>
+            <p class="text-sm text-text-muted">WordPress coding standards. PHP 8.0+. Tested with latest WooCommerce and WordPress.</p>
           </div>
         </div>
-
-        <p class="text-center mt-8 text-sm text-text-muted">
-          <a href="/guides/gtin-upc-ean-explained" class="text-primary hover:underline">Learn more about GTINs, UPCs, and EANs →</a>
-        </p>
-      </div>
-    </section>
-
-    <!-- Problem / Solution Section (Consolidated) -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-bg-alt">
-      <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
-            Google Shopping Made Simple
-          </h2>
-          <p class="text-lg text-text-muted max-w-2xl mx-auto">
-            Other plugins charge €99/year for GTIN fields. We give you everything free.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8">
-          <!-- Problems -->
-          <div class="space-y-4">
-            <h3 class="font-semibold text-text mb-4 flex items-center gap-2">
-              <X className="w-5 h-5 text-red-500" />
-              The Problems
-            </h3>
-            <div class="bg-white rounded-lg p-4 border border-red-100">
-              <p class="text-text-muted text-sm">"Missing GTIN" errors in Google Merchant Center</p>
-            </div>
-            <div class="bg-white rounded-lg p-4 border border-red-100">
-              <p class="text-text-muted text-sm">Plugins charging €99/year for basic GTIN fields</p>
-            </div>
-            <div class="bg-white rounded-lg p-4 border border-red-100">
-              <p class="text-text-muted text-sm">Artificial 100-200 product limits on free versions</p>
-            </div>
-          </div>
-
-          <!-- Solutions -->
-          <div class="space-y-4">
-            <h3 class="font-semibold text-text mb-4 flex items-center gap-2">
-              <Check className="w-5 h-5 text-accent" />
-              Our Solution
-            </h3>
-            <div class="bg-white rounded-lg p-4 border border-green-100">
-              <p class="text-text-muted text-sm">Free GTIN, Brand, MPN fields on all products</p>
-            </div>
-            <div class="bg-white rounded-lg p-4 border border-green-100">
-              <p class="text-text-muted text-sm">Google-compliant XML feed generation</p>
-            </div>
-            <div class="bg-white rounded-lg p-4 border border-green-100">
-              <p class="text-text-muted text-sm">Unlimited products, no artificial restrictions</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section id="how-it-works" class="py-20 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
-            How It Works
-          </h2>
-          <p class="text-lg text-text-muted">
-            Three steps to Google Shopping
-          </p>
-        </div>
-
-        <div class="relative grid md:grid-cols-3 gap-8">
-          <!-- Connecting line (desktop only) -->
-          <div class="hidden md:block absolute top-6 left-[16.67%] right-[16.67%] h-0.5 bg-gradient-to-r from-primary via-primary to-primary opacity-20"></div>
-
-          <div class="relative text-center">
-            <div class="relative z-10 flex items-center justify-center w-12 h-12 mx-auto mb-6 bg-primary text-white rounded-full font-bold text-lg shadow-lg shadow-primary/25">
-              1
-            </div>
-            <h3 class="text-xl font-semibold text-text mb-3">Install Plugin</h3>
-            <p class="text-text-muted">
-              Install from WordPress.org or search "GTIN Google Shopping" in your WordPress dashboard.
-            </p>
-          </div>
-
-          <div class="relative text-center">
-            <div class="relative z-10 flex items-center justify-center w-12 h-12 mx-auto mb-6 bg-primary text-white rounded-full font-bold text-lg shadow-lg shadow-primary/25">
-              2
-            </div>
-            <h3 class="text-xl font-semibold text-text mb-3">Add Product Data</h3>
-            <p class="text-text-muted">
-              GTIN, Brand, and MPN fields appear in your product editor. Fill them in.
-            </p>
-          </div>
-
-          <div class="relative text-center">
-            <div class="relative z-10 flex items-center justify-center w-12 h-12 mx-auto mb-6 bg-primary text-white rounded-full font-bold text-lg shadow-lg shadow-primary/25">
-              3
-            </div>
-            <h3 class="text-xl font-semibold text-text mb-3">Generate Feed</h3>
-            <p class="text-text-muted">
-              One click to generate XML. Copy the URL into Google Merchant Center. Done.
-            </p>
-          </div>
-        </div>
-
-        <div class="text-center mt-12">
-          <a href={wpOrgUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary rounded-lg hover:bg-primary/90 transition-colors">
-            Get Free Plugin
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-bg-alt">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-bold text-text mb-4">
-            Everything You Need
-          </h2>
-          <p class="text-lg text-text-muted">
-            No hidden features. No surprise paywalls.
-          </p>
-        </div>
-
-        <div class="grid sm:grid-cols-2 gap-6">
-          <div class="flex items-start gap-4 p-6 bg-white rounded-xl">
-            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-              <Check className="w-5 h-5 text-accent" />
-            </div>
-            <div>
-              <h3 class="font-semibold text-text mb-1">GTIN, Brand, MPN Fields</h3>
-              <p class="text-sm text-text-muted">Required by Google for most products. Boosts visibility in paid and free listings.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4 p-6 bg-white rounded-xl">
-            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-              <Check className="w-5 h-5 text-accent" />
-            </div>
-            <div>
-              <h3 class="font-semibold text-text mb-1">Google Merchant XML Feed</h3>
-              <p class="text-sm text-text-muted">Generate compliant feeds for paid Shopping ads and free product listings.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4 p-6 bg-white rounded-xl">
-            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-              <Check className="w-5 h-5 text-accent" />
-            </div>
-            <div>
-              <h3 class="font-semibold text-text mb-1">Unlimited Products</h3>
-              <p class="text-sm text-text-muted">No artificial limits. 10 products or 10,000—same free plugin.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4 p-6 bg-white rounded-xl">
-            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-              <Check className="w-5 h-5 text-accent" />
-            </div>
-            <div>
-              <h3 class="font-semibold text-text mb-1">Variable Product Support</h3>
-              <p class="text-sm text-text-muted">Full support for WooCommerce variations.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4 p-6 bg-white rounded-xl">
-            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-              <Check className="w-5 h-5 text-accent" />
-            </div>
-            <div>
-              <h3 class="font-semibold text-text mb-1">HPOS Compatible</h3>
-              <p class="text-sm text-text-muted">Ready for WooCommerce 8.x+ High-Performance Order Storage.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4 p-6 bg-white rounded-xl">
-            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-              <Check className="w-5 h-5 text-accent" />
-            </div>
-            <div>
-              <h3 class="font-semibold text-text mb-1">Category Mapping</h3>
-              <p class="text-sm text-text-muted">Map WooCommerce categories to Google's product taxonomy.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Social Proof Section -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl mx-auto text-center">
-        <div class="flex flex-wrap items-center justify-center gap-8 text-text-muted">
-          <div class="text-center">
-            <div class="text-3xl font-bold text-text">Free</div>
-            <div class="text-sm">GTIN Fields</div>
-          </div>
-          <div class="w-px h-12 bg-gray-200"></div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-text">Unlimited</div>
-            <div class="text-sm">Products</div>
-          </div>
-          <div class="w-px h-12 bg-gray-200"></div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-text">100%</div>
-            <div class="text-sm">Google Compliant</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <FAQ
-      client:visible
-      faqs={homepageFaqs}
-      title="Questions?"
-      subtitle="Everything you need to know"
-    />
-
-    <!-- Final CTA Section -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary to-secondary">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
-          Ready to Sell on Google Shopping?
-        </h2>
-        <p class="text-lg text-white/80 mb-8">
-          Install from WordPress.org. Free forever for core features.
-        </p>
-        <a href={wpOrgUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-primary bg-white rounded-lg hover:bg-gray-100 transition-colors">
-          Get Free Plugin
-          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </a>
       </div>
     </section>
 

@@ -1,11 +1,22 @@
 ---
 const currentYear = new Date().getFullYear();
 
-const mainLinks = [
-  { href: '/google-shopping-pro', label: 'Google Shopping Pro' },
-  { href: '/docs', label: 'Docs' },
+const pluginLinks = [
+  { href: '/google-shopping', label: 'Google Shopping' },
+  { href: '/accessibility-scanner', label: 'Accessibility Scanner' },
+];
+
+const docsLinks = [
+  { href: '/docs', label: 'All Documentation' },
+  { href: '/docs/getting-started/installation', label: 'Google Shopping Docs' },
+  { href: '/docs/accessibility/getting-started/installation', label: 'Accessibility Docs' },
   { href: '/guides', label: 'Guides' },
+];
+
+const supportLinks = [
   { href: '/support', label: 'Support' },
+  { href: '/support#google-shopping', label: 'Google Shopping Help' },
+  { href: '/support#accessibility-scanner', label: 'Accessibility Help' },
   { href: 'https://wordpress.org/plugins/gtin-product-feed-for-google-shopping/?utm_source=wooplugin&utm_medium=website&utm_campaign=footer', label: 'WordPress.org', external: true },
 ];
 
@@ -17,9 +28,9 @@ const legalLinks = [
 
 <footer class="py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-100">
   <div class="max-w-6xl mx-auto">
-    <div class="grid md:grid-cols-4 gap-8 mb-8">
+    <div class="grid md:grid-cols-5 gap-8 mb-8">
       <!-- Brand -->
-      <div class="md:col-span-2">
+      <div>
         <a href="/" class="inline-flex items-baseline mb-4">
           <span class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             WooPlugin
@@ -27,15 +38,45 @@ const legalLinks = [
           <span class="text-sm font-medium text-text-muted">.pro</span>
         </a>
         <p class="text-sm text-text-muted max-w-xs">
-          Google Shopping for WooCommerce. Add GTIN, Brand, MPN fields and generate Merchant Center feeds.
+          Focused WordPress plugins that do one thing well. No bloat, no tracking, just clean code.
         </p>
       </div>
 
-      <!-- Main Links -->
+      <!-- Plugins -->
       <div>
-        <p class="font-semibold text-text mb-4">Links</p>
+        <p class="font-semibold text-text mb-4">Plugins</p>
         <nav class="flex flex-col gap-2">
-          {mainLinks.map(link => (
+          {pluginLinks.map(link => (
+            <a
+              href={link.href}
+              class="text-sm text-text-muted hover:text-primary transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <!-- Documentation -->
+      <div>
+        <p class="font-semibold text-text mb-4">Documentation</p>
+        <nav class="flex flex-col gap-2">
+          {docsLinks.map(link => (
+            <a
+              href={link.href}
+              class="text-sm text-text-muted hover:text-primary transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <!-- Support -->
+      <div>
+        <p class="font-semibold text-text mb-4">Support</p>
+        <nav class="flex flex-col gap-2">
+          {supportLinks.map(link => (
             <a
               href={link.href}
               class="text-sm text-text-muted hover:text-primary transition-colors"
