@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     question: 'How many scans do I get?',
-    answer: 'Free: 5 scans per month, one page per scan. Pro removes limits and adds full-site scanning.',
+    answer: 'Free includes unlimited single-page scans. Pro adds full-site crawling, scheduled scans, Level AA checks, PDF reports, and more.',
   },
   {
     question: 'Does this slow down my site?',
@@ -43,8 +43,7 @@ const comparisonFeatures = [
   { feature: 'Accessibility score (0-100)', free: true, pro: true, description: 'A weighted score showing how well a page meets accessibility standards, with breakdown by severity.' },
   { feature: 'Quick fixes', free: true, pro: true, description: 'Fix common issues like missing alt text, empty links, and missing form labels directly from the dashboard.' },
   { feature: 'Statement generator', free: true, pro: true, description: 'Generate a WCAG-compliant accessibility statement page for your site with auto-filled scan data.' },
-  { feature: '5 scans per month', free: true, pro: true, description: 'Free includes 5 scans per month. Pro removes this limit entirely.' },
-  { feature: 'Unlimited scans', free: false, pro: true, description: 'No monthly scan limit. Scan as many pages as you need, as often as you need.' },
+  { feature: 'Unlimited single-page scans', free: true, pro: true, description: 'Scan any page as often as you need. No monthly limits.' },
   { feature: 'Full site crawl', free: false, pro: true, description: 'Automatically scan every page, post, and product on your site in one click.' },
   { feature: 'Level AA checks (50+)', free: false, pro: true, description: 'Complete WCAG 2.2 Level AA testing including text spacing, focus visibility, target size, and more.' },
   { feature: 'Scheduled auto-scans', free: false, pro: true, description: 'Set daily, weekly, or monthly automatic scans with email notifications on completion.' },
@@ -394,24 +393,24 @@ const comparisonFeatures = [
         <div class="grid sm:grid-cols-2 gap-8">
           <div class="flex items-start gap-4">
             <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-              <Search className="w-6 h-6 text-accent" />
-            </div>
-            <div>
-              <h3 class="font-semibold text-text mb-2">Unlimited Scans</h3>
-              <p class="text-text-muted">
-                No monthly limit. Scan as many pages as you need, as often as you need.
-              </p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
               <Globe className="w-6 h-6 text-accent" />
             </div>
             <div>
               <h3 class="font-semibold text-text mb-2">Full Site Crawl</h3>
               <p class="text-text-muted">
                 Scan every page, post, and product on your site automatically in one click.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <Search className="w-6 h-6 text-accent" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-text mb-2">Bulk Fix</h3>
+              <p class="text-text-muted">
+                Fix issues across your entire site at once with a review queue to approve each fix.
               </p>
             </div>
           </div>
@@ -547,10 +546,6 @@ const comparisonFeatures = [
               </li>
               <li class="flex items-start gap-3">
                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span class="text-text-muted">Unlimited scans</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                 <span class="text-text-muted">Full site crawl</span>
               </li>
               <li class="flex items-start gap-3">
@@ -681,7 +676,7 @@ const comparisonFeatures = [
         </div>
 
         <p class="text-center text-sm text-text-muted mt-8">
-          14-day money-back guarantee.
+          30-day money-back guarantee.
         </p>
       </div>
     </section>
