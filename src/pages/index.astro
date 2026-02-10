@@ -3,7 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ContactForm from '../components/ContactForm';
-import { Check } from 'lucide-preact';
+import { Check, PlugZap, ArrowDown, ArrowRight } from 'lucide-preact';
+import HeroDashboardSlider from '../components/HeroDashboardSlider';
 ---
 
 <Layout
@@ -13,50 +14,64 @@ import { Check } from 'lucide-preact';
   <Header />
   <main>
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-6xl mx-auto text-center">
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-text mb-6">
-          WordPress Plugins
-          <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            {' '}That Actually Work
-          </span>
-        </h1>
+    <section class="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <!-- Gradient mesh background -->
+      <div class="absolute top-20 right-0 w-[600px] h-[600px] bg-gradient-to-br from-primary/8 via-secondary/5 to-transparent rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-20 w-[400px] h-[400px] bg-gradient-to-tr from-accent/5 to-transparent rounded-full blur-3xl"></div>
 
-        <p class="text-lg sm:text-xl text-text-muted mb-8 max-w-2xl mx-auto">
-          Focused tools for WooCommerce store owners and WordPress site managers.
-          No bloat. No tracking. Just clean code that solves real problems.
-        </p>
+      <div class="relative max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <!-- Left: Text -->
+          <div class="order-2 lg:order-1">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-md">
+                <PlugZap className="w-5 h-5 text-white" strokeWidth={1.5} />
+              </div>
+              <span class="text-sm font-semibold text-text tracking-wide uppercase">WooPlugin</span>
+            </div>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-          <a href="#plugins" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary rounded-lg hover:bg-primary/90 transition-colors">
-            Browse Plugins
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </a>
-          <a href="https://wordpress.org/plugins/gtin-product-feed-for-google-shopping/?utm_source=wooplugin&utm_medium=website&utm_campaign=homepage" target="_blank" rel="noopener" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-text border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-            View on WordPress.org
-          </a>
-        </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-text leading-[1.1] mb-6">
+              WordPress Plugins
+              <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent block mt-2">
+                That Actually Work
+              </span>
+            </h1>
 
-        <!-- Trust badges -->
-        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-text-muted">
-          <span class="flex items-center gap-2">
-            <Check className="w-4 h-4 text-accent" />
-            Free on WordPress.org
-          </span>
-          <span class="flex items-center gap-2">
-            <Check className="w-4 h-4 text-accent" />
-            No tracking
-          </span>
-          <span class="flex items-center gap-2">
-            <Check className="w-4 h-4 text-accent" />
-            WordPress coding standards
-          </span>
-          <span class="flex items-center gap-2">
-            <Check className="w-4 h-4 text-accent" />
-            PHP 8.0+
-          </span>
+            <p class="text-lg text-text-muted mb-8 leading-relaxed max-w-lg">
+              Focused tools for WooCommerce stores and WordPress sites. Google Shopping product feeds, WCAG 2.2 accessibility scanning, and more. No bloat, no tracking, no nonsense.
+            </p>
+
+            <div class="flex flex-row gap-3 sm:gap-4 mb-8">
+              <a href="#plugins" class="group inline-flex items-center justify-center px-5 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-white bg-primary rounded-xl hover:bg-primary-dark transition-all duration-200 shadow-lg shadow-primary/15 hover:shadow-xl hover:shadow-primary/25 hover:-translate-y-0.5">
+                See Our Plugins
+                <ArrowDown className="w-4 h-4 ml-2 group-hover:translate-y-0.5 transition-transform" />
+              </a>
+              <a href="https://wordpress.org/plugins/search/wooplugin/" target="_blank" rel="noopener" class="inline-flex items-center justify-center px-5 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-text bg-white/80 border border-gray-200 rounded-xl hover:border-primary/30 hover:text-primary transition-all duration-200 backdrop-blur-sm">
+                WordPress.org
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </a>
+            </div>
+
+            <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-text-muted">
+              <span class="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-accent" />
+                Free on WordPress.org
+              </span>
+              <span class="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-accent" />
+                No tracking
+              </span>
+              <span class="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-accent" />
+                WordPress coding standards
+              </span>
+            </div>
+          </div>
+
+          <!-- Right: Dashboard slider (desktop only) -->
+          <div class="hidden lg:flex order-2 items-center justify-center">
+            <HeroDashboardSlider client:visible />
+          </div>
         </div>
       </div>
     </section>
